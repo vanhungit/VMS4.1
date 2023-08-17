@@ -1,0 +1,457 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ED2B1693-F040-45E7-A406-3A9B95EEDB92}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VMSCore.Demo.WindowsForms</RootNamespace>
+    <AssemblyName>VMSCore.Demo.WindowsForms</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Company\frmAddCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\frmAddCompany.Designer.cs">
+      <DependentUpon>frmAddCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\frmCompanyManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\frmCompanyManagement.Designer.cs">
+      <DependentUpon>frmCompanyManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\frmDeleteCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\frmDeleteCompany.Designer.cs">
+      <DependentUpon>frmDeleteCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\frmGetAllCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\frmGetAllCompany.Designer.cs">
+      <DependentUpon>frmGetAllCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\frmGetCompanyByCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\frmGetCompanyByCode.Designer.cs">
+      <DependentUpon>frmGetCompanyByCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\frmGetCompanyByTaxNo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\frmGetCompanyByTaxNo.Designer.cs">
+      <DependentUpon>frmGetCompanyByTaxNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Company\frmUpdateCompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Company\frmUpdateCompany.Designer.cs">
+      <DependentUpon>frmUpdateCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\District\frmAddDistrict.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterData\District\frmAddDistrict.Designer.cs">
+      <DependentUpon>frmAddDistrict.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\District\frmDeleteDistrict.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterData\District\frmDeleteDistrict.Designer.cs">
+      <DependentUpon>frmDeleteDistrict.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\District\frmUpdateDistrict.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterData\District\frmUpdateDistrict.Designer.cs">
+      <DependentUpon>frmUpdateDistrict.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\frmMasterData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterData\frmMasterData.Designer.cs">
+      <DependentUpon>frmMasterData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\Province\frmAddProvince.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterData\Province\frmAddProvince.Designer.cs">
+      <DependentUpon>frmAddProvince.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\Province\frmDeleteProvince.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterData\Province\frmDeleteProvince.Designer.cs">
+      <DependentUpon>frmDeleteProvince.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\Province\frmUpdateProvince.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterData\Province\frmUpdateProvince.Designer.cs">
+      <DependentUpon>frmUpdateProvince.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\Ward\frmAddWard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterData\Ward\frmAddWard.Designer.cs">
+      <DependentUpon>frmAddWard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\Ward\frmDeleteWard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterData\Ward\frmDeleteWard.Designer.cs">
+      <DependentUpon>frmDeleteWard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\Ward\frmUpdateWard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterData\Ward\frmUpdateWard.Designer.cs">
+      <DependentUpon>frmUpdateWard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\fmrReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\fmrReport.Designer.cs">
+      <DependentUpon>fmrReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShareDirectoryManagement\frmLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShareDirectoryManagement\frmLine.Designer.cs">
+      <DependentUpon>frmLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShareDirectoryManagement\frmPlant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShareDirectoryManagement\frmPlant.Designer.cs">
+      <DependentUpon>frmPlant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShareDirectoryManagement\frmProductOther.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShareDirectoryManagement\frmProductOther.Designer.cs">
+      <DependentUpon>frmProductOther.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShareDirectoryManagement\frmRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShareDirectoryManagement\frmRole.Designer.cs">
+      <DependentUpon>frmRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShareDirectoryManagement\frmStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShareDirectoryManagement\frmStaff.Designer.cs">
+      <DependentUpon>frmStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShareDirectoryManagement\frmWorkshop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShareDirectoryManagement\frmWorkshop.Designer.cs">
+      <DependentUpon>frmWorkshop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemConfiguration\firmCreateObjectButtonMappingForAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemConfiguration\firmCreateObjectButtonMappingForAccount.Designer.cs">
+      <DependentUpon>firmCreateObjectButtonMappingForAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmAssignPermissionForButtonsObjects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmAssignPermissionForButtonsObjects.Designer.cs">
+      <DependentUpon>frmAssignPermissionForButtonsObjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmButton.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmButton.Designer.cs">
+      <DependentUpon>frmButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmChangePassword.Designer.cs">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmLoginRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmLoginRecord.Designer.cs">
+      <DependentUpon>frmLoginRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmObjectButtonMapping.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmObjectButtonMapping.Designer.cs">
+      <DependentUpon>frmObjectButtonMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmObjectButtonPermission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmObjectButtonPermission.Designer.cs">
+      <DependentUpon>frmObjectButtonPermission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmObjectEntity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmObjectEntity.Designer.cs">
+      <DependentUpon>frmObjectEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmPlantSIteMapping.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmPlantSIteMapping.Designer.cs">
+      <DependentUpon>frmPlantSIteMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmSite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmSite.Designer.cs">
+      <DependentUpon>frmSite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmStaffMapRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmStaffMapRole.Designer.cs">
+      <DependentUpon>frmStaffMapRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmStaffPermission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemConfiguration\frmStaffPermission.Designer.cs">
+      <DependentUpon>frmStaffPermission.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Company\frmCompanyManagement.resx">
+      <DependentUpon>frmCompanyManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company\frmDeleteCompany.resx">
+      <DependentUpon>frmDeleteCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company\frmGetAllCompany.resx">
+      <DependentUpon>frmGetAllCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company\frmGetCompanyByCode.resx">
+      <DependentUpon>frmGetCompanyByCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Company\frmGetCompanyByTaxNo.resx">
+      <DependentUpon>frmGetCompanyByTaxNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterData\District\frmAddDistrict.resx">
+      <DependentUpon>frmAddDistrict.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterData\District\frmDeleteDistrict.resx">
+      <DependentUpon>frmDeleteDistrict.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterData\District\frmUpdateDistrict.resx">
+      <DependentUpon>frmUpdateDistrict.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterData\frmMasterData.resx">
+      <DependentUpon>frmMasterData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterData\Province\frmAddProvince.resx">
+      <DependentUpon>frmAddProvince.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterData\Province\frmDeleteProvince.resx">
+      <DependentUpon>frmDeleteProvince.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterData\Province\frmUpdateProvince.resx">
+      <DependentUpon>frmUpdateProvince.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterData\Ward\frmAddWard.resx">
+      <DependentUpon>frmAddWard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterData\Ward\frmDeleteWard.resx">
+      <DependentUpon>frmDeleteWard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterData\Ward\frmUpdateWard.resx">
+      <DependentUpon>frmUpdateWard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Report\fmrReport.resx">
+      <DependentUpon>fmrReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShareDirectoryManagement\frmLine.resx">
+      <DependentUpon>frmLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShareDirectoryManagement\frmPlant.resx">
+      <DependentUpon>frmPlant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShareDirectoryManagement\frmProductOther.resx">
+      <DependentUpon>frmProductOther.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShareDirectoryManagement\frmRole.resx">
+      <DependentUpon>frmRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShareDirectoryManagement\frmStaff.resx">
+      <DependentUpon>frmStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShareDirectoryManagement\frmWorkshop.resx">
+      <DependentUpon>frmWorkshop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemConfiguration\firmCreateObjectButtonMappingForAccount.resx">
+      <DependentUpon>firmCreateObjectButtonMappingForAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemConfiguration\frmAssignPermissionForButtonsObjects.resx">
+      <DependentUpon>frmAssignPermissionForButtonsObjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemConfiguration\frmButton.resx">
+      <DependentUpon>frmButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemConfiguration\frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemConfiguration\frmLoginRecord.resx">
+      <DependentUpon>frmLoginRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemConfiguration\frmObjectButtonMapping.resx">
+      <DependentUpon>frmObjectButtonMapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemConfiguration\frmObjectButtonPermission.resx">
+      <DependentUpon>frmObjectButtonPermission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemConfiguration\frmObjectEntity.resx">
+      <DependentUpon>frmObjectEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemConfiguration\frmPlantSIteMapping.resx">
+      <DependentUpon>frmPlantSIteMapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemConfiguration\frmSite.resx">
+      <DependentUpon>frmSite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemConfiguration\frmStaffMapRole.resx">
+      <DependentUpon>frmStaffMapRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemConfiguration\frmStaffPermission.resx">
+      <DependentUpon>frmStaffPermission.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\VMSCore.Infrastructure.Features.SystemConfiguration.Repositories.Implementations.ButtonRepository.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VMSCore.Constant\VMSCore.Constant.csproj">
+      <Project>{5101294B-3F78-48CB-AA08-F9F8E5D64583}</Project>
+      <Name>VMSCore.Constant</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VMSCore.EntityModels\VMSCore.EntityModels.csproj">
+      <Project>{1ED555ED-4142-4359-BA1F-83F81FB65B5A}</Project>
+      <Name>VMSCore.EntityModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VMSCore.Extensions\VMSCore.Extensions.csproj">
+      <Project>{3FEBFFB2-7575-4C2C-9141-7A2EA86C48D3}</Project>
+      <Name>VMSCore.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VMSCore.Infrastructure\VMSCore.Infrastructure.csproj">
+      <Project>{66781962-b3f6-4bef-99a9-81118b9e8553}</Project>
+      <Name>VMSCore.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VMSCore.Repositories\VMSCore.Repositories.csproj">
+      <Project>{5B7E2F34-1834-4DD1-88F7-ABEEDE5BF821}</Project>
+      <Name>VMSCore.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VMSCore.ViewModels\VMSCore.ViewModels.csproj">
+      <Project>{9E6D4C80-C34C-462A-82B9-5837D81D996B}</Project>
+      <Name>VMSCore.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

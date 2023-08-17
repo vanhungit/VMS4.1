@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{66781962-B3F6-4BEF-99A9-81118B9E8553}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VMSCore.Infrastructure</RootNamespace>
+    <AssemblyName>VMSCore.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Features\MasterDataManagement\Repositories\Interfaces\IWardRepository.cs" />
+    <Compile Include="Features\MasterDataManagement\Repositories\Interfaces\IDistrictRepository.cs" />
+    <Compile Include="Features\MasterDataManagement\Repositories\Interfaces\IProvinceRepository.cs" />
+    <Compile Include="Features\MasterDataManagement\Repositories\Implementations\DistrictRepository.cs" />
+    <Compile Include="Features\MasterDataManagement\Repositories\Implementations\WardRepository.cs" />
+    <Compile Include="Features\MasterDataManagement\Repositories\Implementations\ProvinceRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\RoleUserRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\RoleDetaillRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\PermissionRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\LineDeviceRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\ManagementDeviceProtocolRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\ManagementDeviceParamRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\ProductionOrderDetailCodeRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\ProductionOrderDetailRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\ProductionOrderRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\ProtocolParamRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\DeviceRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\ManagementDeviceRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\RoleRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\TypeDeviceRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\DeviceGroupRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\DepartmentStaffRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\StaffSkillRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\SkillRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\ShiftRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\DepartmentRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\EquipmentGroupRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\EquipmentRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\LineEquipmentMappingRepository`.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\LineRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\ProductRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\ProtocolRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\StaffAccountMappingRepository`.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\StaffRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\StageRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\WorkshopRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\PlantRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IRoleUserRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IRoleDetaillRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IPermissionRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\ILineDeviceRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IManagementDeviceProtocol.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IManagementDeviceParamRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IProductionOrderDetailCodeRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IProductionOrderDetailRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IProductionOrderRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IProtocolParamRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IDeviceRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IManagementDeviceRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IRoleRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\ITypeDeviceRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IDeviceGroupRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IDepartmentStaffRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IStaffSkillRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\ISkillRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IShiftRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IDepartmentRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IEquipmentGroupRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IEquipmentRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\ILineEquipmentMappingRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\ILineRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IPlantRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IProductRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IProtocolRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IStaffAccountMappingRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IStaffRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IStageRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IWorkshopRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Implementations\PlantSiteMappingRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Implementations\SiteRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Implementations\LineUserMappingRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Implementations\WorkshopUserMappingRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Implementations\PlantUserMappingRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Implementations\CompanyUserMappingRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Implementations\ButtonRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Implementations\FunctionGroupModuleObjectMappingRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Implementations\ObjectButtonMappingRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Implementations\ObjectEntityRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Implementations\RoleObjectButtonMappingRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Interfaces\ISiteRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Interfaces\IPlantSiteMappingRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Interfaces\ILineUserMappingRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Interfaces\IWorkshopUserMappingRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Interfaces\IPlantUserMappingRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Interfaces\ICompanyUserMappingRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Interfaces\IButtonRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Interfaces\IFunctionGroupModuleObjectMappingRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Interfaces\IObjectButtonMappingRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Repositories\Interfaces\IObjectEntityRepository.cs" />
+    <Compile Include="Features\SystemConfiguration\Services\Implementations\ObjectButtonPermissionService.cs" />
+    <Compile Include="Features\SystemConfiguration\Services\Implementations\StaffPermissionService.cs" />
+    <Compile Include="Features\SystemConfiguration\Services\Interfaces\IStaffPermissionService.cs" />
+    <Compile Include="Features\SystemConfiguration\Services\Interfaces\IObjectButtonPermissionService.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\DataSettingCompanyRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\MaterialProductRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\NotificationLineRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\NotificationContactRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\NotificationConfigRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\NotificationSystemRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\ErrorConfigRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\BarcodeConfigRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\BarcodeRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\DataSettingRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\SwitchingUnitRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\ProductTypeRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\ProductGroupRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\DeviceSessionDetail_WeighingRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\DeviceSessionDetailRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\DeviceSessionRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\DeviceConnectHistoryRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\FinishedProductRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\MaterialRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\ContractFileRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\ContractPermissionRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Implementations\ContractRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\IDataSettingCompanyRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\IMaterialProductRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\INotificationLineRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\INotificationContactRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\INotificationConfigRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\INotificationSystemRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\IErrorConfigRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\IBarcodeConfigRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\IBarcodeRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\IDataSettingRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\ISwitchingUnitRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\IProductTypeRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\IProductGroupRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\IDeviceSessionDetail_WeighingRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\IDeviceSessionDetailRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\IDeviceSessionRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\IDeviceConnectHistoryRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\IFinishedProductRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\IMaterialRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\IContractFileRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\IContractPermissionRepository.cs" />
+    <Compile Include="Features\SystemManagement\Repositories\Interfaces\IContractRepository.cs" />
+    <Compile Include="Features\SystemOperationManagement\Repositories\Implementations\ProductionOrderDetailRepository.cs" />
+    <Compile Include="Features\SystemOperationManagement\Repositories\Implementations\ProductionOrderRepository.cs" />
+    <Compile Include="Features\SystemOperationManagement\Repositories\Interfaces\IProductionOrderDetailRepository.cs" />
+    <Compile Include="Features\SystemOperationManagement\Repositories\Interfaces\IProductionOrderRepository.cs" />
+    <Compile Include="Features\SystemPermissionConfiguration\Repositories\Implementations\UserFunctionUsageRepository.cs" />
+    <Compile Include="Features\SystemPermissionConfiguration\Repositories\Implementations\LoginRecordRepository.cs" />
+    <Compile Include="Features\SystemPermissionConfiguration\Repositories\Implementations\AccountGroupMappingRepository.cs" />
+    <Compile Include="Features\SystemPermissionConfiguration\Repositories\Implementations\AccountRepository.cs" />
+    <Compile Include="Features\SystemPermissionConfiguration\Repositories\Implementations\CompanyModuleMappingRepository.cs" />
+    <Compile Include="Features\SystemPermissionConfiguration\Repositories\Implementations\CompanyPlantMappingRepository.cs" />
+    <Compile Include="Features\SystemPermissionConfiguration\Repositories\Implementations\UserGroupRepository.cs" />
+    <Compile Include="Features\SystemPermissionConfiguration\Repositories\Interfaces\IUserFunctionUsageRepository.cs" />
+    <Compile Include="Features\SystemPermissionConfiguration\Repositories\Interfaces\ILoginRecordRepository.cs" />
+    <Compile Include="Features\SystemPermissionConfiguration\Repositories\Interfaces\IAccountGroupMappingRepository.cs" />
+    <Compile Include="Features\SystemPermissionConfiguration\Repositories\Interfaces\IAccountRepository.cs" />
+    <Compile Include="Features\SystemPermissionConfiguration\Repositories\Interfaces\ICompanyModuleMappingRepository.cs" />
+    <Compile Include="Features\SystemPermissionConfiguration\Repositories\Interfaces\ICompanyPlantMappingRepository.cs" />
+    <Compile Include="Features\SystemPermissionConfiguration\Repositories\Interfaces\ILineAccountMappingRepository.cs" />
+    <Compile Include="Features\SystemPermissionConfiguration\Repositories\Interfaces\IUserGroupRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\CompanyRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\ICompanyRepository.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="TimCoreDataSet.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="TimCoreDataSet.xsc">
+      <DependentUpon>TimCoreDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TimCoreDataSet.xsd" />
+    <None Include="TimCoreDataSet.xss">
+      <DependentUpon>TimCoreDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VMSCore.Constant\VMSCore.Constant.csproj">
+      <Project>{5101294b-3f78-48cb-aa08-f9f8e5d64583}</Project>
+      <Name>VMSCore.Constant</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VMSCore.EntityModels\VMSCore.EntityModels.csproj">
+      <Project>{1ed555ed-4142-4359-ba1f-83f81fb65b5a}</Project>
+      <Name>VMSCore.EntityModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VMSCore.Extensions\VMSCore.Extensions.csproj">
+      <Project>{3febffb2-7575-4c2c-9141-7a2ea86c48d3}</Project>
+      <Name>VMSCore.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VMSCore.Repositories\VMSCore.Repositories.csproj">
+      <Project>{5b7e2f34-1834-4dd1-88f7-abeede5bf821}</Project>
+      <Name>VMSCore.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VMSCore.Resources\VMSCore.Resources.csproj">
+      <Project>{86cb4271-113b-440e-970b-ca14c3131d08}</Project>
+      <Name>VMSCore.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VMSCore.ViewModels\VMSCore.ViewModels.csproj">
+      <Project>{9E6D4C80-C34C-462A-82B9-5837D81D996B}</Project>
+      <Name>VMSCore.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

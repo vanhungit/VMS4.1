@@ -1,0 +1,327 @@
+﻿{
+   "CodeGenerationMode": 2,
+   "ContextClassName": "EntityDataContextCore",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "VMSCore.API.EntityModels",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[Account]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AccountGroupMapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Barcode]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[BarcodeConfig]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Button]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Company]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CompanyModuleMapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CompanyUserMapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Contract]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ContractFile]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ContractPermission]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DataSetting]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Department]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DepartmentStaff]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Device]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DeviceConnectHistory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DeviceGroup]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DeviceSession]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DeviceSessionDetail]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DeviceSessionDetail_Weighing]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DistrictModel]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Equipment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[EquipmentGroup]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ErrorConfig]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[FinishedProduct]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[FunctionGroupModuleObjectMapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Line]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LineAccountMapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LineDevice]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LineEquipmentMapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LineUserMapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ManagementDevice]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ManagementDeviceParam]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ManagementDeviceProtocol]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Material]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[NotificationConfig]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[NotificationContact]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[NotificationLine]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[NotificationSystem]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ObjectButtonMapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ObjectEntity]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Permission]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Plant]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PlantUserMapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Product]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductGroup]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductionOrder]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductionOrderDetail]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductionOrderDetailCode]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Protocol]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProtocolParam]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProvinceModel]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Role]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[RoleDetaill]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[RoleObjectButtonMapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[RoleUser]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Shift]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Skills]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Staff]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[StaffAccountMapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[StaffSkill]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Stage]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SwitchingUnit]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TypeDevice]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserGroup]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[WardModel]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[WorkShop]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[WorkshopUserMapping]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[GetObjectPermissionByAccountId]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[GetStaffPermissonByStaffId]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[sproc_reportHistoryDevice]",
+         "ObjectType": 1
+      }
+   ],
+   "UiHint": "ttfbd-t9\\sqlexpress2014.VMSCore_Dev.dbo",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDateOnlyTimeOnly": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false
+}
