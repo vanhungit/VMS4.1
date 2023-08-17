@@ -19,7 +19,16 @@ namespace VMSCore.API.EntityModels.Models
             {
             }
 
-
+        public virtual DbSet<LABELING_RFID_CONNECT> LABELING_RFID_CONNECT { get; set; }
+        public virtual DbSet<LABELING_RFID_DATA> LABELING_RFID_DATA { get; set; }
+        public virtual DbSet<LABELING_RFID_ERROR> LABELING_RFID_ERROR { get; set; }
+        public virtual DbSet<LABELING_RFID_STATUS> LABELING_RFID_STATUS { get; set; }
+        public virtual DbSet<LABELING_RFID_WARNING> LABELING_RFID_WARNING { get; set; }
+        public virtual DbSet<DETECTOR_CONNECT> DETECTOR_CONNECT { get; set; }
+        public virtual DbSet<DETECTOR_DATA> DETECTOR_DATA { get; set; }
+        public virtual DbSet<DETECTOR_ERROR> DETECTOR_ERROR { get; set; }
+        public virtual DbSet<DETECTOR_STATUS> DETECTOR_STATUS { get; set; }
+        public virtual DbSet<DETECTOR_WARNING> DETECTOR_WARNING { get; set; }
         public virtual DbSet<CAMERA_CONNECT> CAMERA_CONNECT { get; set; }
         public virtual DbSet<CAMERA_DATA> CAMERA_DATA { get; set; }
         public virtual DbSet<CAMERA_ERROR> CAMERA_ERROR { get; set; }
