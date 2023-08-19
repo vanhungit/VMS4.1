@@ -18,7 +18,32 @@ namespace VMSCore.API.EntityModels.Models
                 : base(options)
             {
             }
-
+        public virtual DbSet<WEIGHT_CONNECT> WEIGHT_CONNECT { get; set; }
+        public virtual DbSet<WEIGHT_DATA> WEIGHT_DATA { get; set; }
+        public virtual DbSet<WEIGHT_ERROR> WEIGHT_ERROR { get; set; }
+        public virtual DbSet<WEIGHT_STATUS> WEIGHT_STATUS { get; set; }
+        public virtual DbSet<WEIGHT_WARNING> WEIGHT_WARNING { get; set; }
+        public virtual DbSet<SECONDARY_PACKING_CONNECT> SECONDARY_PACKING_CONNECT { get; set; }
+        public virtual DbSet<SECONDARY_PACKING_DATA> SECONDARY_PACKING_DATA { get; set; }
+        public virtual DbSet<SECONDARY_PACKING_ERROR> SECONDARY_PACKING_ERROR { get; set; }
+        public virtual DbSet<SECONDARY_PACKING_STATUS> SECONDARY_PACKING_STATUS { get; set; }
+        public virtual DbSet<SECONDARY_PACKING_WARNING> SECONDARY_PACKING_WARNING { get; set; }
+        public virtual DbSet<PRINT_MAKING_CONNECT> PRINT_MAKING_CONNECT { get; set; }
+        public virtual DbSet<PRINT_MAKING_DATA> PRINT_MAKING_DATA { get; set; }
+        public virtual DbSet<PRINT_MAKING_ERROR> PRINT_MAKING_ERROR { get; set; }
+        public virtual DbSet<PRINT_MAKING_STATUS> PRINT_MAKING_STATUS { get; set; }
+        public virtual DbSet<PRINT_MAKING_WARNING> PRINT_MAKING_WARNING { get; set; }
+        public virtual DbSet<PRIMARY_PACKING_CONNECT> PRIMARY_PACKING_CONNECT { get; set; }
+        public virtual DbSet<PRIMARY_PACKING_DATA> PRIMARY_PACKING_DATA { get; set; }
+        public virtual DbSet<PRIMARY_PACKING_ERROR> PRIMARY_PACKING_ERROR { get; set; }
+        public virtual DbSet<PRIMARY_PACKING_STATUS> PRIMARY_PACKING_STATUS { get; set; }
+        public virtual DbSet<PRIMARY_PACKING_WARNING> PRIMARY_PACKING_WARNING { get; set; }
+        public virtual DbSet<MACHINECOUNTER> MACHINECOUNTER { get; set; }
+        public virtual DbSet<MACHINE_CONNECT> MACHINE_CONNECT { get; set; }
+        public virtual DbSet<MACHINE_DATA> MACHINE_DATA { get; set; }
+        public virtual DbSet<MACHINE_ERROR> MACHINE_ERROR { get; set; }
+        public virtual DbSet<MACHINE_STATUS> MACHINE_STATUS { get; set; }
+        public virtual DbSet<MACHINE_WARNING> MACHINE_WARNING { get; set; }
         public virtual DbSet<LABELING_RFID_CONNECT> LABELING_RFID_CONNECT { get; set; }
         public virtual DbSet<LABELING_RFID_DATA> LABELING_RFID_DATA { get; set; }
         public virtual DbSet<LABELING_RFID_ERROR> LABELING_RFID_ERROR { get; set; }
