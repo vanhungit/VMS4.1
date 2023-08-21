@@ -10,9 +10,9 @@ namespace VMSCore.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SECONDARY_PACKING_ERRORController : BaseApiController<SECONDARY_PACKING_ERROR>
+    public class WEIGHT_ERRORController : BaseApiController<WEIGHT_ERROR>
     {
-        public SECONDARY_PACKING_ERRORController(BaseRepositoryCore<SECONDARY_PACKING_ERROR> repository) : base(repository)
+        public WEIGHT_ERRORController(BaseRepositoryCore<WEIGHT_ERROR> repository) : base(repository)
         {
         }
     }
