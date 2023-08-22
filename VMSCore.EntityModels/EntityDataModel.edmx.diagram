@@ -97,39 +97,40 @@
         <EntityTypeShape EntityType="EntityModels.ProductionOrder" Width="1.5" PointX="30.75" PointY="17.75" />
         <EntityTypeShape EntityType="EntityModels.ProductionOrderDetail" Width="1.5" PointX="30.75" PointY="24.75" />
         <EntityTypeShape EntityType="EntityModels.ProductionOrderDetailCode" Width="1.5" PointX="31.75" PointY="0.75" />
-        <EntityTypeShape EntityType="EntityModels.ProductType" Width="1.5" PointX="2.75" PointY="31.75" />
-        <EntityTypeShape EntityType="EntityModels.Protocol" Width="1.5" PointX="31.75" PointY="5.75" />
-        <EntityTypeShape EntityType="EntityModels.ProtocolParam" Width="1.5" PointX="24.75" PointY="31.75" />
+        <EntityTypeShape EntityType="EntityModels.ProductionOrderRawDetail" Width="1.5" PointX="2.75" PointY="31.75" />
+        <EntityTypeShape EntityType="EntityModels.ProductType" Width="1.5" PointX="31.75" PointY="5.75" />
+        <EntityTypeShape EntityType="EntityModels.Protocol" Width="1.5" PointX="24.75" PointY="31.75" />
+        <EntityTypeShape EntityType="EntityModels.ProtocolParam" Width="1.5" PointX="30.75" PointY="31.75" />
         <EntityTypeShape EntityType="EntityModels.ProvinceModel" Width="1.5" PointX="0.75" PointY="1.125" />
-        <EntityTypeShape EntityType="EntityModels.Role" Width="1.5" PointX="30.75" PointY="31.75" />
-        <EntityTypeShape EntityType="EntityModels.RoleDetaill" Width="1.5" PointX="31.75" PointY="10.75" />
-        <EntityTypeShape EntityType="EntityModels.RoleObjectButtonMapping" Width="1.5" PointX="32.75" PointY="13.75" />
-        <EntityTypeShape EntityType="EntityModels.RoleUser" Width="1.5" PointX="32.75" PointY="16.75" />
-        <EntityTypeShape EntityType="EntityModels.SECONDARY_PACKING_CONNECT" Width="1.5" PointX="32.75" PointY="19.75" />
-        <EntityTypeShape EntityType="EntityModels.SECONDARY_PACKING_DATA" Width="1.5" PointX="32.75" PointY="25.75" />
-        <EntityTypeShape EntityType="EntityModels.SECONDARY_PACKING_ERROR" Width="1.5" PointX="32.75" PointY="32.75" />
-        <EntityTypeShape EntityType="EntityModels.SECONDARY_PACKING_STATUS" Width="1.5" PointX="33.75" PointY="0.75" />
-        <EntityTypeShape EntityType="EntityModels.SECONDARY_PACKING_WARNING" Width="1.5" PointX="33.75" PointY="6.75" />
-        <EntityTypeShape EntityType="EntityModels.Shift" Width="1.5" PointX="4.75" PointY="34.75" />
-        <EntityTypeShape EntityType="EntityModels.Site" Width="1.5" PointX="10.75" PointY="34.75" />
-        <EntityTypeShape EntityType="EntityModels.Skills" Width="1.5" PointX="34.75" PointY="12.75" />
-        <EntityTypeShape EntityType="EntityModels.Staff" Width="1.5" PointX="12.75" PointY="34.75" />
-        <EntityTypeShape EntityType="EntityModels.StaffAccountMapping" Width="1.5" PointX="34.75" PointY="16.75" />
-        <EntityTypeShape EntityType="EntityModels.StaffSkill" Width="1.5" PointX="34.75" PointY="19.75" />
-        <EntityTypeShape EntityType="EntityModels.Stage" Width="1.5" PointX="20.75" PointY="34.75" />
-        <EntityTypeShape EntityType="EntityModels.SwitchingUnit" Width="1.5" PointX="34.75" PointY="23.75" />
-        <EntityTypeShape EntityType="EntityModels.TypeDevice" Width="1.5" PointX="26.75" PointY="34.75" />
-        <EntityTypeShape EntityType="EntityModels.UNIT" Width="1.5" PointX="34.75" PointY="28.75" />
-        <EntityTypeShape EntityType="EntityModels.UserFunctionUsage" Width="1.5" PointX="34.75" PointY="32.75" />
-        <EntityTypeShape EntityType="EntityModels.UserGroup" Width="1.5" PointX="35.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EntityModels.Role" Width="1.5" PointX="31.75" PointY="9.75" />
+        <EntityTypeShape EntityType="EntityModels.RoleDetaill" Width="1.5" PointX="32.75" PointY="13.75" />
+        <EntityTypeShape EntityType="EntityModels.RoleObjectButtonMapping" Width="1.5" PointX="32.75" PointY="16.75" />
+        <EntityTypeShape EntityType="EntityModels.RoleUser" Width="1.5" PointX="32.75" PointY="19.75" />
+        <EntityTypeShape EntityType="EntityModels.SECONDARY_PACKING_CONNECT" Width="1.5" PointX="32.75" PointY="22.75" />
+        <EntityTypeShape EntityType="EntityModels.SECONDARY_PACKING_DATA" Width="1.5" PointX="32.75" PointY="28.75" />
+        <EntityTypeShape EntityType="EntityModels.SECONDARY_PACKING_ERROR" Width="1.5" PointX="33.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EntityModels.SECONDARY_PACKING_STATUS" Width="1.5" PointX="33.75" PointY="6.75" />
+        <EntityTypeShape EntityType="EntityModels.SECONDARY_PACKING_WARNING" Width="1.5" PointX="4.75" PointY="34.75" />
+        <EntityTypeShape EntityType="EntityModels.Shift" Width="1.5" PointX="10.75" PointY="34.75" />
+        <EntityTypeShape EntityType="EntityModels.Site" Width="1.5" PointX="34.75" PointY="12.75" />
+        <EntityTypeShape EntityType="EntityModels.Skills" Width="1.5" PointX="12.75" PointY="34.75" />
+        <EntityTypeShape EntityType="EntityModels.Staff" Width="1.5" PointX="34.75" PointY="16.75" />
+        <EntityTypeShape EntityType="EntityModels.StaffAccountMapping" Width="1.5" PointX="20.75" PointY="34.75" />
+        <EntityTypeShape EntityType="EntityModels.StaffSkill" Width="1.5" PointX="34.75" PointY="26.75" />
+        <EntityTypeShape EntityType="EntityModels.Stage" Width="1.5" PointX="26.75" PointY="34.75" />
+        <EntityTypeShape EntityType="EntityModels.SwitchingUnit" Width="1.5" PointX="34.75" PointY="30.75" />
+        <EntityTypeShape EntityType="EntityModels.TypeDevice" Width="1.5" PointX="35.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EntityModels.UNIT" Width="1.5" PointX="35.75" PointY="4.75" />
+        <EntityTypeShape EntityType="EntityModels.UserFunctionUsage" Width="1.5" PointX="6.75" PointY="35.75" />
+        <EntityTypeShape EntityType="EntityModels.UserGroup" Width="1.5" PointX="35.75" PointY="8.75" />
         <EntityTypeShape EntityType="EntityModels.WardModel" Width="1.5" PointX="5.25" PointY="1.375" />
-        <EntityTypeShape EntityType="EntityModels.WEIGHT_CONNECT" Width="1.5" PointX="0.75" PointY="35.75" />
-        <EntityTypeShape EntityType="EntityModels.WEIGHT_ERROR" Width="1.5" PointX="35.75" PointY="3.75" />
-        <EntityTypeShape EntityType="EntityModels.WEIGHT_STATUS" Width="1.5" PointX="6.75" PointY="35.75" />
-        <EntityTypeShape EntityType="EntityModels.WEIGHT_WARNING" Width="1.5" PointX="14.75" PointY="35.75" />
-        <EntityTypeShape EntityType="EntityModels.WorkShop" Width="1.5" PointX="16.75" PointY="35.75" />
-        <EntityTypeShape EntityType="EntityModels.WorkshopUserMapping" Width="1.5" PointX="35.75" PointY="9.75" />
-        <EntityTypeShape EntityType="EntityModels.WEIGHT_DATA" Width="1.5" PointX="28.75" PointY="35.75" />
+        <EntityTypeShape EntityType="EntityModels.WEIGHT_CONNECT" Width="1.5" PointX="14.75" PointY="35.75" />
+        <EntityTypeShape EntityType="EntityModels.WEIGHT_ERROR" Width="1.5" PointX="16.75" PointY="35.75" />
+        <EntityTypeShape EntityType="EntityModels.WEIGHT_STATUS" Width="1.5" PointX="32.75" PointY="35.75" />
+        <EntityTypeShape EntityType="EntityModels.WEIGHT_WARNING" Width="1.5" PointX="34.75" PointY="35.75" />
+        <EntityTypeShape EntityType="EntityModels.WorkShop" Width="1.5" PointX="36.75" PointY="11.75" />
+        <EntityTypeShape EntityType="EntityModels.WorkshopUserMapping" Width="1.5" PointX="36.75" PointY="16.75" />
+        <EntityTypeShape EntityType="EntityModels.WEIGHT_DATA" Width="1.5" PointX="36.75" PointY="19.75" />
         <AssociationConnector Association="EntityModels.FK_DistrictModel_ProvinceModel" />
         <AssociationConnector Association="EntityModels.FK_WardModel_DistrictModel" />
         </Diagram>

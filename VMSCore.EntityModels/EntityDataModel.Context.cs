@@ -118,6 +118,7 @@ namespace VMSCore.EntityModels
         public virtual DbSet<ProductionOrder> ProductionOrder { get; set; }
         public virtual DbSet<ProductionOrderDetail> ProductionOrderDetail { get; set; }
         public virtual DbSet<ProductionOrderDetailCode> ProductionOrderDetailCode { get; set; }
+        public virtual DbSet<ProductionOrderRawDetail> ProductionOrderRawDetail { get; set; }
         public virtual DbSet<ProductType> ProductType { get; set; }
         public virtual DbSet<Protocol> Protocol { get; set; }
         public virtual DbSet<ProtocolParam> ProtocolParam { get; set; }

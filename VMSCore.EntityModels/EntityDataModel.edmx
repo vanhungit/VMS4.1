@@ -1822,7 +1822,9 @@
           <Property Name="Code1" Type="nvarchar" MaxLength="50" />
           <Property Name="Code2" Type="nvarchar" MaxLength="50" />
           <Property Name="ToDate" Type="nvarchar" MaxLength="100" />
+          <Property Name="LevelPackage" Type="int" />
           <Property Name="IdLine" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeviceId" Type="nvarchar" MaxLength="50" />
           <Property Name="Code" Type="nvarchar" MaxLength="50" />
           <Property Name="LastModifierId" Type="nvarchar" MaxLength="50" />
           <Property Name="CreatorId" Type="nvarchar" MaxLength="50" />
@@ -1830,6 +1832,38 @@
           <Property Name="LogDate" Type="datetime" />
           <Property Name="CreationTime" Type="datetime" />
           <Property Name="LastModificationTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ProductionOrderRawDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductionOrderId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CompanyId" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductId" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LotNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="BatchNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="LineId" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeviceId" Type="nvarchar" MaxLength="50" />
+          <Property Name="NumberTemp" Type="nvarchar" MaxLength="50" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Note1" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Note2" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Note3" Type="nvarchar" MaxLength="4000" />
+          <Property Name="LastModifierId" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatorId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="CreationTime" Type="datetime" />
+          <Property Name="LastModificationTime" Type="datetime" />
+          <Property Name="InboundId" Type="int" />
+          <Property Name="RefType" Type="int" />
+          <Property Name="DepartmentId" Type="nvarchar" MaxLength="50" />
+          <Property Name="StockId" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModelId" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ProductType">
           <Key>
@@ -2575,6 +2609,7 @@ warning 6002: The table/view 'VMSCore_Dev.dbo.WEIGHT_DATA' does not have a prima
           <EntitySet Name="ProductionOrder" EntityType="Self.ProductionOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductionOrderDetail" EntityType="Self.ProductionOrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductionOrderDetailCode" EntityType="Self.ProductionOrderDetailCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductionOrderRawDetail" EntityType="Self.ProductionOrderRawDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Protocol" EntityType="Self.Protocol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProtocolParam" EntityType="Self.ProtocolParam" Schema="dbo" store:Type="Tables" />
@@ -2783,6 +2818,7 @@ warning 6002: The table/view 'VMSCore_Dev.dbo.WEIGHT_DATA' does not have a prima
           <EntitySet Name="ProductionOrder" EntityType="EntityModels.ProductionOrder" />
           <EntitySet Name="ProductionOrderDetail" EntityType="EntityModels.ProductionOrderDetail" />
           <EntitySet Name="ProductionOrderDetailCode" EntityType="EntityModels.ProductionOrderDetailCode" />
+          <EntitySet Name="ProductionOrderRawDetail" EntityType="EntityModels.ProductionOrderRawDetail" />
           <EntitySet Name="ProductType" EntityType="EntityModels.ProductType" />
           <EntitySet Name="Protocol" EntityType="EntityModels.Protocol" />
           <EntitySet Name="ProtocolParam" EntityType="EntityModels.ProtocolParam" />
@@ -4696,7 +4732,9 @@ warning 6002: The table/view 'VMSCore_Dev.dbo.WEIGHT_DATA' does not have a prima
           <Property Name="Code1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Code2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ToDate" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LevelPackage" Type="Int32" />
           <Property Name="IdLine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeviceId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastModifierId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreatorId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -4704,6 +4742,38 @@ warning 6002: The table/view 'VMSCore_Dev.dbo.WEIGHT_DATA' does not have a prima
           <Property Name="LogDate" Type="DateTime" Precision="3" />
           <Property Name="CreationTime" Type="DateTime" Precision="3" />
           <Property Name="LastModificationTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ProductionOrderRawDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductionOrderId" Type="Guid" Nullable="false" />
+          <Property Name="CompanyId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LotNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BatchNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LineId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeviceId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumberTemp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Note1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Note2" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Note3" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifierId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatorId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="LogDate" Type="DateTime" Precision="3" />
+          <Property Name="CreationTime" Type="DateTime" Precision="3" />
+          <Property Name="LastModificationTime" Type="DateTime" Precision="3" />
+          <Property Name="InboundId" Type="Int32" />
+          <Property Name="RefType" Type="Int32" />
+          <Property Name="DepartmentId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StockId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModelId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ProductType">
           <Key>
@@ -7306,11 +7376,46 @@ warning 6002: The table/view 'VMSCore_Dev.dbo.WEIGHT_DATA' does not have a prima
                 <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
                 <ScalarProperty Name="LastModifierId" ColumnName="LastModifierId" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
                 <ScalarProperty Name="IdLine" ColumnName="IdLine" />
+                <ScalarProperty Name="LevelPackage" ColumnName="LevelPackage" />
                 <ScalarProperty Name="ToDate" ColumnName="ToDate" />
                 <ScalarProperty Name="Code2" ColumnName="Code2" />
                 <ScalarProperty Name="Code1" ColumnName="Code1" />
                 <ScalarProperty Name="ProductionOrderId" ColumnName="ProductionOrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductionOrderRawDetail">
+            <EntityTypeMapping TypeName="EntityModels.ProductionOrderRawDetail">
+              <MappingFragment StoreEntitySet="ProductionOrderRawDetail">
+                <ScalarProperty Name="ModelId" ColumnName="ModelId" />
+                <ScalarProperty Name="StockId" ColumnName="StockId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="RefType" ColumnName="RefType" />
+                <ScalarProperty Name="InboundId" ColumnName="InboundId" />
+                <ScalarProperty Name="LastModificationTime" ColumnName="LastModificationTime" />
+                <ScalarProperty Name="CreationTime" ColumnName="CreationTime" />
+                <ScalarProperty Name="LogDate" ColumnName="LogDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="LastModifierId" ColumnName="LastModifierId" />
+                <ScalarProperty Name="Note3" ColumnName="Note3" />
+                <ScalarProperty Name="Note2" ColumnName="Note2" />
+                <ScalarProperty Name="Note1" ColumnName="Note1" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="NumberTemp" ColumnName="NumberTemp" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+                <ScalarProperty Name="LineId" ColumnName="LineId" />
+                <ScalarProperty Name="BatchNumber" ColumnName="BatchNumber" />
+                <ScalarProperty Name="LotNumber" ColumnName="LotNumber" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ProductionOrderId" ColumnName="ProductionOrderId" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

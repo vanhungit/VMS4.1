@@ -365,6 +365,9 @@
     <Compile Include="ProductionOrderDetailCode.cs">
       <DependentUpon>EntityDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProductionOrderRawDetail.cs">
+      <DependentUpon>EntityDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ProductType.cs">
       <DependentUpon>EntityDataModel.tt</DependentUpon>
     </Compile>
