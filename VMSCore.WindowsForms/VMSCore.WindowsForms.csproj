@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0E5D785A-08DB-4C55-BA61-6D1C8CB0ED35}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>VMSCore.WindowsForms</RootNamespace>
+    <AssemblyName>VMSCore.WindowsForms</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.Desktop.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 21.1\Components\Bin\Framework\DevExpress.Data.Desktop.v21.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 21.1\Components\Bin\Framework\DevExpress.Data.v21.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 21.1\Components\Bin\Framework\DevExpress.Utils.v21.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v21.1.UI, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 21.1\Components\Bin\Framework\DevExpress.Utils.v21.1.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 21.1\Components\Bin\Framework\DevExpress.XtraBars.v21.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 21.1\Components\Bin\Framework\DevExpress.XtraEditors.v21.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 21.1\Components\Bin\Framework\DevExpress.XtraNavBar.v21.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 21.1\Components\Bin\Framework\DevExpress.XtraTreeList.v21.1.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\60085-200.png" />
+    <Content Include="Images\add_16.png" />
+    <Content Include="Images\Add_16x16.png" />
+    <Content Include="Images\Add_32x32.png" />
+    <Content Include="Images\Add_48x48.png" />
+    <Content Include="Images\Archive_48x48.png" />
+    <Content Include="Images\arrow_right_16.png" />
+    <Content Include="Images\Audio Disk_16x16.png" />
+    <Content Include="Images\barcode-icon.gif" />
+    <Content Include="Images\bar_chart.png" />
+    <Content Include="Images\basket_32.png" />
+    <Content Include="Images\block_32.png" />
+    <Content Include="Images\bongden.jpg" />
+    <Content Include="Images\Box.png" />
+    <Content Include="Images\boxicon.png" />
+    <Content Include="Images\box_address.png" />
+    <Content Include="Images\Box_content.png" />
+    <Content Include="Images\box_download.png" />
+    <Content Include="Images\Box_recycle.png" />
+    <Content Include="Images\Briefcase.png" />
+    <Content Include="Images\Burn Disk_24x24.png" />
+    <Content Include="Images\Burn Disk_48x48.png" />
+    <Content Include="Images\buy_16.png" />
+    <Content Include="Images\Calendar.png" />
+    <Content Include="Images\calendar_64.png" />
+    <Content Include="Images\Calender.png" />
+    <Content Include="Images\Cancel_16x16.png" />
+    <Content Include="Images\Chart.png" />
+    <Content Include="Images\Check_16x16.png" />
+    <Content Include="Images\Coffee.ico" />
+    <Content Include="Images\coins.png" />
+    <Content Include="Images\Comment_edit.png" />
+    <Content Include="Images\Copy_16x16.png" />
+    <Content Include="Images\CreditCard_Visa.png" />
+    <Content Include="Images\Cut_16x16.png" />
+    <Content Include="Images\Database.png" />
+    <Content Include="Images\database4 2.png" />
+    <Content Include="Images\database_chart_32.png" />
+    <Content Include="Images\database_page_32.png" />
+    <Content Include="Images\db.png" />
+    <Content Include="Images\Delete_16x16.png" />
+    <Content Include="Images\Desktop.png" />
+    <Content Include="Images\diagram_16.png" />
+    <Content Include="Images\Digg.png" />
+    <Content Include="Images\Download.png" />
+    <Content Include="Images\Download_16x16.png" />
+    <Content Include="Images\Download_48x48.png" />
+    <Content Include="Images\Edit_16x16.png" />
+    <Content Include="Images\Edit_Yes.png" />
+    <Content Include="Images\entry_add.png" />
+    <Content Include="Images\File_Excel.png" />
+    <Content Include="Images\Find_48x48.png" />
+    <Content Include="Images\flag_16.png" />
+    <Content Include="Images\Folder.png" />
+    <Content Include="Images\Folder_16x16.png" />
+    <Content Include="Images\freelancer.png" />
+    <Content Include="Images\gold_bullion.png" />
+    <Content Include="Images\google.png" />
+    <Content Include="Images\Headphones.png" />
+    <Content Include="Images\Help.png" />
+    <Content Include="Images\Help_16x16.png" />
+    <Content Include="Images\hinh24.ico" />
+    <Content Include="Images\Home.png" />
+    <Content Include="Images\home_32.png" />
+    <Content Include="Images\icondb.ico" />
+    <Content Include="Images\images.png" />
+    <Content Include="Images\info_48.png" />
+    <Content Include="Images\info_64.png" />
+    <Content Include="Images\key_64.png" />
+    <Content Include="Images\lock.png" />
+    <Content Include="Images\login.bmp" />
+    <Content Include="Images\mobile.jpg" />
+    <Content Include="Images\Movie.png" />
+    <Content Include="Images\MS-Office-2003-Excel-icon.png" />
+    <Content Include="Images\nhanvien.png" />
+    <Content Include="Images\Notepad.png" />
+    <Content Include="Images\onebit_07.png" />
+    <Content Include="Images\onebit_11.png" />
+    <Content Include="Images\onebit_13.png" />
+    <Content Include="Images\onebit_14.png" />
+    <Content Include="Images\onebit_18.png" />
+    <Content Include="Images\onebit_35.png" />
+    <Content Include="Images\onebit_37.png" />
+    <Content Include="Images\page_blank_chart_32.png" />
+    <Content Include="Images\page_excel.ico" />
+    <Content Include="Images\Paste_16x16.png" />
+    <Content Include="Images\Pause_16x16.png" />
+    <Content Include="Images\PDA2.jpg" />
+    <Content Include="Images\Phone.png" />
+    <Content Include="Images\Play_16x16.png" />
+    <Content Include="Images\Power.png" />
+    <Content Include="Images\Present_Archigraphs.png" />
+    <Content Include="Images\price.jpg" />
+    <Content Include="Images\print_16.png" />
+    <Content Include="Images\Print_16x16.png" />
+    <Content Include="Images\Print_24x24.png" />
+    <Content Include="Images\print_32.png" />
+    <Content Include="Images\Prorgrams.png" />
+    <Content Include="Images\Refresh.png" />
+    <Content Include="Images\Refresh_16x16.png" />
+    <Content Include="Images\Refresh_48x48.png" />
+    <Content Include="Images\report.png" />
+    <Content Include="Images\rfid.png" />
+    <Content Include="Images\Save_16x16.png" />
+    <Content Include="Images\screen_32.png" />
+    <Content Include="Images\Search_16x16.png" />
+    <Content Include="Images\search_64.png" />
+    <Content Include="Images\Ship.png" />
+    <Content Include="Images\Shopping_Cart.png" />
+    <Content Include="Images\Shopping_Cart_Add.png" />
+    <Content Include="Images\Shutdown.png" />
+    <Content Include="Images\telephone.png" />
+    <Content Include="Images\Temporary.png" />
+    <Content Include="Images\Text Document_16x16.png" />
+    <Content Include="Images\tick_16.png" />
+    <Content Include="Images\Tools.png" />
+    <Content Include="Images\Toolsicon.png" />
+    <Content Include="Images\User.png" />
+    <Content Include="Images\Users_Chat.png" />
+    <Content Include="Images\Users_Group.ico" />
+    <Content Include="Images\Users_Group.png" />
+    <Content Include="Images\user_16.png" />
+    <Content Include="Images\user_64.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
