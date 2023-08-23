@@ -253,5 +253,11 @@
     <Content Include="Images\user_16.png" />
     <Content Include="Images\user_64.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VMSCore.Machine\VMSCore.Machine.csproj">
+      <Project>{4b8f2c55-1b96-4f62-9f0a-092a18e65d5b}</Project>
+      <Name>VMSCore.Machine</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
