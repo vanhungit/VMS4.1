@@ -14,6 +14,8 @@ namespace VMSCore.WindowsForms
         [STAThread]
         static void Main()
         {
+            DevExpress.UserSkins.BonusSkins.Register();
+            DevExpress.Skins.SkinManager.EnableFormSkins();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main());
