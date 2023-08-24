@@ -21,6 +21,7 @@ namespace VMSCore.API.Controllers
             { "Staff", typeof(Staff) },
             { "Barcode", typeof(Barcode)},
             { "Button", typeof(Button)},
+            { "Shift", typeof(Shift)},
             // Thêm các Entity khác muốn hỗ trợ Sync vào đây
             //{ "Account", typeof(Account) },
 
@@ -48,7 +49,8 @@ namespace VMSCore.API.Controllers
                 dynamic entity = item.ToObject(entityType);
                
                 // Assuming you have a property called "Id" to check for existing data
-                var existingEntity = repo.GetByCode(entity.Code);
+                var existingEntity = repo.GetByCheckID(entity.Id);
+                var existingEntityCode = repo.GetByCode(entity.Code);
                 var isValid = Validator.TryValidateObject(entity, new ValidationContext(entity), validationResults, true);
                 if (!isValid)
                 {
@@ -66,20 +68,37 @@ namespace VMSCore.API.Controllers
                 {
                     if (existingEntity != null)
                     {
-                        // If entity exists, update it
-                        // Use AutoMapper to map the updated fields to the existing entity
-                        _mapper.Map(entity, existingEntity, entityType, entityType);
-                        repo.Update(existingEntity);
+                        if (existingEntityCode != null)
+                        {
+                            return StatusCode(StatusCodes.Status500InternalServerError, new
+                            {
+
+                                Code = 2,
+                                Message = "Fail Duplicate Code",
+                                ValidationErrors = validationResults.Select(vr => new
+                                {
+                                    Message = vr.ErrorMessage,
+                                    Members = vr.MemberNames
+                                })
+                            });
+                        }
+                        else
+                        {
+                            // If entity exists, update it
+                            // Use AutoMapper to map the updated fields to the existing entity
+                            _mapper.Map(entity, existingEntity, entityType, entityType);
+                            repo.Update(existingEntity);
+                        }
                     }
                     else
                     {
                         // If entity does not exist, add it
-                        var modelToAdd = _mapper.Map(entity, entityType, entityType);
-                        if (modelToAdd.Id == null)
-                        {
-                            modelToAdd.Id = Guid.NewGuid().ToString();
-                        }
-                        repo.Add(modelToAdd);
+                        //var modelToAdd = _mapper.Map(entity, entityType, entityType);
+                        //if (modelToAdd.Id == null)
+                        //{
+                        //    modelToAdd.Id = Guid.NewGuid().ToString();
+                        //}
+                        repo.Add(entity);
                     }
                 }
                 catch (Exception e)
@@ -111,6 +130,7 @@ namespace VMSCore.API.Controllers
             }
 
             var repo = _repositoryFactory.Create(entityType);
+            var validationResults = new List<ValidationResult>();
 
 
             foreach (var item in data)
@@ -118,34 +138,66 @@ namespace VMSCore.API.Controllers
                 dynamic entity = item.ToObject(entityType);
 
                 // Assuming you have a property called "Id" to check for existing data
-                var existingEntity = repo.GetByCode(entity.Code);
-
+                //var existingEntity = repo.GetByCode(entity.Code);
+                var existingEntity = repo.GetByCheckID(entity.Id);
+                var existingEntityCode = repo.GetByCode(entity.Code);
+                var isValid = Validator.TryValidateObject(entity, new ValidationContext(entity), validationResults, true);
+                if (!isValid)
+                {
+                    return BadRequest(new
+                    {
+                        Error = "Validation failed",
+                        ValidationErrors = validationResults.Select(vr => new
+                        {
+                            Message = vr.ErrorMessage,
+                            Members = vr.MemberNames
+                        })
+                    });
+                }
                 try
                 {
                     if (existingEntity != null)
                     {
-                        // If entity exists, update it
-                        // Use AutoMapper to map the updated fields to the existing entity
-                        _mapper.Map(entity, existingEntity, entityType, entityType);
-                        if (Flag)//Flag = true là xóa
+                        if (existingEntityCode != null)
                         {
-                            repo.Delete(existingEntity);
+                            return StatusCode(StatusCodes.Status500InternalServerError, new
+                            {
+
+                                Code = 2,
+                                Message = "Fail Duplicate Code",
+                                ValidationErrors = validationResults.Select(vr => new
+                                {
+                                    Message = vr.ErrorMessage,
+                                    Members = vr.MemberNames
+                                })
+                            });
                         }
                         else
                         {
-                            repo.Update(existingEntity);
+                            // If entity exists, update it
+                            // Use AutoMapper to map the updated fields to the existing entity
+                            _mapper.Map(entity, existingEntity, entityType, entityType);
+                            if (Flag)//Flag = true là xóa
+                            {
+                                repo.Delete(existingEntity);
+                            }
+                            else
+                            {
+                                repo.Update(existingEntity);
 
+                            }
                         }
                     }
                     else
                     {
                         // If entity does not exist, add it
-                        var modelToAdd = _mapper.Map(entity, entityType, entityType);
-                        if (modelToAdd.Id == null)
-                        {
-                            modelToAdd.Id = Guid.NewGuid().ToString();
-                        }
-                        repo.Add(modelToAdd);
+                        //var modelToAdd = _mapper.Map(entity, entityType, entityType);
+                        ////if (modelToAdd.Id == null)
+                        ////{
+                        ////    modelToAdd.Id = Guid.NewGuid().ToString();
+                        ////}
+                        //repo.Add(modelToAdd);
+                        repo.Add(entity);
                     }
                 }
                 catch (Exception e)
@@ -156,7 +208,17 @@ namespace VMSCore.API.Controllers
                 }
             }
 
-            return Ok();
+            return Ok(new
+            {
+
+                Code = 1,
+                Message = "Success",
+                ValidationErrors = validationResults.Select(vr => new
+                {
+                    Message = vr.ErrorMessage,
+                    Members = vr.MemberNames
+                })
+            });
         }
 
     }

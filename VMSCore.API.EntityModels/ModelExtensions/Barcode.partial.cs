@@ -7,7 +7,7 @@ using VMSCore.API.EntityModels.Interfaces;
 
 namespace VMSCore.API.EntityModels.Models
 {
-    public partial class Barcode : ICodedEntity
+    public partial class Barcode : ICodedEntity, IEntity
     {
     }
 }

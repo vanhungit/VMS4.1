@@ -53,7 +53,15 @@ namespace VMSCore.Infrastructure.Base.Repositories
 
             throw new InvalidOperationException("This method can't be called on an entity without a Code property");
         }
+        public T GetByCheckID(string ID)
+        {
+            if (typeof(IEntity).IsAssignableFrom(typeof(T)))
+            {
+                return _context.Set<T>().SingleOrDefault(e => ((IEntity)e).Id == ID);
+            }
 
+            throw new InvalidOperationException("This method can't be called on an entity without a Code property");
+        }
         public T GetByIdStr(string id)
         {
             return _context.Set<T>().Find(id);

@@ -53,14 +53,14 @@ namespace VMSCore.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())//tắt khi publish
+            //if (env.IsDevelopment())//tắt khi publish
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "VMSCore.API v1"));
             }
 
-            app.UseHttpsRedirection();//tắt nếu môi trường cần xác thực
+            //app.UseHttpsRedirection();//tắt nếu môi trường cần xác thực
 
             app.UseRouting();
 

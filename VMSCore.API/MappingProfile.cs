@@ -17,6 +17,9 @@ namespace VMSCore.API
             CreateMap<JObject, Barcode>();
             CreateMap<Barcode, Barcode>()
                     .ForMember(dest => dest.Id, act => act.Ignore());
+            CreateMap<JObject, Shift>();
+            CreateMap<Shift, Shift>()
+                    .ForMember(dest => dest.Id, act => act.Ignore());
         }
     }
 }
