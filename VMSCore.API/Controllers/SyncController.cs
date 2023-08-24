@@ -12,6 +12,7 @@ namespace VMSCore.API.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+ 
     public class SyncController : ControllerBase
     {
         private readonly IRepositoryFactory _repositoryFactory;

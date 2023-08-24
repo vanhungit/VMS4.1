@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VMSCore.API.EntityModels.Models;
+using VMSCore.API.Middlewares;
 using VMSCore.Infrastructure.Base.Repositories;
 
 namespace VMSCore.API
@@ -48,22 +50,27 @@ namespace VMSCore.API
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepositoryCore<>));
             services.AddScoped(typeof(BaseRepositoryCore<>));
             services.AddScoped<IRepositoryFactory, RepositoryFactory>();
+            //Add authorize
+            services.AddAuthentication("BasicAuthentication")
+              .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //if (env.IsDevelopment())//tắt khi publish
+            if (env.IsDevelopment())//tắt khi publish
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "VMSCore.API v1"));
             }
 
-            //app.UseHttpsRedirection();//tắt nếu môi trường cần xác thực
+            app.UseHttpsRedirection();//tắt nếu môi trường cần xác thực
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
