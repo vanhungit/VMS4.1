@@ -93,11 +93,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DocumentForm\frmDMNhaMay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocumentForm\frmDMNhaMay.designer.cs">
+      <DependentUpon>frmDMNhaMay.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDangNhap.designer.cs">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDMCongty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDMCongty.designer.cs">
+      <DependentUpon>frmDMCongty.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTongHopMay.cs">
       <SubType>Form</SubType>
@@ -113,8 +125,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DocumentForm\frmDMNhaMay.resx">
+      <DependentUpon>frmDMNhaMay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDMCongty.resx">
+      <DependentUpon>frmDMCongty.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTongHopMay.resx">
       <DependentUpon>frmTongHopMay.cs</DependentUpon>
@@ -275,6 +293,9 @@
       <Project>{4b8f2c55-1b96-4f62-9f0a-092a18e65d5b}</Project>
       <Name>VMSCore.Machine</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ReportForm\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
