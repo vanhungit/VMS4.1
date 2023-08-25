@@ -61,6 +61,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\DevExpress 21.1\Components\Bin\Framework\DevExpress.XtraEditors.v21.1.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.XtraGrid.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 21.1\Components\Bin\Framework\DevExpress.XtraGrid.v21.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 21.1\Components\Bin\Framework\DevExpress.XtraLayout.v21.1.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.XtraNavBar.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\DevExpress 21.1\Components\Bin\Framework\DevExpress.XtraNavBar.v21.1.dll</HintPath>
@@ -91,6 +99,12 @@
     <Compile Include="frmDangNhap.designer.cs">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTongHopMay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTongHopMay.designer.cs">
+      <DependentUpon>frmTongHopMay.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +115,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTongHopMay.resx">
+      <DependentUpon>frmTongHopMay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
