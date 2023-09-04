@@ -16,6 +16,9 @@ using System.Threading.Tasks;
 using VMSCore.API.EntityModels.Models;
 using VMSCore.API.Middlewares;
 using VMSCore.Infrastructure.Base.Repositories;
+using Hangfire;
+using Hangfire.SqlServer;
+using VMSCore.API.Services;
 
 namespace VMSCore.API
 {
@@ -53,9 +56,36 @@ namespace VMSCore.API
             //Add authorize
             services.AddAuthentication("BasicAuthentication")
               .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+            // Add Hangfire services.
+            services.AddHangfire(configuration => configuration
+                .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseRecommendedSerializerSettings()
+                .UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection")));
+            //// Add the processing server as IHostedService
+            services.AddHangfireServer();
+            //// Add framework services.
+            //services.AddMvc();
 
+            //services.AddHangfire(x => x.UseSqlServerStorage("DefaultConnection"));
+            //services.AddHangfireServer();
+            services.AddTransient<IDummyEmailService, DummyEmailService>();
         }
+        //public void Configure(IApplicationBuilder app, IBackgroundJobClient backgroundJobs, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
+        //{
+        //    // ...
+        //    app.UseStaticFiles();
 
+        //    app.UseHangfireDashboard();
+        //    backgroundJobs.Enqueue(() => Console.WriteLine("Hello world from Hangfire!"));
+
+        //    app.UseMvc(routes =>
+        //    {
+        //        routes.MapRoute(
+        //            name: "default",
+        //            template: "{controller=Home}/{action=Index}/{id?}");
+        //    });
+        //}
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -73,9 +103,13 @@ namespace VMSCore.API
             app.UseAuthentication();
             app.UseAuthorization();
 
+
+            app.UseHangfireDashboard();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                //endpoints.MapHangfireDashboard();
             });
         }
     }
