@@ -8,7 +8,7 @@ using VMSCore.Infrastructure.Base.Repositories;
 
 namespace VMSCore.API.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
     [ApiController]
     public class LABELING_RFID_WARNINGController : BaseApiController<LABELING_RFID_WARNING>
     {

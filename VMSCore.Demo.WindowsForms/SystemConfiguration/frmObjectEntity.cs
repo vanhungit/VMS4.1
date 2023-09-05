@@ -47,7 +47,8 @@ namespace VMSCore.Demo.WindowsForms.SystemConfiguration
             {
                 var objectEntity = new ObjectEntity()
                 {
-                    ObjectId = Guid.NewGuid().ToString(),
+                    //ObjectId = Guid.NewGuid().ToString(),
+                    ObjectId = "ded25c0f-77c0-4925-8eb3-481b9602bac8",
                     ObjectName = txtObjectName.Text,
                     ObjectNameEn = txtObjectNameEn.Text,
                     Description = txtDescription.Text,

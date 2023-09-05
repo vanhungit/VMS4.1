@@ -8,7 +8,7 @@ using VMSCore.Infrastructure.Base.Repositories;
 
 namespace VMSCore.API.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
     [ApiController]
     public class SECONDARY_PACKING_CONNECTController : BaseApiController<SECONDARY_PACKING_CONNECT>
     {

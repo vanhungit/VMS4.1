@@ -7,7 +7,7 @@ using VMSCore.API.EntityModels.Models;
 using VMSCore.Infrastructure.Base.Repositories;
 namespace VMSCore.API.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
     [ApiController]
     public class ShiftController : BaseApiController<Shift>
     {

@@ -5,7 +5,7 @@ using VMSCore.Infrastructure.Base.Repositories;
 using Microsoft.AspNetCore.Authorization;
 namespace VMSCore.API.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    //[Route("api/[controller]/[action]")]
     [ApiController]
     [Authorize]
     public class StaffController : BaseApiController<Staff>

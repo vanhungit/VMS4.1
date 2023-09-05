@@ -13,6 +13,7 @@ namespace VMSCore.Infrastructure.Base.Repositories
         void DeleteRangeById(List<Guid> ids);
         void DeleteRangeByIdStr(List<string> ids);
         List<T> GetAll();
+        List<T> GetAllByToken();
         List<T> GetAllByCondition(Func<T, bool> expression, Func<T, object> orderBy = null, int skip = 0, int take = int.MaxValue);
         T GetById(Guid id);
         T GetByCode(string code);

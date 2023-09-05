@@ -23,8 +23,16 @@ namespace VMSCore.Infrastructure.Base.Repositories
 
         public T Add(T entity)
         {
-            _context.Set<T>().Add(entity);
-            _context.SaveChanges();
+            try
+            {
+                _context.Set<T>().Add(entity);
+                _context.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            
             return entity;
         }
 
@@ -63,7 +71,10 @@ namespace VMSCore.Infrastructure.Base.Repositories
         {
             return _context.Set<T>().ToList();
         }
-
+        public List<T> GetAllByToken()
+        {
+            return _context.Set<T>().ToList();
+        }
         // Example: var result = _repository.GetAll(x => x.Id, 0, 10);
         public List<T> GetAllByCondition(Func<T, bool> expression, Func<T, object> orderBy = null, int skip = 0, int take = int.MaxValue)
         {

@@ -8,7 +8,8 @@ using VMSCore.Infrastructure.Base.Repositories;
 
 namespace VMSCore.API.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]/[action]")]
+    //[Route("api/[controller]")]
     [ApiController]
     public class BarcodeController : BaseApiController<Barcode>
     {

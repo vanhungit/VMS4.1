@@ -8,7 +8,7 @@ using VMSCore.Infrastructure.Base.Repositories;
 
 namespace VMSCore.API.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
     [ApiController]
     public class WEIGHT_ERRORController : BaseApiController<WEIGHT_ERROR>
     {

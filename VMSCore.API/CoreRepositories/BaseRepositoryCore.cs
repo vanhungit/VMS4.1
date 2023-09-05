@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Runtime.Serialization.Json;
+using System.Text;
 using Microsoft.EntityFrameworkCore;
+using VMSCore.API.DataValidation;
 using VMSCore.API.EntityModels.Interfaces;
 using VMSCore.API.EntityModels.Models;
 
@@ -15,7 +20,79 @@ namespace VMSCore.Infrastructure.Base.Repositories
         {
             _context = dbContext;
         }
+        public DataToken JSONParserMapKho(string JSONdata)
+        {
+            DataContractJsonSerializer jsonSer = new DataContractJsonSerializer(typeof(DataToken));
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(JSONdata));
+            DataToken objStudent = (DataToken)jsonSer.ReadObject(stream);
+            return objStudent;
+        }
+        public string CallAPIGet(string Link, string TokenData)
+        {
+            string Trave = "";
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(Link);
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "GET";
+            httpWebRequest.Accept = "application/json";
+            string MaHoa = "Bearer " + TokenData;
+            httpWebRequest.Headers.Add("Authorization", MaHoa);
+            //using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            //{
+            //    string json = "[{\"color\":\"WHITE\"," +
+            //                    "\"duration\":5," +
+            //                  "\"pattern\":\"FLASH_4_TIMES\"}]";
 
+            //    streamWriter.Write(json);
+            //}
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+
+            if (httpResponse.StatusCode == HttpStatusCode.OK || httpResponse.StatusCode == HttpStatusCode.Created)
+            {
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    Trave = result;
+                }
+            }
+            else
+            {
+                Trave = httpResponse.StatusDescription;
+            }
+            return Trave;
+        }
+       
+        public string CallAPIPOSTToken(string Link, string UserName, string Pass)
+        {
+            string Trave = "";
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(Link);
+            httpWebRequest.ContentType = "application/x-www-form-urlencoded";
+            httpWebRequest.Method = "POST";
+
+            httpWebRequest.Headers.Add("Cookie", ".AspNetCore.Culture=c%3Den%7Cuic%3Den");
+       
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string postData = "grant_type=password&scope=offline_access%20IndustrialSolution&client_id=IndustrialSolution_App&username="+UserName +"&password=" + Pass;
+                //byte[] postArray = Encoding.ASCII.GetBytes(postData);
+                streamWriter.Write(postData);
+            }
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+
+            if (httpResponse.StatusCode == HttpStatusCode.OK || httpResponse.StatusCode == HttpStatusCode.Created)
+            {
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    Trave = result;
+                }
+            }
+            else
+            {
+                Trave = httpResponse.StatusDescription;
+            }
+            return (Trave);
+        }
         public BaseRepositoryCore()
         {
             _context = new EntityDataContextCore();
@@ -72,6 +149,10 @@ namespace VMSCore.Infrastructure.Base.Repositories
             return _context.Set<T>().ToList();
         }
 
+        public List<T> GetAllByToken()
+        {
+            return _context.Set<T>().ToList();
+        }
         // Example: var result = _repository.GetAll(x => x.Id, 0, 10);
         public List<T> GetAllByCondition(Func<T, bool> expression, Func<T, object> orderBy = null, int skip = 0, int take = int.MaxValue)
         {

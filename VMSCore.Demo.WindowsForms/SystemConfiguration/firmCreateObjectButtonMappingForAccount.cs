@@ -179,5 +179,10 @@ namespace VMSCore.Demo.WindowsForms.SystemConfiguration
                 comboBox9.Enabled = true;
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -5,7 +5,7 @@ using VMSCore.Infrastructure.Base.Repositories;
 
 namespace VMSCore.API.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]/[action]")]
     [ApiController]
     public class ButtonController : BaseApiController<Button>
     {

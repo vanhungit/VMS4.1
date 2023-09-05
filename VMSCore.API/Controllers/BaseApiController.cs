@@ -1,12 +1,18 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.IO;
+using System.Net;
+using System.Runtime.Serialization.Json;
+using System.Text;
+using VMSCore.API.DataValidation;
 using VMSCore.API.EntityModels.Interfaces;
 using VMSCore.Infrastructure.Base.Repositories;
 
 namespace VMSCore.API.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class BaseApiController<TEntity> : ControllerBase where TEntity : class
 
@@ -17,7 +23,7 @@ namespace VMSCore.API.Controllers
         {
             _repository = repository;
         }
-
+      
         // Helper method to get the Id of an entity.
         protected virtual string GetId(TEntity entity)
         {
@@ -58,13 +64,24 @@ namespace VMSCore.API.Controllers
             }
             return Ok(entity);
         }
+        //[HttpGet]
+        //public IActionResult GetAll()
+        //{
+        //    var entities = _repository.GetAll();
+        //    return Ok(entities);
+        //}
         [HttpGet]
         public IActionResult GetAll()
         {
-            var entities = _repository.GetAll();
+            var entities = _repository.CallAPIPOSTToken("http://tenant1.api.vmspms.vn/connect/token", "desktopvmspms", "1q2w3E*");
             return Ok(entities);
         }
-
+        [HttpGet]
+        public IActionResult GetAllByToken()
+        {
+            var entities = _repository.CallAPIPOSTToken("http://tenant1.api.vmspms.vn/connect/token", "desktopvmspms", "1q2w3E*");
+            return Ok(entities);
+        }
         [HttpPut("{id}")]
         public IActionResult Update(string id, [FromBody] TEntity entity)
         {
