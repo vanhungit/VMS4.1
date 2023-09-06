@@ -295,7 +295,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="FunctionForm\" />
     <Folder Include="ReportForm\" />
+    <Folder Include="RoleForm\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
