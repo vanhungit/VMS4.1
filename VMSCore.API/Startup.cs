@@ -96,7 +96,7 @@ namespace VMSCore.API
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "VMSCore.API v1"));
             }
 
-            app.UseHttpsRedirection();//tắt nếu môi trường cần xác thực
+            app.UseHttpsRedirection();//tắt nếu môi trường cần xác thực https
 
             app.UseRouting();
 
