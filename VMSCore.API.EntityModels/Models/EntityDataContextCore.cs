@@ -1002,7 +1002,7 @@ namespace VMSCore.API.EntityModels.Models
 
             modelBuilder.Entity<Plant>(entity =>
             {
-                entity.Property(e => e.PlantId)
+                entity.Property(e => e.Id)
                     .HasMaxLength(50)
                     .HasDefaultValueSql("('00000000-0000-0000-0000-000000000000')");
 
@@ -1011,14 +1011,14 @@ namespace VMSCore.API.EntityModels.Models
                     .HasMaxLength(50)
                     .HasDefaultValueSql("('0000-0000-0000-0000')");
 
-                entity.Property(e => e.PlantCode)
+                entity.Property(e => e.Code)
                     .IsRequired()
                     .HasMaxLength(50)
                     .HasDefaultValueSql("('')");
 
-                entity.Property(e => e.PlantName).HasMaxLength(100);
+                entity.Property(e => e.Name).HasMaxLength(100);
 
-                entity.Property(e => e.PlantNameEn).HasMaxLength(100);
+                entity.Property(e => e.NameEn).HasMaxLength(100);
             });
 
             modelBuilder.Entity<PlantUserMapping>(entity =>
@@ -1125,7 +1125,7 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.FromDate).HasMaxLength(100);
 
-                entity.Property(e => e.LastModiferId).HasMaxLength(50);
+                //entity.Property(e => e.LastModiferId).HasMaxLength(50);
 
                 entity.Property(e => e.LastModificationTime).HasColumnType("datetime");
 

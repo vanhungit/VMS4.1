@@ -7,30 +7,30 @@ namespace VMSCore.API.EntityModels.Models
 {
     public partial class ProductionOrder
     {
+        public System.Guid Id { get; set; }
         public string Code { get; set; }
         public string CompanyId { get; set; }
         public string FromDate { get; set; }
         public string ToDate { get; set; }
         public string LineId { get; set; }
         public string NumberTemp { get; set; }
+        public string LastModifierId { get; set; }
         public string CreatorId { get; set; }
-        public bool? Active { get; set; }
-        public DateTime? LogDate { get; set; }
-        public DateTime? CreationTime { get; set; }
-        public string LastModiferId { get; set; }
-        public DateTime? LastModificationTime { get; set; }
-        public int? Status { get; set; }
-        public int? ParentId { get; set; }
-        public int? LevelDate { get; set; }
+        public Nullable<bool> Active { get; set; }
+        public Nullable<System.DateTime> LogDate { get; set; }
+        public Nullable<System.DateTime> CreationTime { get; set; }
+        public Nullable<System.DateTime> LastModificationTime { get; set; }
+        public Nullable<int> Status { get; set; }
+        public Nullable<int> ParentId { get; set; }
+        public Nullable<int> LevelDate { get; set; }
         public string OrderString { get; set; }
         public string StaffId { get; set; }
         public string StockId { get; set; }
         public string Reason { get; set; }
         public string Lot { get; set; }
-        public DateTime? ManufactureDate { get; set; }
-        public DateTime? ExpireDate { get; set; }
+        public Nullable<System.DateTime> ManufactureDate { get; set; }
+        public Nullable<System.DateTime> ExpireDate { get; set; }
         public string LinkWeb { get; set; }
         public string ProductionOrderCode { get; set; }
-        public Guid Id { get; set; }
     }
 }

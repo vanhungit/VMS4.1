@@ -8,9 +8,9 @@ namespace VMSCore.API.Controllers
     //[Route("api/[controller]/[action]")]
     [ApiController]
     //[Authorize]
-    public class StaffController : BaseApiController<Staff>
+    public class ProductionOrderController : BaseApiController<ProductionOrder>
     {
-        public StaffController(BaseRepositoryCore<Staff> repository) : base(repository)
+        public ProductionOrderController(BaseRepositoryCore<ProductionOrder> repository) : base(repository)
         {
         }
     }

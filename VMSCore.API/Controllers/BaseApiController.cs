@@ -64,18 +64,18 @@ namespace VMSCore.API.Controllers
             }
             return Ok(entity);
         }
-        //[HttpGet]
-        //public IActionResult GetAll()
-        //{
-        //    var entities = _repository.GetAll();
-        //    return Ok(entities);
-        //}
         [HttpGet]
         public IActionResult GetAll()
         {
-            var entities = _repository.CallAPIPOSTToken("http://tenant1.api.vmspms.vn/connect/token", "desktopvmspms", "1q2w3E*");
+            var entities = _repository.GetAll();
             return Ok(entities);
         }
+        //[HttpGet]
+        //public IActionResult GetAll()
+        //{
+        //    var entities = _repository.CallAPIPOSTToken("http://tenant1.api.vmspms.vn/connect/token", "desktopvmspms", "1q2w3E*");
+        //    return Ok(entities);
+        //}
         [HttpGet]
         public IActionResult GetAllByToken()
         {

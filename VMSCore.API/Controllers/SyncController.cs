@@ -81,26 +81,37 @@ namespace VMSCore.API.Controllers
 
             foreach (var item in data)
             {
-                dynamic entity = item.ToObject(entityType);
-               
-                // Assuming you have a property called "Id" to check for existing data
-                var existingEntity = repo.GetByCheckID(entity.Id);
-                var existingEntityCode = repo.GetByCode(entity.Code);
-                var isValid = Validator.TryValidateObject(entity, new ValidationContext(entity), validationResults, true);
-                if (!isValid)
-                {
-                    return BadRequest(new
-                    {
-                        Error = "Validation failed",
-                        ValidationErrors = validationResults.Select(vr => new
-                        {
-                            Message = vr.ErrorMessage,
-                            Members = vr.MemberNames
-                        })
-                    });
-                }
                 try
                 {
+                    dynamic entity = item.ToObject(entityType);
+                    var existingEntity = repo.GetByCode(entity.Code);
+                    // Assuming you have a property called "Id" to check for existing data
+                    if (tableName == "ProductionOrder" || tableName == "ProductionOrderDetail" || tableName == "ProductionOrderDetailCode" ||
+                        tableName == "ProductionOrderRawDetail" || tableName == "DataSettingCompany")
+                    {
+                        existingEntity = repo.GetById(entity.Id);
+
+                    }
+                    else
+                    {
+                        existingEntity = repo.GetByCheckID(entity.Id);
+
+                    }
+                    var existingEntityCode = repo.GetByCode(entity.Code);
+                    var isValid = Validator.TryValidateObject(entity, new ValidationContext(entity), validationResults, true);
+                    if (!isValid)
+                    {
+                        return BadRequest(new
+                        {
+                            Error = "Validation failed",
+                            ValidationErrors = validationResults.Select(vr => new
+                            {
+                                Message = vr.ErrorMessage,
+                                Members = vr.MemberNames
+                            })
+                        });
+                    }
+
                     if (existingEntity != null)
                     {
                         if (existingEntityCode != null)
