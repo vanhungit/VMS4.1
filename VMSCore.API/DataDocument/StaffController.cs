@@ -3,14 +3,16 @@ using Microsoft.AspNetCore.Mvc;
 using VMSCore.API.EntityModels.Models;
 using VMSCore.Infrastructure.Base.Repositories;
 using Microsoft.AspNetCore.Authorization;
-namespace VMSCore.API.Controllers
+using VMSCore.API.Controllers;
+
+namespace VMSCore.API.DataDocument
 {
     //[Route("api/[controller]/[action]")]
     [ApiController]
     //[Authorize]
-    public class ProductionOrderController : BaseApiController<ProductionOrder>
+    public class StaffController : BaseApiController<Staff>
     {
-        public ProductionOrderController(BaseRepositoryCore<ProductionOrder> repository) : base(repository)
+        public StaffController(BaseRepositoryCore<Staff> repository) : base(repository)
         {
         }
     }
