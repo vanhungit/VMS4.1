@@ -5,6 +5,7 @@ using VMSCore.Demo.WindowsForms.MasterData;
 using VMSCore.Demo.WindowsForms.Report;
 using VMSCore.Demo.WindowsForms.ShareDirectoryManagement;
 using VMSCore.Demo.WindowsForms.SystemConfiguration;
+using VMSCore.Extensions;
 
 namespace VMSCore.Demo.WindowsForms
 {
@@ -162,6 +163,12 @@ namespace VMSCore.Demo.WindowsForms
         {
             var frm = new frmPlantSIteMapping();
             frm.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            RepositoryLibrary repositoryLibrary = new RepositoryLibrary();
+            MessageBox.Show(repositoryLibrary.Hash("1q2w3E*"));
         }
     }
 }

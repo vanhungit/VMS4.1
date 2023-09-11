@@ -21,8 +21,4 @@
     <ProjectReference Include="..\VMSCore.Repositories\VMSCore.Repositories.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DataSystem\" />
-  </ItemGroup>
-
 </Project>

@@ -38,6 +38,34 @@ namespace VMSCore.Extensions
             thumbnailBitmap.Dispose();
             image.Dispose();
         }
+        public string Hash(string text)
+        {
+            SHA1Managed sha1 = new SHA1Managed();
+            byte[] hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(text));
+            StringBuilder hashSb = new StringBuilder();
+            foreach (byte b in hash)
+            {
+                hashSb.Append(b.ToString("X2"));
+            }
+            return hashSb.ToString();
+        }
+        public string GetCodeMD5(string StringEncode)
+        {
+            //Tạo MD5 
+            MD5 mh = MD5.Create();
+            //Chuyển kiểu chuổi thành kiểu byte
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(StringEncode);
+            //mã hóa chuỗi đã chuyển
+            byte[] hash = mh.ComputeHash(inputBytes);
+            //tạo đối tượng StringBuilder (làm việc với kiểu dữ liệu lớn)
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("X2"));
+            }
+            return sb.ToString();
+        }
         //Get MD5
         public static string GetMd5Sum(string str)
         {

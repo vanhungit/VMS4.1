@@ -56,6 +56,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btnStaffPermission = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -334,9 +335,20 @@
             this.btnStaffPermission.UseVisualStyleBackColor = true;
             this.btnStaffPermission.Click += new System.EventHandler(this.btnStaffPermission_Click);
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(493, 60);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(90, 24);
+            this.button7.TabIndex = 15;
+            this.button7.Text = "Get MD5";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // frmMain
             // 
             this.ClientSize = new System.Drawing.Size(737, 499);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.btnStaffPermission);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -397,6 +409,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button btnPlantSiteMapping;
+        private System.Windows.Forms.Button button7;
     }
 }
 
