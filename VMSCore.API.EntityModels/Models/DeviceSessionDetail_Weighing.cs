@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace VMSCore.API.EntityModels.Models
 {
-    public partial class DeviceSessionDetailWeighing
+    public partial class DeviceSessionDetail_Weighing
     {
         public string Id { get; set; }
         public string CodePrint { get; set; }

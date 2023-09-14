@@ -59,6 +59,7 @@
     <Compile Include="Features\MasterDataManagement\Repositories\Implementations\DistrictRepository.cs" />
     <Compile Include="Features\MasterDataManagement\Repositories\Implementations\WardRepository.cs" />
     <Compile Include="Features\MasterDataManagement\Repositories\Implementations\ProvinceRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\ProductionOrderRawDetailRepository.cs" />
     <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\RoleUserRepository.cs" />
     <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\RoleDetaillRepository.cs" />
     <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\PermissionRepository.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\StageRepository.cs" />
     <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\WorkshopRepository.cs" />
     <Compile Include="Features\SharedDirectoryManagement\Repositories\Implementations\PlantRepository.cs" />
+    <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IProductionOrderRawDetailRepository.cs" />
     <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IRoleUserRepository.cs" />
     <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IRoleDetaillRepository.cs" />
     <Compile Include="Features\SharedDirectoryManagement\Repositories\Interfaces\IPermissionRepository.cs" />

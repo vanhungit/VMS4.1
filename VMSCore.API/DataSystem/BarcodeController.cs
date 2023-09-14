@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 using VMSCore.API.Controllers;
 using VMSCore.API.EntityModels.Models;
 using VMSCore.Infrastructure.Base.Repositories;
-
-namespace VMSCore.API.DataDocument
+namespace VMSCore.API.DataSystem
 {
-    //[Route("api/[controller]/[action]")]
     //[Route("api/[controller]")]
     [ApiController]
     public class BarcodeController : BaseApiController<Barcode>

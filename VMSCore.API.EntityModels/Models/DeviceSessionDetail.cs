@@ -17,9 +17,9 @@ namespace VMSCore.API.EntityModels.Models
         public string QuantityBinary { get; set; }
         public string CreatorId { get; set; }
         public string LastModifierId { get; set; }
-        public bool? Active { get; set; }
-        public DateTime? LogDate { get; set; }
-        public DateTime? CreationTime { get; set; }
-        public DateTime? LastModificationTime { get; set; }
+        public Nullable<bool> Active { get; set; }
+        public Nullable<System.DateTime> LogDate { get; set; }
+        public Nullable<System.DateTime> CreationTime { get; set; }
+        public Nullable<System.DateTime> LastModificationTime { get; set; }
     }
 }

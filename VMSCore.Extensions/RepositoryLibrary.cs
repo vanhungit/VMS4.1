@@ -5,6 +5,7 @@ using System.IO;
 using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web.Configuration;
 
 namespace VMSCore.Extensions
@@ -37,6 +38,49 @@ namespace VMSCore.Extensions
             thumbnailGraph.Dispose();
             thumbnailBitmap.Dispose();
             image.Dispose();
+        }
+        public async Task<string> EncryptString(string text, string secretKey)
+        {
+            using (Aes aesAlg = Aes.Create())
+            {
+                aesAlg.Key = new SHA256Managed().ComputeHash(Encoding.UTF8.GetBytes(secretKey));
+                aesAlg.IV = new byte[16]; // Use a unique IV for each message
+
+                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+
+                using (MemoryStream msEncrypt = new MemoryStream())
+                {
+                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                    {
+                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                        {
+                            swEncrypt.Write(text);
+                        }
+                    }
+                    return Convert.ToBase64String(msEncrypt.ToArray());
+                }
+            }
+        }
+        public async Task<string> DecryptString(string cipherText, string secretKey)
+        {
+            using (Aes aesAlg = Aes.Create())
+            {
+                aesAlg.Key = new SHA256Managed().ComputeHash(Encoding.UTF8.GetBytes(secretKey));
+                aesAlg.IV = new byte[16]; // IV should match the one used during encryption
+
+                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+
+                using (MemoryStream msDecrypt = new MemoryStream(Convert.FromBase64String(cipherText)))
+                {
+                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    {
+                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                        {
+                            return srDecrypt.ReadToEnd();
+                        }
+                    }
+                }
+            }
         }
         public string Hash(string text)
         {

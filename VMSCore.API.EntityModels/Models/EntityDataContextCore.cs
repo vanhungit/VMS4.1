@@ -78,7 +78,7 @@ namespace VMSCore.API.EntityModels.Models
         public virtual DbSet<DeviceGroup> DeviceGroup { get; set; }
         public virtual DbSet<DeviceSession> DeviceSession { get; set; }
         public virtual DbSet<DeviceSessionDetail> DeviceSessionDetail { get; set; }
-        public virtual DbSet<DeviceSessionDetailWeighing> DeviceSessionDetailWeighing { get; set; }
+        public virtual DbSet<DeviceSessionDetail_Weighing> DeviceSessionDetail_Weighing { get; set; }
         public virtual DbSet<DistrictModel> DistrictModel { get; set; }
         public virtual DbSet<Equipment> Equipment { get; set; }
         public virtual DbSet<EquipmentGroup> EquipmentGroup { get; set; }
@@ -523,7 +523,7 @@ namespace VMSCore.API.EntityModels.Models
                 entity.Property(e => e.Sorted).HasMaxLength(50);
             });
 
-            modelBuilder.Entity<DeviceSessionDetailWeighing>(entity =>
+            modelBuilder.Entity<DeviceSessionDetail_Weighing>(entity =>
             {
                 entity.ToTable("DeviceSessionDetail_Weighing");
 
