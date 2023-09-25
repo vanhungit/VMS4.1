@@ -38,17 +38,17 @@ namespace VMSCore.Demo.WindowsForms.SystemConfiguration
                 var buttonId = Convert.ToString(dgvr.Cells["ButtonId"].Value);
                 var objectMap = new ObjectButtonMapping()
                 {
-                    ButtonId = buttonId,
+                    ButtonCode = buttonId,
                     Active = true,
-                    ObjectId = dlOjectEntity.SelectedValue.ToString(),
-                    ObjectButtonMappingId = Guid.NewGuid().ToString()
+                    ObjectCode = dlOjectEntity.SelectedValue.ToString(),
+                    Code = Guid.NewGuid().ToString()
                 };
                 if (ischecked)
                 {
                     assign.Add(objectMap);
                 }
             }
-            _mappingRepository.DeleteByCondition(x => x.ObjectId.Equals(dlOjectEntity.SelectedValue.ToString()));
+            _mappingRepository.DeleteByCondition(x => x.ObjectCode.Equals(dlOjectEntity.SelectedValue.ToString()));
             _mappingRepository.AddRange(assign);
 
         }
@@ -79,7 +79,7 @@ namespace VMSCore.Demo.WindowsForms.SystemConfiguration
             DataGridViewRow selectedRow = gvObjectEnity.Rows[selectedrowindex];
             var objectId = Convert.ToString(selectedRow.Cells["ObjectId"].Value);
 
-            gvButton.DataSource = _mappingRepository.GetButton(objectId); ;
+            //gvButton.DataSource = _mappingRepository.GetButton(objectId); ;
             dlOjectEntity.SelectedValue = objectId;
         }
 
@@ -87,7 +87,7 @@ namespace VMSCore.Demo.WindowsForms.SystemConfiguration
         {
             if (!string.IsNullOrWhiteSpace(dlOjectEntity.SelectedValue.ToString()))
             {
-                gvButton.DataSource = _mappingRepository.GetButton(dlOjectEntity.SelectedValue.ToString());
+                //gvButton.DataSource = _mappingRepository.GetButton(dlOjectEntity.SelectedValue.ToString());
             }
         }
     }

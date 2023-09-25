@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using VMSCore.EntityModels;
 using VMSCore.Infrastructure.Base.Repositories;
@@ -9,26 +10,30 @@ namespace VMSCore.Infrastructure.Features.SharedDirectoryManagement.Repositories
 {
     public class WorkshopRepository : BaseRepository<WorkShop>, IWorkshopRepository
     {
+        public WorkShop GetByCode(string Code)
+        {
+            return _context.WorkShop.FirstOrDefault(x => x.Code == Code);
+        }
         public List<WorkshopViewModel> GetAll()
         {
             var result = (from w in _context.WorkShop
-                          join p in _context.Plant on w.PlantId equals p.Id
-                          join c in _context.Company on w.CompanyId equals c.Id
+                          join p in _context.Factory on w.FactoryCode equals p.Code
+                          join c in _context.Company on w.CompanyCode equals c.Code
                           select new WorkshopViewModel()
                           {
                               Id = w.Id,
                               Name = w.Name,
                               Code = w.Code,
                               Description = w.Description,
-                              WorkShopNameEn = w.WorkShopNameEn,
-                              PlantId = w.PlantId,
+                              WorkShopNameEn = w.NameEn,
+                              PlantId = w.FactoryCode,
                               CompanyName = c.Name,
                               CompanyTax = c.CompanyTax,
                               PlantName = p.Name,
                               PlantCode = p.Code,
-                              CompanyId = c.Id,
+                              CompanyId = c.Code,
                               Active = (w.Active.HasValue && w.Active == true) ? true : false
-                          }).ToList();
+                          }).Distinct().ToList();
             return result.Any() ? result : new List<WorkshopViewModel>();
         }
         public List<WorkshopViewModel> Search(string companyId, string plantId, string workshopName)
@@ -37,10 +42,10 @@ namespace VMSCore.Infrastructure.Features.SharedDirectoryManagement.Repositories
             var hasplantName = string.IsNullOrWhiteSpace(plantId);
             var hasWorkshopName = string.IsNullOrWhiteSpace(workshopName);
             var result = (from w in _context.WorkShop
-                          join p in _context.Plant on w.PlantId equals p.Id
-                          join c in _context.Company on w.CompanyId equals c.Id
-                          where (hasCompanyId == true || w.CompanyId.Equals(companyId))
-                          && (hasplantName == true || w.PlantId.Equals(plantId))
+                          join p in _context.Factory on w.FactoryCode equals p.Code
+                          join c in _context.Company on w.CompanyCode equals c.Code
+                          where (hasCompanyId == true || w.CompanyCode.Equals(companyId))
+                          && (hasplantName == true || w.FactoryCode.Equals(plantId))
                           && (hasWorkshopName == true || w.Name.Contains(workshopName))
                           select new WorkshopViewModel()
                           {
@@ -48,13 +53,13 @@ namespace VMSCore.Infrastructure.Features.SharedDirectoryManagement.Repositories
                               Name = w.Name,
                               Code = w.Code,
                               Description = w.Description,
-                              WorkShopNameEn = w.WorkShopNameEn,
-                              PlantId = w.PlantId,
+                              WorkShopNameEn = w.NameEn,
+                              PlantId = w.FactoryCode,
                               CompanyName = c.Name,
                               CompanyTax = c.CompanyTax,
                               PlantName = p.Name,
                               PlantCode = p.Code,
-                              CompanyId = c.Id,
+                              CompanyId = c.Code,
                               Active = (w.Active.HasValue && w.Active == true) ? true : false
                           }).ToList();
             return result.Any() ? result : new List<WorkshopViewModel>();
@@ -72,13 +77,36 @@ namespace VMSCore.Infrastructure.Features.SharedDirectoryManagement.Repositories
         }
         public List<WorkShopDropDownListViewModel> workShopDropDownListByPlantId(string plantId)
         {
-            var result = _context.WorkShop.Where(w => w.Active.HasValue && w.Active == true && w.PlantId.Equals(plantId)).Select(x => new WorkShopDropDownListViewModel()
+            var result = _context.WorkShop.Where(w => w.Active.HasValue && w.Active == true && w.FactoryCode.Equals(plantId)).Select(x => new WorkShopDropDownListViewModel()
             {
                 Id = x.Id,
                 Name = x.Name,
                 Code = x.Code
             }).ToList();
             return result.Any() ? result : new List<WorkShopDropDownListViewModel>();
+        }
+        public string DeleteWorkShopByID(string Code)
+        {
+            string obj = "";
+            try
+            {
+                var entry = _context.WorkShop.Where(i => i.Code == Code && i.Active == true).FirstOrDefault();
+                if (entry != null)
+                {
+                    _context.WorkShop.Remove(entry);
+                    _context.SaveChanges();
+                    obj = entry.Code;
+                    return obj;
+                }
+                else
+                {
+                    return obj;
+                }
+            }
+            catch (Exception ex)
+            {
+                return obj;
+            }
         }
     }
 }

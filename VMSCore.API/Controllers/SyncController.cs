@@ -19,44 +19,66 @@ namespace VMSCore.API.Controllers
         private readonly IMapper _mapper;
         private static readonly Dictionary<string, Type> _entityTypes = new Dictionary<string, Type>
         {
-          
-            { "Barcode", typeof(Barcode)},
-            { "Button", typeof(Button)},
+
             { "Company", typeof(Company)},
-            { "Shift", typeof(Shift)},
-            { "Staff", typeof(Staff) },
-            { "Skills", typeof(Skills) },
-            { "Department", typeof(Department) },
+            { "Factory", typeof(Factory) },
             { "WorkShop", typeof(WorkShop) },
+            { "Stage", typeof(Stage) },
+
             { "DeviceGroup", typeof(DeviceGroup) },
             { "TypeDevice", typeof(TypeDevice) },
-            { "ManagementDevice", typeof(ManagementDevice) },
             { "Device", typeof(Device) },
+            { "Device_PROTOCOL", typeof(Device_PROTOCOL) },
+            { "ConnectConfig", typeof(ConnectConfig) },
+            { "StatusConfig", typeof(StatusConfig) },
+            { "ErrorConfig", typeof(ErrorConfig) },
+            { "WarningConfig", typeof(WarningConfig) },
+
             { "Protocol", typeof(Protocol) },
             { "ProtocolParam", typeof(ProtocolParam) },
-            { "Stage", typeof(Stage) },
-            { "Line", typeof(Line) },
+
             { "ProductionOrder", typeof(ProductionOrder) },
             { "ProductionOrderDetail", typeof(ProductionOrderDetail) },
             { "ProductionOrderDetailCode", typeof(ProductionOrderDetailCode) },
             { "ProductionOrderRawDetail", typeof(ProductionOrderRawDetail) },
-            { "Role", typeof(Role) },
-            { "Permission", typeof(Permission) },
-            { "Contract", typeof(Contract) },
-            { "Material", typeof(Material) },
-            { "FinishedProduct", typeof(FinishedProduct) },
+            { "ProductionOrderDetailMAP", typeof(ProductionOrderDetailMAP) },
+            { "ProductionOrderDetailCheck", typeof(ProductionOrderDetailCheck) },
+
+            { "Line", typeof(Line) },
+            { "LineDevice", typeof(LineDevice) },
+
             { "ProductGroup", typeof(ProductGroup) },
             { "ProductType", typeof(ProductType) },
             { "Product", typeof(Product) },
-            { "SwitchingUnit", typeof(SwitchingUnit) },
+            { "UNIT", typeof(UNIT) },
+            { "UNITCONVERT", typeof(UNITCONVERT) },
+            { "MaterialProduct", typeof(MaterialProduct) },
+
+            { "Shift", typeof(Shift)},
+            { "Staff", typeof(Staff) },
+            { "Skills", typeof(Skills) },
+            { "StaffSkill", typeof(StaffSkill) },
+            { "ShiftStaff", typeof(ShiftStaff) },
+            { "Department", typeof(Department) },
+            { "DepartmentStaff", typeof(DepartmentStaff) },
+
+            { "Role", typeof(Role) },
+            { "RoleDetaill", typeof(RoleDetaill) },
+            { "RoleUser", typeof(RoleUser) },
+            { "ObjectEntity", typeof(ObjectEntity) },
+            { "RoleObjectButtonMapping", typeof(RoleObjectButtonMapping) },
+
+            { "Barcode", typeof(Barcode)},
+            { "Button", typeof(Button)},            
+            { "Permission", typeof(Permission) },
+            { "Contract", typeof(Contract) },
             { "DataSetting", typeof(DataSetting) },
             { "DataSettingCompany", typeof(DataSettingCompany) },
-            { "ErrorConfig", typeof(ErrorConfig) },
             { "NotificationSystem", typeof(NotificationSystem) },
             { "NotificationConfig", typeof(NotificationConfig) },
             { "NotificationContact", typeof(NotificationContact) },
             { "NotificationLine", typeof(NotificationLine) },
-            { "Plant", typeof(Plant) },
+            
             // Thêm các Entity khác muốn hỗ trợ Sync vào đây
             //{ "Account", typeof(Account) },
 
@@ -67,7 +89,7 @@ namespace VMSCore.API.Controllers
             _repositoryFactory = repositoryFactory;
             _mapper = mapper;
         }
-
+        /*
         [HttpPost]
         public IActionResult Sync(string tableName, [FromBody] JArray data)
         {
@@ -84,7 +106,7 @@ namespace VMSCore.API.Controllers
                 try
                 {
                     dynamic entity = item.ToObject(entityType);
-                    var existingEntity = repo.GetByCode(entity.Code);
+                    var existingEntity = repo.GetByCode(entity.Code);//kiểm tra Id có tồn tại
                     // Assuming you have a property called "Id" to check for existing data
                     if (tableName == "ProductionOrder" || tableName == "ProductionOrderDetail" || tableName == "ProductionOrderDetailCode" ||
                         tableName == "ProductionOrderRawDetail" || tableName == "DataSettingCompany")
@@ -97,7 +119,7 @@ namespace VMSCore.API.Controllers
                         existingEntity = repo.GetByCheckID(entity.Id);
 
                     }
-                    var existingEntityCode = repo.GetByCode(entity.Code);
+                    var existingEntityCode = repo.GetByCode(entity.Code);//kiểm tra code có tồn tại
                     var isValid = Validator.TryValidateObject(entity, new ValidationContext(entity), validationResults, true);
                     if (!isValid)
                     {
@@ -245,6 +267,110 @@ namespace VMSCore.API.Controllers
                         //repo.Add(modelToAdd);
                         repo.Add(entity);
                     }
+                }
+                catch (Exception e)
+                {
+                    // Log exception and return error response
+                    // Log(e);
+                    return StatusCode(StatusCodes.Status500InternalServerError, $"Failed to sync {tableName}");
+                }
+            }
+
+            return Ok(new
+            {
+
+                Code = 1,
+                Message = "Success",
+                ValidationErrors = validationResults.Select(vr => new
+                {
+                    Message = vr.ErrorMessage,
+                    Members = vr.MemberNames
+                })
+            });
+        }*/
+        [HttpPost]
+        public IActionResult SyncfullCheckCode(string tableName, bool Flag, [FromBody] JArray data)
+        {
+            if (!_entityTypes.TryGetValue(tableName, out var entityType))
+            {
+                return BadRequest($"Invalid table name {tableName}");
+            }
+
+            var repo = _repositoryFactory.Create(entityType);
+            var validationResults = new List<ValidationResult>();
+
+
+            foreach (var item in data)
+            {
+                dynamic entity = item.ToObject(entityType);
+
+                // Assuming you have a property called "Id" to check for existing data
+                //var existingEntity = repo.GetByCode(entity.Code);
+                
+                var existingEntityCode = repo.GetByCode(entity.Code);
+                var isValid = Validator.TryValidateObject(entity, new ValidationContext(entity), validationResults, true);
+                if (!isValid)
+                {
+                    return BadRequest(new
+                    {
+                        Error = "Validation failed",
+                        ValidationErrors = validationResults.Select(vr => new
+                        {
+                            Message = vr.ErrorMessage,
+                            Members = vr.MemberNames
+                        })
+                    });
+                }
+                try
+                {
+                    if (existingEntityCode != null)
+                    {
+                        
+                        _mapper.Map(entity, existingEntityCode, entityType, entityType);
+                        if (Flag)//Flag = true là xóa
+                        {
+                            repo.Delete(existingEntityCode);
+                        }
+                        else
+                        {
+                            repo.Update(existingEntityCode);
+
+                        }
+                    }
+                    else if(Flag)
+                    {
+                        ;
+                    }    
+                    else
+                    {
+                        // If entity exists, update it
+                        // Use AutoMapper to map the updated fields to the existing entity
+                        var modelToAdd = _mapper.Map(entity, entityType, entityType);
+                        if (modelToAdd.Id == null)
+                        {
+                            modelToAdd.Id = Guid.NewGuid();
+                        }
+                        //var idProperty = entityType.GetProperty("Id");
+                        //if (idProperty != null)
+                        //{
+                        //    //idProperty.SetValue(entity, Guid.NewGuid().ToString());
+
+
+                        //    if (idProperty.PropertyType == typeof(Guid) || idProperty.PropertyType == typeof(Guid?))
+                        //    {
+                        //        idProperty.SetValue(entity, Guid.NewGuid());
+                        //    }
+
+                        //    if (idProperty.PropertyType == typeof(string))
+                        //    {
+                        //        idProperty.SetValue(entity, Guid.NewGuid().ToString());
+                        //    }
+                        //}
+                        //modelToAdd.Id = Guid.NewGuid();
+                        repo.Add(modelToAdd);
+
+                    }
+                    
                 }
                 catch (Exception e)
                 {

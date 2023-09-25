@@ -14,16 +14,18 @@ namespace VMSCore.EntityModels
     
     public partial class LineDevice
     {
-        public string Id { get; set; }
-        public string LineId { get; set; }
-        public string DeviceId { get; set; }
+        public System.Guid Id { get; set; }
+        public string Code { get; set; }
+        public string LineCode { get; set; }
+        public string DeviceCode { get; set; }
         public Nullable<bool> IsManager { get; set; }
-        public string WorkshopId { get; set; }
-        public string StageId { get; set; }
+        public Nullable<bool> IsMain { get; set; }
+        public string WorkshopCode { get; set; }
+        public string StageCode { get; set; }
         public Nullable<int> Numerical { get; set; }
         public string Description { get; set; }
         public Nullable<bool> Active { get; set; }
-        public Nullable<System.DateTime> LastModifierId { get; set; }
+        public string LastModifierId { get; set; }
         public string CreatorId { get; set; }
         public Nullable<System.DateTime> LogDate { get; set; }
         public Nullable<System.DateTime> CreationTime { get; set; }

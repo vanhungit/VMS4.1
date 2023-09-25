@@ -5,5 +5,6 @@ namespace VMSCore.Infrastructure.Features.SharedDirectoryManagement.Repositories
 {
     public interface IStaffRepository : IRepository<Staff>
     {
+
     }
 }

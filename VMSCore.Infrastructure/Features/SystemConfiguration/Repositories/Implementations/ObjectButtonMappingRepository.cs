@@ -12,20 +12,20 @@ namespace VMSCore.Infrastructure.Features.SystemConfiguration.Repositories.Imple
         public List<ObjectButtonMappingViewModel> GetButton(string objectId)
         {
             var result = (from b in _context.Button
-                          join o in _context.ObjectButtonMapping on new { Id = b.Id, ObjectId = objectId } equals new { Id = o.ButtonId, o.ObjectId } into ot
+                          join o in _context.ObjectButtonMapping on new { Id = b.Code, ObjectCode = objectId } equals new { Id = o.ButtonCode, o.ObjectCode } into ot
                           from og in ot.DefaultIfEmpty()
                           select new ObjectButtonMappingViewModel()
                           {
-                              ButtonId = b.Id,
+                              ButtonCode = b.Code,
                               ButtonName = b.Name,
-                              InUse = og != null && og.ObjectId.Equals(objectId) ? true : false
+                              InUse = og != null && og.ObjectCode.Equals(objectId) ? true : false
                           }).OrderByDescending(x => x.InUse).ToList();
             return result.Any() ? result : new List<ObjectButtonMappingViewModel>();
         }
         public List<ObjectButtonMapping> GetButtonByObjectEnity(string objectId)
         {
 
-            var result = _context.ObjectButtonMapping.Where(x => x.ObjectId.Equals(objectId)).ToList();
+            var result = _context.ObjectButtonMapping.Where(x => x.ObjectCode.Equals(objectId)).ToList();
 
             return result.Any() ? result : new List<ObjectButtonMapping>();
         }

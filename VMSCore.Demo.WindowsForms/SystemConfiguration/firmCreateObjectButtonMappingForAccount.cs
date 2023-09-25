@@ -21,7 +21,7 @@ namespace VMSCore.Demo.WindowsForms.SystemConfiguration
         private readonly ButtonRepository _buttonRepo = new ButtonRepository();
         private readonly ObjectEntityRepository _objectEntityRepo = new ObjectEntityRepository();
         private readonly CompanyRepository _companyRepo = new CompanyRepository();
-        private readonly PlantRepository _plantRepo = new PlantRepository();
+        private readonly FactoryRepository _plantRepo = new FactoryRepository();
         private readonly LineRepository _lineRepo = new LineRepository();
         private readonly WorkshopRepository _workshopRepo = new WorkshopRepository();
         private readonly ObjectButtonPermissionService _objectButtonPermissionService = new ObjectButtonPermissionService();
@@ -34,10 +34,10 @@ namespace VMSCore.Demo.WindowsForms.SystemConfiguration
             var buttons = _buttonRepo.GetAll().Select(x => x.Id).ToList();
             comboBox2.DataSource = buttons;
 
-            var objectEntities = _objectEntityRepo.GetAll().Select(x => x.ObjectId).ToList();
+            var objectEntities = _objectEntityRepo.GetAll().Select(x => x.Code).ToList();
             comboBox3.DataSource = objectEntities;
 
-            var parentObjectEntities = _objectEntityRepo.GetAll().Select(x => x.ObjectId).ToList();
+            var parentObjectEntities = _objectEntityRepo.GetAll().Select(x => x.Code).ToList();
             comboBox10.DataSource = parentObjectEntities;
 
             var moduleTypesList = SystemEnum.EnumToList<SystemEnum.ModuleType>();
@@ -65,7 +65,7 @@ namespace VMSCore.Demo.WindowsForms.SystemConfiguration
             {
                 var userId = comboBox1.SelectedItem.ToString();
                 var roleUser = _roleUserRepo.GetRoleUserByUserId(userId);
-                var roleId = roleUser.RoleId;
+                var roleId = roleUser.RoleCode;
                 var type = int.Parse(comboBox13.SelectedItem.ToString());
 
                 var buttonId = comboBox2.SelectedItem.ToString();
@@ -83,9 +83,9 @@ namespace VMSCore.Demo.WindowsForms.SystemConfiguration
 
                 var roleObjectButtonMapping = new RoleObjectButtonMapping()
                 {
-                    ButtonId = buttonId,
-                    ObjectId = objectId,
-                    RoleId = roleId
+                    ButtonCode = buttonId,
+                    ObjectCode = objectId,
+                    RoleCode = roleId
                 };
                 var functionGroupModuleObjectMapping = new FunctionGroupModuleObjectMapping()
                 {

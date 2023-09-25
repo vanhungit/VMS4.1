@@ -20,6 +20,10 @@ namespace VMSCore.API.EntityModels.Interfaces
     {
         public string Id { get; set; }
     }
+    public partial class UNIT : IEntity
+    {
+        public string Id { get; set; }
+    }
     //public partial class Barcode : IEntity
     //{
     //    public string Id { get; set; }

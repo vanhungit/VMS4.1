@@ -50,6 +50,48 @@ namespace VMSCore.Machine.Controller
             NameDevice = "";
             SeriNumber = "";
         }
+        public enum COMMAND_ASCII
+        {
+            ESC = 27,//0x1B
+            ACK = 6,//0x06
+            NACK = 21,//0x15
+            STX = 2,//0x02
+            ETX = 3//0x03           
+        }
+        public enum COMMAND_LINX
+        {
+            GETCOUNTER = 141,//0x8D
+            RESETCOUNTER = 140,//0x8C
+            SEND_BUFFER = 29,//0x1D send/clear buffer
+            STATUS_RQ = 20,//0x14
+            START_MACHINE = 17,//0x11 
+            STOP_MACHINE = 18,//0x12   
+            START_JET = 15,//0x0F
+            STOP_JET = 16,//0x10 
+            STATUS_RQ_EX = 129,//0x81 
+            STATUS_RQ_EX_88 = 174,//0xAE
+            LOAD_PRINT = 30//1E Load bản tin để in
+        }
+        public enum JetState
+        {
+            Jet_Running = 0,//0x00
+            Jet_Startup = 1,
+            Jet_Shutdown = 2,
+            Jet_Stopped = 3,
+            Fault = 4
+        }
+        public enum PrintState
+        {
+            Printing = 0,//0x00
+            Undefined = 1,
+            Idle = 2,
+            Generating_Pixels = 3,
+            Waiting = 4,
+            Last = 5,
+            Printing_Generating_Pixels = 6
+        }
+      
+
         public enum STATUS_CONNECT
         {
             NeverConnected,

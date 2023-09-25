@@ -39,7 +39,13 @@ namespace VMSCore.Extensions
             thumbnailBitmap.Dispose();
             image.Dispose();
         }
-        public async Task<string> EncryptString(string text, string secretKey)
+        /// <summary>
+        /// Hàm mã hóa chuỗi data
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="secretKey"></param>
+        /// <returns></returns>
+        public string EncryptString(string text, string secretKey)
         {
             using (Aes aesAlg = Aes.Create())
             {
@@ -61,7 +67,13 @@ namespace VMSCore.Extensions
                 }
             }
         }
-        public async Task<string> DecryptString(string cipherText, string secretKey)
+        /// <summary>
+        /// Hàm giải mã chuỗi data
+        /// </summary>
+        /// <param name="cipherText"></param>
+        /// <param name="secretKey"></param>
+        /// <returns></returns>
+        public string DecryptString(string cipherText, string secretKey)
         {
             using (Aes aesAlg = Aes.Create())
             {
@@ -278,5 +290,8 @@ namespace VMSCore.Extensions
 
             return retTime;
         }
+       
+
+      
     }
 }

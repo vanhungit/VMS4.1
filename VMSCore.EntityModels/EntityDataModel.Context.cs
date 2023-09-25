@@ -43,6 +43,7 @@ namespace VMSCore.EntityModels
         public virtual DbSet<Company> Company { get; set; }
         public virtual DbSet<CompanyModuleMapping> CompanyModuleMapping { get; set; }
         public virtual DbSet<CompanyUserMapping> CompanyUserMapping { get; set; }
+        public virtual DbSet<ConnectConfig> ConnectConfig { get; set; }
         public virtual DbSet<Contract> Contract { get; set; }
         public virtual DbSet<ContractFile> ContractFile { get; set; }
         public virtual DbSet<ContractPermission> ContractPermission { get; set; }
@@ -56,16 +57,16 @@ namespace VMSCore.EntityModels
         public virtual DbSet<DETECTOR_STATUS> DETECTOR_STATUS { get; set; }
         public virtual DbSet<DETECTOR_WARNING> DETECTOR_WARNING { get; set; }
         public virtual DbSet<Device> Device { get; set; }
+        public virtual DbSet<Device_Combo> Device_Combo { get; set; }
+        public virtual DbSet<Device_PROTOCOL> Device_PROTOCOL { get; set; }
         public virtual DbSet<DeviceConnectHistory> DeviceConnectHistory { get; set; }
         public virtual DbSet<DeviceGroup> DeviceGroup { get; set; }
         public virtual DbSet<DeviceSession> DeviceSession { get; set; }
         public virtual DbSet<DeviceSessionDetail> DeviceSessionDetail { get; set; }
         public virtual DbSet<DeviceSessionDetail_Weighing> DeviceSessionDetail_Weighing { get; set; }
         public virtual DbSet<DistrictModel> DistrictModel { get; set; }
-        public virtual DbSet<Equipment> Equipment { get; set; }
-        public virtual DbSet<EquipmentGroup> EquipmentGroup { get; set; }
         public virtual DbSet<ErrorConfig> ErrorConfig { get; set; }
-        public virtual DbSet<FinishedProduct> FinishedProduct { get; set; }
+        public virtual DbSet<Factory> Factory { get; set; }
         public virtual DbSet<FunctionGroupModuleObjectMapping> FunctionGroupModuleObjectMapping { get; set; }
         public virtual DbSet<HistoryModel> HistoryModel { get; set; }
         public virtual DbSet<LABELING_RFID_CONNECT> LABELING_RFID_CONNECT { get; set; }
@@ -76,19 +77,19 @@ namespace VMSCore.EntityModels
         public virtual DbSet<Line> Line { get; set; }
         public virtual DbSet<LineAccountMapping> LineAccountMapping { get; set; }
         public virtual DbSet<LineDevice> LineDevice { get; set; }
-        public virtual DbSet<LineEquipmentMapping> LineEquipmentMapping { get; set; }
         public virtual DbSet<LineUserMapping> LineUserMapping { get; set; }
+        public virtual DbSet<LockAccount> LockAccount { get; set; }
+        public virtual DbSet<LockAccountLog> LockAccountLog { get; set; }
+        public virtual DbSet<LoginCheck> LoginCheck { get; set; }
         public virtual DbSet<LoginRecord> LoginRecord { get; set; }
         public virtual DbSet<MACHINE_CONNECT> MACHINE_CONNECT { get; set; }
         public virtual DbSet<MACHINE_DATA> MACHINE_DATA { get; set; }
         public virtual DbSet<MACHINE_ERROR> MACHINE_ERROR { get; set; }
         public virtual DbSet<MACHINE_STATUS> MACHINE_STATUS { get; set; }
+        public virtual DbSet<MACHINE_SYNC> MACHINE_SYNC { get; set; }
+        public virtual DbSet<MACHINE_SYNC_LOG> MACHINE_SYNC_LOG { get; set; }
         public virtual DbSet<MACHINE_WARNING> MACHINE_WARNING { get; set; }
         public virtual DbSet<MACHINECOUNTER> MACHINECOUNTER { get; set; }
-        public virtual DbSet<ManagementDevice> ManagementDevice { get; set; }
-        public virtual DbSet<ManagementDeviceParam> ManagementDeviceParam { get; set; }
-        public virtual DbSet<ManagementDeviceProtocol> ManagementDeviceProtocol { get; set; }
-        public virtual DbSet<Material> Material { get; set; }
         public virtual DbSet<MaterialProduct> MaterialProduct { get; set; }
         public virtual DbSet<NotificationConfig> NotificationConfig { get; set; }
         public virtual DbSet<NotificationContact> NotificationContact { get; set; }
@@ -100,7 +101,6 @@ namespace VMSCore.EntityModels
         public virtual DbSet<PALLETDEFINE_MAP> PALLETDEFINE_MAP { get; set; }
         public virtual DbSet<PALLETDEFINE_TRANS> PALLETDEFINE_TRANS { get; set; }
         public virtual DbSet<Permission> Permission { get; set; }
-        public virtual DbSet<Plant> Plant { get; set; }
         public virtual DbSet<PlantSiteMapping> PlantSiteMapping { get; set; }
         public virtual DbSet<PlantUserMapping> PlantUserMapping { get; set; }
         public virtual DbSet<PRIMARY_PACKING_CONNECT> PRIMARY_PACKING_CONNECT { get; set; }
@@ -117,7 +117,9 @@ namespace VMSCore.EntityModels
         public virtual DbSet<ProductGroup> ProductGroup { get; set; }
         public virtual DbSet<ProductionOrder> ProductionOrder { get; set; }
         public virtual DbSet<ProductionOrderDetail> ProductionOrderDetail { get; set; }
+        public virtual DbSet<ProductionOrderDetailCheck> ProductionOrderDetailCheck { get; set; }
         public virtual DbSet<ProductionOrderDetailCode> ProductionOrderDetailCode { get; set; }
+        public virtual DbSet<ProductionOrderDetailMAP> ProductionOrderDetailMAP { get; set; }
         public virtual DbSet<ProductionOrderRawDetail> ProductionOrderRawDetail { get; set; }
         public virtual DbSet<ProductType> ProductType { get; set; }
         public virtual DbSet<Protocol> Protocol { get; set; }
@@ -133,25 +135,29 @@ namespace VMSCore.EntityModels
         public virtual DbSet<SECONDARY_PACKING_STATUS> SECONDARY_PACKING_STATUS { get; set; }
         public virtual DbSet<SECONDARY_PACKING_WARNING> SECONDARY_PACKING_WARNING { get; set; }
         public virtual DbSet<Shift> Shift { get; set; }
+        public virtual DbSet<ShiftStaff> ShiftStaff { get; set; }
         public virtual DbSet<Site> Site { get; set; }
         public virtual DbSet<Skills> Skills { get; set; }
         public virtual DbSet<Staff> Staff { get; set; }
         public virtual DbSet<StaffAccountMapping> StaffAccountMapping { get; set; }
         public virtual DbSet<StaffSkill> StaffSkill { get; set; }
         public virtual DbSet<Stage> Stage { get; set; }
-        public virtual DbSet<SwitchingUnit> SwitchingUnit { get; set; }
+        public virtual DbSet<StatusConfig> StatusConfig { get; set; }
+        public virtual DbSet<TABLE_SYNC> TABLE_SYNC { get; set; }
         public virtual DbSet<TypeDevice> TypeDevice { get; set; }
         public virtual DbSet<UNIT> UNIT { get; set; }
+        public virtual DbSet<UNITCONVERT> UNITCONVERT { get; set; }
         public virtual DbSet<UserFunctionUsage> UserFunctionUsage { get; set; }
         public virtual DbSet<UserGroup> UserGroup { get; set; }
         public virtual DbSet<WardModel> WardModel { get; set; }
+        public virtual DbSet<WarningConfig> WarningConfig { get; set; }
         public virtual DbSet<WEIGHT_CONNECT> WEIGHT_CONNECT { get; set; }
+        public virtual DbSet<WEIGHT_DATA> WEIGHT_DATA { get; set; }
         public virtual DbSet<WEIGHT_ERROR> WEIGHT_ERROR { get; set; }
         public virtual DbSet<WEIGHT_STATUS> WEIGHT_STATUS { get; set; }
         public virtual DbSet<WEIGHT_WARNING> WEIGHT_WARNING { get; set; }
         public virtual DbSet<WorkShop> WorkShop { get; set; }
         public virtual DbSet<WorkshopUserMapping> WorkshopUserMapping { get; set; }
-        public virtual DbSet<WEIGHT_DATA> WEIGHT_DATA { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

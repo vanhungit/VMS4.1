@@ -42,10 +42,10 @@ namespace VMSCore.Demo.WindowsForms.SystemConfiguration
             if (!string.IsNullOrWhiteSpace(nameButtonVN.Text))
             {
                 addNewButton.Name = nameButtonVN.Text;
-                addNewButton.ButtonNameEn = nameButtonEN.Text;
+                addNewButton.NameEn = nameButtonEN.Text;
                 addNewButton.Description = descriptionField.Text;
                 addNewButton.Active = isActive.Checked;
-                addNewButton.Id = Guid.NewGuid().ToString();
+                addNewButton.Id = Guid.NewGuid();
                 _buttonRepository.Add(addNewButton);
 
                 ClearData();
@@ -68,7 +68,7 @@ namespace VMSCore.Demo.WindowsForms.SystemConfiguration
             if (updateButton != null)
             {
                 updateButton.Name = nameButtonVN.Text;
-                updateButton.ButtonNameEn = nameButtonEN.Text;
+                updateButton.NameEn = nameButtonEN.Text;
                 updateButton.Description = descriptionField.Text;
                 updateButton.Active = isActive.Checked;
                 _buttonRepository.Update(updateButton);
@@ -78,9 +78,9 @@ namespace VMSCore.Demo.WindowsForms.SystemConfiguration
 
         private void delete_Click(object sender, EventArgs e)
         {
-            _objectButtonMappingRepository.DeleteByCondition(x => x.ButtonId == idButton.Text);
-            _roleObjectButtonMappingRepository.DeleteByCondition(x => x.ButtonId == idButton.Text);
-            _buttonRepository.DeleteByCondition(x => x.Id == idButton.Text);
+            _objectButtonMappingRepository.DeleteByCondition(x => x.ButtonCode == idButton.Text);
+            _roleObjectButtonMappingRepository.DeleteByCondition(x => x.ButtonCode == idButton.Text);
+            _buttonRepository.DeleteByCondition(x => x.Code == idButton.Text);
             listButton.DataSource = _buttonRepository.GetAll();
             idButton.Text = string.Empty;
             ClearData();

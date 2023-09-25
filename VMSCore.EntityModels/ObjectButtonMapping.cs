@@ -14,10 +14,15 @@ namespace VMSCore.EntityModels
     
     public partial class ObjectButtonMapping
     {
-        public string ObjectButtonMappingId { get; set; }
-        public string ObjectId { get; set; }
-        public string ButtonId { get; set; }
+        public System.Guid Id { get; set; }
+        public string Code { get; set; }
+        public string ObjectCode { get; set; }
+        public string ButtonCode { get; set; }
         public string Description { get; set; }
-        public bool Active { get; set; }
+        public string LastModifierId { get; set; }
+        public string CreatorId { get; set; }
+        public Nullable<System.DateTime> CreationTime { get; set; }
+        public Nullable<System.DateTime> LastModificationTime { get; set; }
+        public Nullable<bool> Active { get; set; }
     }
 }

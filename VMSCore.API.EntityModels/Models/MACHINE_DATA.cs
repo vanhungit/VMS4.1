@@ -14,26 +14,33 @@ namespace VMSCore.API.EntityModels.Models
 {
     public partial class MACHINE_DATA
     {
-        public System.Guid Id { get; set; }
+        public System.Guid KeyId { get; set; }
         public string Code { get; set; }
-        public Nullable<System.Guid> TypeDevice { get; set; }
-        public Nullable<System.Guid> GroupDevice { get; set; }
-        public Nullable<System.Guid> KeyCompany { get; set; }
-        public string IDName { get; set; }
-        public string ProductOrder { get; set; }
-        public string ProductID { get; set; }
-        public string LineProcess { get; set; }
+        public string DeviceGroupName { get; set; }
+        public string StatusType { get; set; }
+        public string DeviceCode { get; set; }
+        public string DeviceName { get; set; }
+        public string TypeDeviceCode { get; set; }
+        public string DeviceGroupCode { get; set; }
+        public string ProductOrderCode { get; set; }
+        public string ProductCode { get; set; }
+        public string LineCode { get; set; }
+        public Nullable<decimal> UnderData { get; set; }
+        public Nullable<decimal> OverData { get; set; }
+        public Nullable<decimal> ReferData { get; set; }
+        public string StatusWT { get; set; }
         public string Data { get; set; }
         public Nullable<decimal> Quantity { get; set; }
         public string QuantityHex { get; set; }
         public string BinaryHex { get; set; }
-        public string Unit_ID { get; set; }
-        public Nullable<int> Sorted { get; set; }
+        public Nullable<long> SortedRecord { get; set; }
+        public Nullable<long> Sorted { get; set; }
+        public Nullable<bool> StatusSync { get; set; }
         public string Description { get; set; }
-        public string CreateBy { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
-        public string ModifyBy { get; set; }
-        public Nullable<System.DateTime> ModifyDate { get; set; }
+        public string LastModifierId { get; set; }
+        public string CreatorId { get; set; }
+        public Nullable<System.DateTime> CreationTime { get; set; }
+        public Nullable<System.DateTime> LastModificationTime { get; set; }
         public Nullable<bool> Active { get; set; }
         public Nullable<System.DateTime> LogDate { get; set; }
     }

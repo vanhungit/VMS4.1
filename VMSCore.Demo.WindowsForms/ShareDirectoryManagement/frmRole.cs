@@ -45,9 +45,9 @@ namespace VMSCore.Demo.WindowsForms.ShareDirectoryManagement
             var data = new Role();
             data.Code = txtRoleCode.Text;
             data.Name = txtRoleName.Text;
-            data.CompanyId = dlCompany.SelectedValue.ToString();
+            data.CompanyCode = dlCompany.SelectedValue.ToString();
             data.Description = txtDescription.Text;
-            data.Id = Guid.NewGuid().ToString();
+            data.Id = Guid.NewGuid();
             _roleRepository.Add(data);
             dataGridView1.DataSource = _roleRepository.GetAll();
         }
@@ -57,7 +57,7 @@ namespace VMSCore.Demo.WindowsForms.ShareDirectoryManagement
             var data = _roleRepository.GetByIdStr(txtRoleId.Text);
             data.Code = txtRoleCode.Text;
             data.Name = txtRoleName.Text;
-            data.CompanyId = dlCompany.SelectedValue.ToString();
+            data.CompanyCode = dlCompany.SelectedValue.ToString();
             data.Description = txtDescription.Text;
             _roleRepository.Update(data);
             dataGridView1.DataSource = _roleRepository.GetAll();
@@ -65,9 +65,9 @@ namespace VMSCore.Demo.WindowsForms.ShareDirectoryManagement
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            _roleObjectButtonMappingRepository.DeleteByCondition(x => x.RoleId == txtRoleId.Text);
-            _roleUserRepository.DeleteByCondition(x => x.RoleId == txtRoleId.Text);
-            _roleRepository.DeleteByCondition(x => x.Id == txtRoleId.Text);
+            _roleObjectButtonMappingRepository.DeleteByCondition(x => x.RoleCode == txtRoleId.Text);
+            _roleUserRepository.DeleteByCondition(x => x.RoleCode == txtRoleId.Text);
+            _roleRepository.DeleteByCondition(x => x.Code == txtRoleId.Text);
             dataGridView1.DataSource = _roleRepository.GetAll();
         }
     }

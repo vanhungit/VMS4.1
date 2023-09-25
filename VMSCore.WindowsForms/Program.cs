@@ -18,7 +18,15 @@ namespace VMSCore.WindowsForms
             DevExpress.Skins.SkinManager.EnableFormSkins();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            using (var frm = new frmDangNhap())
+            {
+                frm.ShowDialog();
+                if (frm.Flag == true)
+                {
+                    Application.Run(new Main());
+                }
+            }
+            //Application.Run(new Main());
         }
     }
 }

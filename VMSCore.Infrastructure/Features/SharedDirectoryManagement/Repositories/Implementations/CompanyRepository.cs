@@ -14,6 +14,29 @@ namespace VMSCore.Infrastructure.Features.SharedDirectoryManagement.Repositories
         {
             return _context.Company.FirstOrDefault(x => x.Code == companyCode);
         }
+        public string DeletePlantByID(string Code)
+        {
+            string obj = "";
+            try
+            {
+                var entry = _context.Company.Where(i => i.Code == Code && i.Active == true).FirstOrDefault();
+                if (entry != null)
+                {
+                    _context.Company.Remove(entry);
+                    _context.SaveChanges();
+                    obj = entry.Code;
+                    return obj;
+                }
+                else
+                {
+                    return obj;
+                }
+            }
+            catch (Exception ex)
+            {
+                return obj;
+            }
+        }
 
         public Company GetByTaxNo(string companyTaxNumber)
         {
@@ -69,7 +92,7 @@ namespace VMSCore.Infrastructure.Features.SharedDirectoryManagement.Repositories
         // Delete Company
         public bool DeleteCompany(string companyId)
         {
-            var company = _context.Company.FirstOrDefault(x => x.Id == companyId);
+            var company = _context.Company.FirstOrDefault(x => x.Code == companyId);
             if (company == null)
             {
                 return false;

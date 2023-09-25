@@ -185,12 +185,6 @@
     <Compile Include="ShareDirectoryManagement\frmPlant.Designer.cs">
       <DependentUpon>frmPlant.cs</DependentUpon>
     </Compile>
-    <Compile Include="ShareDirectoryManagement\frmProductOther.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ShareDirectoryManagement\frmProductOther.Designer.cs">
-      <DependentUpon>frmProductOther.cs</DependentUpon>
-    </Compile>
     <Compile Include="ShareDirectoryManagement\frmRole.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -347,9 +341,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ShareDirectoryManagement\frmPlant.resx">
       <DependentUpon>frmPlant.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ShareDirectoryManagement\frmProductOther.resx">
-      <DependentUpon>frmProductOther.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShareDirectoryManagement\frmRole.resx">
       <DependentUpon>frmRole.cs</DependentUpon>

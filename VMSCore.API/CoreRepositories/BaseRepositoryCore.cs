@@ -125,7 +125,12 @@ namespace VMSCore.Infrastructure.Base.Repositories
         {
             if (typeof(ICodedEntity).IsAssignableFrom(typeof(T)))
             {
-                return _context.Set<T>().SingleOrDefault(e => ((ICodedEntity)e).Code == code);
+                var setOfT = _context.Set<T>();
+                //var firstData = setOfT.FirstOrDefault();
+                //var unitTb = _context.UNIT;
+                //var unitdata = unitTb.SingleOrDefault(e => e.Code == code);
+                var data = setOfT.SingleOrDefault(e => ((ICodedEntity)e).Code == code);
+                return data;
             }
 
             throw new InvalidOperationException("This method can't be called on an entity without a Code property");

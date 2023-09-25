@@ -40,6 +40,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="sapnco">
       <HintPath>..\dll\sapnco.dll</HintPath>
     </Reference>
@@ -60,9 +63,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseRepository.cs" />
+    <Compile Include="Base\DataToken.cs" />
     <Compile Include="Base\IRepository.cs" />
     <Compile Include="ConfigUtilities.cs" />
     <Compile Include="HistoryRepository.cs" />
+    <Compile Include="LibSync\IMACHINE_SYNC_LOGRepository.cs" />
+    <Compile Include="LibSync\MACHINE_SYNC_LOGRepository.cs" />
+    <Compile Include="LibSync\StatusResponse.cs" />
+    <Compile Include="LibSync\SyncDataFunction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SAPRepository.cs" />
     <Compile Include="UtilitiesRepository.cs" />
@@ -87,6 +95,10 @@
     <ProjectReference Include="..\VMSCore.Extensions\VMSCore.Extensions.csproj">
       <Project>{3FEBFFB2-7575-4C2C-9141-7A2EA86C48D3}</Project>
       <Name>VMSCore.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VMSCore.Machine\VMSCore.Machine.csproj">
+      <Project>{4b8f2c55-1b96-4f62-9f0a-092a18e65d5b}</Project>
+      <Name>VMSCore.Machine</Name>
     </ProjectReference>
     <ProjectReference Include="..\VMSCore.Resources\VMSCore.Resources.csproj">
       <Project>{86CB4271-113B-440E-970B-CA14C3131D08}</Project>

@@ -21,7 +21,7 @@ namespace VMSCore.Demo.WindowsForms.SystemConfiguration
             dataGridView1.DataSource = _plantRepository.GetAllPlant();
             dataGridView2.DataSource = _plantSiteMappingRepository.GetPlantSiteMapping("");
         }
-        private readonly PlantRepository _plantRepository = new PlantRepository();
+        private readonly FactoryRepository _plantRepository = new FactoryRepository();
         private readonly PlantSiteMappingRepository _plantSiteMappingRepository = new PlantSiteMappingRepository();
         private readonly SiteRepository _siteRepository = new SiteRepository();
 

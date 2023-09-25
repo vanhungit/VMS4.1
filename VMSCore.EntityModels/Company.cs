@@ -14,9 +14,11 @@ namespace VMSCore.EntityModels
     
     public partial class Company
     {
-        public string Id { get; set; }
+        public System.Guid Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
+        public string URLSmall { get; set; }
+        public string URLLarge { get; set; }
         public string Description { get; set; }
         public string CreatorId { get; set; }
         public string LastModifierId { get; set; }

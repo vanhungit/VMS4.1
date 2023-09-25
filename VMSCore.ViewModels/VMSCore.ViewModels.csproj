@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="MasterData\DistrictSearchViewModel.cs" />
     <Compile Include="MasterData\DistrictViewModel.cs" />
+    <Compile Include="MasterData\EQUIP_PLANT_MAP.cs" />
     <Compile Include="MasterData\PromotionViewModel.cs" />
     <Compile Include="MasterData\ProvinceExcelViewModel.cs" />
     <Compile Include="MasterData\ProvinceSearchViewModel.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="MasterData\StoreViewModel.cs" />
     <Compile Include="MasterData\WardSearchViewModel.cs" />
     <Compile Include="MasterData\WardViewModel.cs" />
+    <Compile Include="SharedDirectoryManagement\BomProductView.cs" />
     <Compile Include="SharedDirectoryManagement\LineDropListViewModel.cs" />
     <Compile Include="SharedDirectoryManagement\LineListViewModel.cs" />
     <Compile Include="SharedDirectoryManagement\PlantViewModel.cs" />

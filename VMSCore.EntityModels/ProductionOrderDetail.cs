@@ -16,29 +16,24 @@ namespace VMSCore.EntityModels
     {
         public System.Guid Id { get; set; }
         public string Code { get; set; }
-        public System.Guid ProductionOrderId { get; set; }
-        public string CompanyId { get; set; }
-        public string ProductId { get; set; }
+        public Nullable<int> RefType { get; set; }
+        public string ProductionOrderCode { get; set; }
+        public string ProductCode { get; set; }
         public string ProductName { get; set; }
         public string LotNumber { get; set; }
         public string BatchNumber { get; set; }
-        public string LineId { get; set; }
-        public string NumberTemp { get; set; }
-        public string Unit { get; set; }
+        public Nullable<decimal> NumberTemp { get; set; }
+        public string UnitCode { get; set; }
         public Nullable<int> Quantity { get; set; }
         public string Note1 { get; set; }
         public string Note2 { get; set; }
         public string Note3 { get; set; }
+        public Nullable<long> Sorted { get; set; }
         public string LastModifierId { get; set; }
         public string CreatorId { get; set; }
-        public Nullable<bool> Active { get; set; }
-        public Nullable<System.DateTime> LogDate { get; set; }
         public Nullable<System.DateTime> CreationTime { get; set; }
         public Nullable<System.DateTime> LastModificationTime { get; set; }
-        public Nullable<int> InboundId { get; set; }
-        public Nullable<int> RefType { get; set; }
-        public string DepartmentId { get; set; }
-        public string StockId { get; set; }
-        public string ModelId { get; set; }
+        public Nullable<bool> Active { get; set; }
+        public Nullable<System.DateTime> LogDate { get; set; }
     }
 }

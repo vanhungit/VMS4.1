@@ -7,10 +7,15 @@ namespace VMSCore.API.EntityModels.Models
 {
     public partial class ObjectEntity
     {
-        public string ObjectId { get; set; }
-        public string ObjectName { get; set; }
-        public string ObjectNameEn { get; set; }
+        public System.Guid Id { get; set; }
+        public string Code { get; set; }
+        public string Name { get; set; }
+        public string NameEn { get; set; }
         public string Description { get; set; }
-        public bool Active { get; set; }
+        public string LastModifierId { get; set; }
+        public string CreatorId { get; set; }
+        public Nullable<System.DateTime> CreationTime { get; set; }
+        public Nullable<System.DateTime> LastModificationTime { get; set; }
+        public Nullable<bool> Active { get; set; }
     }
 }

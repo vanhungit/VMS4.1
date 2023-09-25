@@ -15,8 +15,10 @@ namespace VMSCore.EntityModels
     public partial class MaterialProduct
     {
         public System.Guid Id { get; set; }
-        public string ProductId { get; set; }
-        public string MaterialId { get; set; }
+        public string Code { get; set; }
+        public string ProductCode { get; set; }
+        public string MaterialCode { get; set; }
+        public string Description { get; set; }
         public string LastModifierId { get; set; }
         public string CreatorId { get; set; }
         public bool Active { get; set; }

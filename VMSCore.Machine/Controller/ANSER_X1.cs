@@ -8,6 +8,18 @@ namespace VMSCore.Machine.Controller
 {
     public class ANSER_X1
     {
+        public enum COMMAND_ANSER
+        {
+            GETCOUNTER = 48,//0x30
+            RESETCOUNTER = 140,//0x8C
+            StartPrint = 2,//0x02
+            StopPrint = 3,//0x03
+            ClearExecl = 4,//0x04
+            LoadCoDinh = 5,//0x05
+            SendDoc = 6,//0x06
+            SendPack = 7,//0x07
+            GetStatus = 8//0x08
+        }
         public enum STATUS_CONNECT
         {
             NeverConnected,

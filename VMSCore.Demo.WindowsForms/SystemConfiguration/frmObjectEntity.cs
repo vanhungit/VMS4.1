@@ -48,9 +48,9 @@ namespace VMSCore.Demo.WindowsForms.SystemConfiguration
                 var objectEntity = new ObjectEntity()
                 {
                     //ObjectId = Guid.NewGuid().ToString(),
-                    ObjectId = "ded25c0f-77c0-4925-8eb3-481b9602bac8",
-                    ObjectName = txtObjectName.Text,
-                    ObjectNameEn = txtObjectNameEn.Text,
+                    Code = "ded25c0f-77c0-4925-8eb3-481b9602bac8",
+                    Name = txtObjectName.Text,
+                    NameEn = txtObjectNameEn.Text,
                     Description = txtDescription.Text,
                     Active = cbActive.Checked
                 };
@@ -66,8 +66,8 @@ namespace VMSCore.Demo.WindowsForms.SystemConfiguration
             var objectEntity = _objectEntityRepository.GetByIdStr(txtObjectId.Text);
             if (objectEntity != null)
             {
-                objectEntity.ObjectName = txtObjectName.Text;
-                objectEntity.ObjectNameEn = txtObjectNameEn.Text;
+                objectEntity.Name = txtObjectName.Text;
+                objectEntity.NameEn = txtObjectNameEn.Text;
                 objectEntity.Description = txtDescription.Text;
                 objectEntity.Active = cbActive.Checked;
                 _objectEntityRepository.Update(objectEntity);
@@ -79,10 +79,10 @@ namespace VMSCore.Demo.WindowsForms.SystemConfiguration
         private void btnDelete_Click(object sender, EventArgs e)
         {
 
-            _objectEntityRepository.DeleteByCondition(x=>x.ObjectId==txtObjectId.Text);
-            _objectButtonMappingRepository.DeleteByCondition(x => x.ObjectId == txtObjectId.Text);
+            _objectEntityRepository.DeleteByCondition(x=>x.Code==txtObjectId.Text);
+            _objectButtonMappingRepository.DeleteByCondition(x => x.ObjectCode == txtObjectId.Text);
             _functionGroupModuleObjectMappingRepository.DeleteByCondition(x => x.ObjectId == txtObjectId.Text);
-            _roleObjectButtonMappingRepository.DeleteByCondition(x => x.ObjectId == txtObjectId.Text);
+            _roleObjectButtonMappingRepository.DeleteByCondition(x => x.ObjectCode == txtObjectId.Text);
             InitDataGrid();
             ClearData();
         }

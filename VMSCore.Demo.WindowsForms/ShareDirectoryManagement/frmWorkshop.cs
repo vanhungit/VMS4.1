@@ -16,7 +16,7 @@ namespace VMSCore.Demo.WindowsForms.ShareDirectoryManagement
             initialDropdowlist();
             initialGridViewData();
         }
-        private readonly PlantRepository _plantRepository = new PlantRepository();
+        private readonly FactoryRepository _plantRepository = new FactoryRepository();
         private readonly CompanyRepository _companyRepository = new CompanyRepository();
         private readonly WorkshopRepository _workshopRepository = new WorkshopRepository();
         private void dlSeachCompanyName_SelectedIndexChanged(object sender, EventArgs e)
@@ -93,16 +93,16 @@ namespace VMSCore.Demo.WindowsForms.ShareDirectoryManagement
         {
             var data = new WorkShop
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = Guid.NewGuid(),
                 Code = txtCode.Text,
                 Active = cbActive.Checked,
-                CompanyId = dlCompanyName.SelectedValue.ToString(),
+                CompanyCode = dlCompanyName.SelectedValue.ToString(),
                 CreationTime = DateTime.Now,
                 CreatorId = Guid.NewGuid().ToString(),
                 Name = txtWorkShopName.Text,
-                WorkShopNameEn = txtWorkShopNameEn.Text,
+                NameEn = txtWorkShopNameEn.Text,
                 Description = txtDescription.Text,
-                PlantId = dlPlanName.SelectedValue.ToString()
+                FactoryCode = dlPlanName.SelectedValue.ToString()
             };
             _workshopRepository.Add(data);
             initialGridViewData();
@@ -114,13 +114,13 @@ namespace VMSCore.Demo.WindowsForms.ShareDirectoryManagement
             var data = _workshopRepository.GetByIdStr(txtWorkShopId.Text);
             data.Code = txtCode.Text;
             data.Active = cbActive.Checked;
-            data.CompanyId = dlCompanyName.SelectedValue.ToString();
+            data.CompanyCode = dlCompanyName.SelectedValue.ToString();
             data.CreationTime = DateTime.Now;
             data.CreatorId = Guid.NewGuid().ToString();
             data.Name = txtWorkShopName.Text;
-            data.WorkShopNameEn = txtWorkShopNameEn.Text;
+            data.NameEn = txtWorkShopNameEn.Text;
             data.Description = txtDescription.Text;
-            data.PlantId = dlPlanName.SelectedValue.ToString();
+            data.FactoryCode = dlPlanName.SelectedValue.ToString();
             _workshopRepository.Update(data);
             initialGridViewData();
 

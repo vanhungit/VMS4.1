@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Runtime.Serialization.Json;
+using System.Text;
 using VMSCore.EntityModels;
 using VMSCore.EntityModels.Interfaces;
+
 
 namespace VMSCore.Infrastructure.Base.Repositories
 {
@@ -35,18 +40,108 @@ namespace VMSCore.Infrastructure.Base.Repositories
             
             return entity;
         }
+        public StatusResponse HamDongBoTable(string table, string Link, string jsonSend, DataToken objToken, Staff objuser)
+        {
+            StatusResponse objrp = new StatusResponse();
+            if (table != "")
+            {
+                string TimeStart = "", TimeEnd = "";
+                TimeStart = String.Format("{0:HH:mm:ss.000}", DateTime.Now);
+                SyncDataFunction objSync = new SyncDataFunction();
+                //string Data = objSync.CallAPIPOSTToken("https://api-vms41.vmspms.vn/connect/token", "desktopvmspms", "1q2W3E*");
+                //DataToken objToken = objSync.JSONParserMapToken(Data);
+                string ds = objSync.CallAPIPost(Link, objToken.access_token, jsonSend);
+                TimeEnd = String.Format("{0:HH:mm:ss.000}", DateTime.Now);
+                objrp = objSync.JSONParserResponse(ds);
+                MACHINE_SYNC_LOG objMachineLog = new MACHINE_SYNC_LOG();
+                objMachineLog.Id = Guid.NewGuid();
+                objMachineLog.Code = objMachineLog.Id.ToString();
+                objMachineLog.Name = table;
+                objMachineLog.MethodName = Link;
+                objMachineLog.TypeGiaoDich = "POST";
+                objMachineLog.TokenCode = objToken.access_token;
+                objMachineLog.JsonSend = jsonSend;
+                objMachineLog.JsonReceiv = ds;
+                objMachineLog.Status = objrp.idStatus.ToString();
+                objMachineLog.Sorted = new MACHINE_SYNC_LOGRepository().GetMaxMACHINE_SYNC_LOG() + 1;
+                objMachineLog.Description = objrp.jsonData + "|" + TimeStart + "|" + TimeEnd;
+                objMachineLog.UserName = objuser.Username;
+                objMachineLog.CreatedBy = objuser.Username;
+                objMachineLog.ModifiedBy = objuser.Username;
+                objMachineLog.CreatedDate = DateTime.Now;
+                objMachineLog.ModifiedDate = DateTime.Now;
+                objMachineLog.Active = true;
+                new MACHINE_SYNC_LOGRepository().Add(objMachineLog);
+
+            }
+            return objrp;
+        }
+        public T AddSyncToken(T entity, string TableName, string jsonSend, Staff objuser)
+        {
+            try
+            {
+                _context.Set<T>().Add(entity);
+                _context.SaveChanges();
+                new SyncDataFunction().DongBoAll(TableName, jsonSend, objuser);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return entity;
+        }
 
         public void DeleteRange(List<T> entities)
         {
             _context.Set<T>().RemoveRange(entities);
             _context.SaveChanges();
         }
+        public void DeleteRangeSyncToken(List<T> entities, string TableName, string jsonSend, Staff objuser)
+        {
+            try
+            {
+                _context.Set<T>().RemoveRange(entities);
+                _context.SaveChanges();
+                new SyncDataFunction().DongBoAllDelete(TableName, jsonSend, objuser);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public void AddRange(List<T> entities)
         {
             _context.Set<T>().AddRange(entities);
             _context.SaveChanges();
         }
-
+        public void AddRangeSyncToken(List<T> entities, string TableName, string jsonSend, Staff objuser)
+        {
+            try
+            {
+                _context.Set<T>().AddRange(entities);
+                _context.SaveChanges();
+                new SyncDataFunction().DongBoAll(TableName, jsonSend, objuser);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public string AddRangeReturn(List<T> entities)
+        {
+            string Trave = "1";
+            try
+            {
+                _context.Set<T>().AddRange(entities);
+                _context.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                Trave = ex.ToString();
+            }
+            return Trave;
+        }
         public T GetById(Guid id)
         {
             return _context.Set<T>().Find(id);
@@ -61,7 +156,7 @@ namespace VMSCore.Infrastructure.Base.Repositories
 
             throw new InvalidOperationException("This method can't be called on an entity without a Code property");
         }
-
+        
         public T GetByIdStr(string id)
         {
             return _context.Set<T>().Find(id);
@@ -93,7 +188,21 @@ namespace VMSCore.Infrastructure.Base.Repositories
             _context.SaveChanges();
             return entity;
         }
+        public T UpdateSyncToken(T entity, string TableName, string jsonSend, Staff objuser)
+        {
+            try
+            {
+                _context.Entry(entity).State = EntityState.Modified;
+                _context.SaveChanges();
+                new SyncDataFunction().DongBoAll(TableName, jsonSend, objuser);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
+            return entity;
+        }
         // Example: _repository.UpdateByCondition(x => x.Id == id, x => x.Name = "New Name");
 
         /*
@@ -119,7 +228,23 @@ namespace VMSCore.Infrastructure.Base.Repositories
             _context.Set<T>().Remove(entity);
             _context.SaveChanges();
         }
+        public string DeleteSyncToken(Func<T, bool> expression, string TableName, string jsonSend, Staff objuser)
+        {
 
+            try
+            {
+                var entities = _context.Set<T>().Where(expression);
+                _context.Set<T>().RemoveRange(entities);
+                _context.SaveChanges();
+                new SyncDataFunction().DongBoAllDelete(TableName, jsonSend, objuser);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return "1";
+        }
         // Example: _repository.DeleteByCondition(x => x.Id == id);
         public void DeleteByCondition(Func<T, bool> expression)
         {
@@ -174,5 +299,7 @@ namespace VMSCore.Infrastructure.Base.Repositories
         {
             _context.Dispose();
         }
+        
+       
     }
 }

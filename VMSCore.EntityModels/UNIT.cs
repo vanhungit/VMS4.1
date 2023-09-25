@@ -14,14 +14,16 @@ namespace VMSCore.EntityModels
     
     public partial class UNIT
     {
-        public string Unit_ID { get; set; }
-        public string Unit_Name { get; set; }
+        public System.Guid Id { get; set; }
+        public string Code { get; set; }
+        public string Name { get; set; }
         public Nullable<int> Sorted { get; set; }
         public string Description { get; set; }
-        public string CreateBy { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
-        public string ModifyBy { get; set; }
-        public Nullable<System.DateTime> ModifyDate { get; set; }
+        public string LastModifierId { get; set; }
+        public string CreatorId { get; set; }
         public Nullable<bool> Active { get; set; }
+        public Nullable<System.DateTime> LogDate { get; set; }
+        public Nullable<System.DateTime> CreationTime { get; set; }
+        public Nullable<System.DateTime> LastModicationTime { get; set; }
     }
 }

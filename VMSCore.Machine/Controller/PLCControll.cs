@@ -19,6 +19,16 @@ namespace VMSCore.Machine.Controller
             globalStatus = EventDrivenTCPClient.ConnectionStatus.NeverConnected;
             spconvert = new LibConvert();
         }
+        public enum COMMAND_PLC
+        {
+            StatusCAM = 103,//0x67
+            StatusAlarm = 104,//0x68
+            StatusOffCam = 105,//0x69
+            Status0ffInterLog = 106,//0x6A
+            CamHong = 107,//0x6B
+            Sensor2s = 108,//0x6C
+            ThungHong = 109//0x6D
+        }
         public enum STATUS_CONNECT
         {
             NeverConnected,

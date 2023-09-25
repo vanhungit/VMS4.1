@@ -13,12 +13,12 @@ namespace VMSCore.Infrastructure.Features.SystemConfiguration.Repositories.Imple
             var hasName = string.IsNullOrWhiteSpace(name);
             var buttons = (from p in _context.Button
                            orderby p.Name
-                           where hasName == true || p.Name.Contains(name) || p.ButtonNameEn.Contains(name)
+                           where hasName == true || p.Name.Contains(name) || p.NameEn.Contains(name)
                            select new ButtonViewModel()
                            {
                                ButtonId = p.Id,
                                ButtonName = p.Name,
-                               ButtonNameEn = p.ButtonNameEn,
+                               ButtonNameEn = p.NameEn,
                                Active = p.Active,
                                Description = p.Description
                            }).ToList();

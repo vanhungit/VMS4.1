@@ -14,10 +14,10 @@ namespace VMSCore.EntityModels
     
     public partial class ProtocolParam
     {
-        public string Id { get; set; }
+        public System.Guid Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
-        public string ProtocolId { get; set; }
+        public string ProtocolCode { get; set; }
         public string DataType { get; set; }
         public string Description { get; set; }
         public string LastModifierId { get; set; }

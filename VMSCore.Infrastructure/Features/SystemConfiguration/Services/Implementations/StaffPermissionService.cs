@@ -82,9 +82,9 @@ namespace VMSCore.Infrastructure.Features.SystemConfiguration.Services.Implement
                     while (myReader.Read())
                     {
                         var data = new RoleUserViewModel();
-                        data.RoleId = Convert.ToString(myReader["RoleId"]);
+                        data.RoleCode = Convert.ToString(myReader["RoleId"]);
                         data.RoleName = Convert.ToString(myReader["RoleName"]);
-                        data.IsRoleAssigned = Convert.ToBoolean(myReader["IsRoleAssigned"]);
+                        data.Active = Convert.ToBoolean(myReader["IsRoleAssigned"]);
                         roles.Add(data);
                     }
                     conn.Close();

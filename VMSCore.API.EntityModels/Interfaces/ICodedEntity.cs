@@ -8,6 +8,6 @@ namespace VMSCore.API.EntityModels.Interfaces
 {
     public interface ICodedEntity
     {
-        public string Code { get; set; }
+        public string? Code { get; set; }
     }
 }

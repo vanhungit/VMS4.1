@@ -8,8 +8,12 @@ namespace VMSCore.ViewModels.SystemConfiguration
 {
     public class RoleUserViewModel
     {
-        public string RoleId { get; set; }
+        public string Code { get; set; }
+        public string RoleCode { get; set; }
         public string RoleName { get; set; }
-        public bool IsRoleAssigned { get; set; }
+        public string UserCode { get; set; }
+        public string UserName { get; set; }
+        public string StaffName { get; set; }
+        public bool Active { get; set; }
     }
 }

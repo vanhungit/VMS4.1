@@ -65,6 +65,7 @@ namespace VMSCore.API.EntityModels.Models
         public virtual DbSet<BarcodeConfig> BarcodeConfig { get; set; }
         public virtual DbSet<Button> Button { get; set; }
         public virtual DbSet<Company> Company { get; set; }
+        public virtual DbSet<Factory> Factory { get; set; }
         public virtual DbSet<CompanyModuleMapping> CompanyModuleMapping { get; set; }
         public virtual DbSet<CompanyUserMapping> CompanyUserMapping { get; set; }
         public virtual DbSet<Contract> Contract { get; set; }
@@ -76,24 +77,23 @@ namespace VMSCore.API.EntityModels.Models
         public virtual DbSet<Device> Device { get; set; }
         public virtual DbSet<DeviceConnectHistory> DeviceConnectHistory { get; set; }
         public virtual DbSet<DeviceGroup> DeviceGroup { get; set; }
+        public virtual DbSet<Device_PROTOCOL> Device_PROTOCOL { get; set; }
         public virtual DbSet<DeviceSession> DeviceSession { get; set; }
         public virtual DbSet<DeviceSessionDetail> DeviceSessionDetail { get; set; }
         public virtual DbSet<DeviceSessionDetail_Weighing> DeviceSessionDetail_Weighing { get; set; }
         public virtual DbSet<DistrictModel> DistrictModel { get; set; }
-        public virtual DbSet<Equipment> Equipment { get; set; }
-        public virtual DbSet<EquipmentGroup> EquipmentGroup { get; set; }
+ 
         public virtual DbSet<ErrorConfig> ErrorConfig { get; set; }
-        public virtual DbSet<FinishedProduct> FinishedProduct { get; set; }
+        public virtual DbSet<StatusConfig> StatusConfig { get; set; }
+        public virtual DbSet<ConnectConfig> ConnectConfig { get; set; }
+        public virtual DbSet<WarningConfig> WarningConfig { get; set; }
         public virtual DbSet<FunctionGroupModuleObjectMapping> FunctionGroupModuleObjectMapping { get; set; }
         public virtual DbSet<Line> Line { get; set; }
         public virtual DbSet<LineAccountMapping> LineAccountMapping { get; set; }
         public virtual DbSet<LineDevice> LineDevice { get; set; }
         public virtual DbSet<LineEquipmentMapping> LineEquipmentMapping { get; set; }
         public virtual DbSet<LineUserMapping> LineUserMapping { get; set; }
-        public virtual DbSet<ManagementDevice> ManagementDevice { get; set; }
-        public virtual DbSet<ManagementDeviceParam> ManagementDeviceParam { get; set; }
-        public virtual DbSet<ManagementDeviceProtocol> ManagementDeviceProtocol { get; set; }
-        public virtual DbSet<Material> Material { get; set; }
+      
         public virtual DbSet<NotificationConfig> NotificationConfig { get; set; }
         public virtual DbSet<NotificationContact> NotificationContact { get; set; }
         public virtual DbSet<NotificationLine> NotificationLine { get; set; }
@@ -101,14 +101,19 @@ namespace VMSCore.API.EntityModels.Models
         public virtual DbSet<ObjectButtonMapping> ObjectButtonMapping { get; set; }
         public virtual DbSet<ObjectEntity> ObjectEntity { get; set; }
         public virtual DbSet<Permission> Permission { get; set; }
-        public virtual DbSet<Plant> Plant { get; set; }
         public virtual DbSet<PlantUserMapping> PlantUserMapping { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<ProductGroup> ProductGroup { get; set; }
         public virtual DbSet<ProductType> ProductType { get; set; }
         public virtual DbSet<ProductionOrder> ProductionOrder { get; set; }
+        public virtual DbSet<UNIT> UNIT { get; set; }
+        public virtual DbSet<UNITCONVERT> UNITCONVERT { get; set; }
+        public virtual DbSet<MaterialProduct> MaterialProduct { get; set; }
         public virtual DbSet<ProductionOrderDetail> ProductionOrderDetail { get; set; }
         public virtual DbSet<ProductionOrderDetailCode> ProductionOrderDetailCode { get; set; }
+        public virtual DbSet<ProductionOrderDetailMAP> ProductionOrderDetailMAP { get; set; }
+        public virtual DbSet<ProductionOrderDetailCheck> ProductionOrderDetailCheck { get; set; }
+        public virtual DbSet<ProductionOrderRawDetail> ProductionOrderRawDetail { get; set; }
         public virtual DbSet<Protocol> Protocol { get; set; }
         public virtual DbSet<ProtocolParam> ProtocolParam { get; set; }
         public virtual DbSet<ProvinceModel> ProvinceModel { get; set; }
@@ -121,8 +126,8 @@ namespace VMSCore.API.EntityModels.Models
         public virtual DbSet<Staff> Staff { get; set; }
         public virtual DbSet<StaffAccountMapping> StaffAccountMapping { get; set; }
         public virtual DbSet<StaffSkill> StaffSkill { get; set; }
+        public virtual DbSet<ShiftStaff> ShiftStaff { get; set; }
         public virtual DbSet<Stage> Stage { get; set; }
-        public virtual DbSet<SwitchingUnit> SwitchingUnit { get; set; }
         public virtual DbSet<TypeDevice> TypeDevice { get; set; }
         public virtual DbSet<UserGroup> UserGroup { get; set; }
         public virtual DbSet<WardModel> WardModel { get; set; }
@@ -212,20 +217,17 @@ namespace VMSCore.API.EntityModels.Models
                     .IsRequired()
                     .HasMaxLength(100);
 
-                entity.Property(e => e.ButtonNameEn).HasMaxLength(100);
+                entity.Property(e => e.NameEn).HasMaxLength(100);
             });
 
             modelBuilder.Entity<Company>(entity =>
             {
-                entity.Property(e => e.Id).HasMaxLength(50);
+                //entity.Property(e => e.Id).HasMaxLength(50);
 
                 entity.Property(e => e.Code)
                     .IsRequired()
                     .HasMaxLength(100);
 
-                entity.Property(e => e.CompanyCodeNameEn).HasMaxLength(100);
-
-                entity.Property(e => e.CompanyTax).HasMaxLength(100);
 
                 entity.Property(e => e.CreationTime).HasColumnType("datetime");
 
@@ -354,7 +356,7 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.Code).HasMaxLength(50);
 
-                entity.Property(e => e.CompanyId)
+                entity.Property(e => e.CompanyCode)
                     .IsRequired()
                     .HasMaxLength(50);
 
@@ -381,9 +383,9 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.LogDate).HasColumnType("datetime");
 
-                entity.Property(e => e.PositionId).HasMaxLength(50);
+                entity.Property(e => e.DepartmentCode).HasMaxLength(50);
 
-                entity.Property(e => e.StaffId).HasMaxLength(50);
+                entity.Property(e => e.StaffCode).HasMaxLength(50);
             });
 
             modelBuilder.Entity<Device>(entity =>
@@ -392,7 +394,7 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.Code).HasMaxLength(50);
 
-                entity.Property(e => e.CompanyId).HasMaxLength(50);
+                entity.Property(e => e.CompanyCode).HasMaxLength(50);
 
                 entity.Property(e => e.CreationTime).HasColumnType("datetime");
 
@@ -404,15 +406,14 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.LastModifierId).HasMaxLength(50);
 
-                entity.Property(e => e.LineId).HasMaxLength(50);
 
                 entity.Property(e => e.LogDate).HasColumnType("datetime");
 
                 entity.Property(e => e.Name).HasMaxLength(100);
 
-                entity.Property(e => e.TypeDriveId).HasMaxLength(100);
+                entity.Property(e => e.DeviceGroupCode).HasMaxLength(100);
 
-                entity.Property(e => e.UnitTypeDriveId).HasMaxLength(100);
+                entity.Property(e => e.TypeDeviceCode).HasMaxLength(100);
             });
 
             modelBuilder.Entity<DeviceConnectHistory>(entity =>
@@ -450,7 +451,7 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.Code).HasMaxLength(50);
 
-                entity.Property(e => e.CompanyId).HasMaxLength(50);
+                entity.Property(e => e.CompanyCode).HasMaxLength(50);
 
                 entity.Property(e => e.CreationTime).HasColumnType("datetime");
 
@@ -465,6 +466,25 @@ namespace VMSCore.API.EntityModels.Models
                 entity.Property(e => e.LogDate).HasColumnType("datetime");
 
                 entity.Property(e => e.Name).HasMaxLength(100);
+            });
+            modelBuilder.Entity<Device_PROTOCOL>(entity =>
+            {
+                entity.Property(e => e.Id).HasMaxLength(50);
+
+                entity.Property(e => e.Code).HasMaxLength(50);
+
+
+                entity.Property(e => e.CreationTime).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatorId).HasMaxLength(50);
+
+                entity.Property(e => e.Description).HasMaxLength(400);
+
+                entity.Property(e => e.LastModificationTime).HasColumnType("datetime");
+
+                entity.Property(e => e.LastModifierId).HasMaxLength(50);
+
+               
             });
 
             modelBuilder.Entity<DeviceSession>(entity =>
@@ -599,31 +619,9 @@ namespace VMSCore.API.EntityModels.Models
                     .HasConstraintName("FK_DistrictModel_ProvinceModel");
             });
 
-            modelBuilder.Entity<Equipment>(entity =>
-            {
-                entity.Property(e => e.EquipmentId).HasMaxLength(50);
+          
 
-                entity.Property(e => e.EquipmentGroupId)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.EquipmentName).HasMaxLength(100);
-
-                entity.Property(e => e.PlantId)
-                    .IsRequired()
-                    .HasMaxLength(50);
-            });
-
-            modelBuilder.Entity<EquipmentGroup>(entity =>
-            {
-                entity.Property(e => e.EquipmentGroupId).HasMaxLength(50);
-
-                entity.Property(e => e.CompanyCode)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.EquipmentGroupName).HasMaxLength(100);
-            });
+            
 
             modelBuilder.Entity<ErrorConfig>(entity =>
             {
@@ -639,7 +637,7 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.CreatorId).HasMaxLength(50);
 
-                entity.Property(e => e.LastModiferId).HasMaxLength(50);
+                entity.Property(e => e.LastModifierId).HasMaxLength(50);
 
                 entity.Property(e => e.LastModificationTime).HasColumnType("datetime");
 
@@ -647,33 +645,77 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.Name).HasMaxLength(200);
 
-                entity.Property(e => e.UnitTyeDriveId).HasMaxLength(50);
+                entity.Property(e => e.TypeDeviceCode).HasMaxLength(50);
             });
-
-            modelBuilder.Entity<FinishedProduct>(entity =>
+            modelBuilder.Entity<StatusConfig>(entity =>
             {
                 entity.Property(e => e.Id).HasMaxLength(50);
 
-                entity.Property(e => e.Code).HasMaxLength(200);
+                entity.Property(e => e.Code).HasMaxLength(50);
+
+                entity.Property(e => e.CodeBinary).HasMaxLength(4000);
+
+                entity.Property(e => e.CodeHex).HasMaxLength(4000);
 
                 entity.Property(e => e.CreationTime).HasColumnType("datetime");
 
                 entity.Property(e => e.CreatorId).HasMaxLength(50);
 
-                entity.Property(e => e.LastModificationTime).HasColumnType("datetime");
-
                 entity.Property(e => e.LastModifierId).HasMaxLength(50);
+
+                entity.Property(e => e.LastModificationTime).HasColumnType("datetime");
 
                 entity.Property(e => e.LogDate).HasColumnType("datetime");
 
                 entity.Property(e => e.Name).HasMaxLength(200);
 
-                entity.Property(e => e.Number).HasMaxLength(200);
-
-                entity.Property(e => e.Unit).HasMaxLength(200);
-
-                entity.Property(e => e.UnitType).HasMaxLength(200);
+                entity.Property(e => e.TypeDeviceCode).HasMaxLength(50);
             });
+            modelBuilder.Entity<ConnectConfig>(entity =>
+            {
+                entity.Property(e => e.Id).HasMaxLength(50);
+
+                entity.Property(e => e.Code).HasMaxLength(50);
+
+
+                entity.Property(e => e.CreationTime).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatorId).HasMaxLength(50);
+
+                entity.Property(e => e.LastModifierId).HasMaxLength(50);
+
+                entity.Property(e => e.LastModificationTime).HasColumnType("datetime");
+
+                entity.Property(e => e.LogDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Name).HasMaxLength(200);
+
+            });
+            modelBuilder.Entity<WarningConfig>(entity =>
+            {
+                entity.Property(e => e.Id).HasMaxLength(50);
+
+                entity.Property(e => e.Code).HasMaxLength(50);
+
+                entity.Property(e => e.CodeBinary).HasMaxLength(4000);
+
+                entity.Property(e => e.CodeHex).HasMaxLength(4000);
+
+                entity.Property(e => e.CreationTime).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatorId).HasMaxLength(50);
+
+                entity.Property(e => e.LastModifierId).HasMaxLength(50);
+
+                entity.Property(e => e.LastModificationTime).HasColumnType("datetime");
+
+                entity.Property(e => e.LogDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Name).HasMaxLength(200);
+
+                entity.Property(e => e.TypeDeviceCode).HasMaxLength(50);
+            });
+            
 
             modelBuilder.Entity<FunctionGroupModuleObjectMapping>(entity =>
             {
@@ -698,7 +740,7 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.Code).HasMaxLength(50);
 
-                entity.Property(e => e.CompanyId).HasMaxLength(50);
+                entity.Property(e => e.CompanyCode).HasMaxLength(50);
 
                 entity.Property(e => e.CreationTime).HasColumnType("datetime");
 
@@ -706,18 +748,17 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.LastModificationTime).HasColumnType("datetime");
 
-                entity.Property(e => e.LastModifierId).HasColumnType("datetime");
 
                 entity.Property(e => e.LogDate).HasColumnType("datetime");
 
                 entity.Property(e => e.Name).HasMaxLength(100);
 
-                entity.Property(e => e.PlantId)
+                entity.Property(e => e.FactoryCode)
                     .IsRequired()
                     .HasMaxLength(50)
                     .HasDefaultValueSql("('')");
 
-                entity.Property(e => e.WorkshopId)
+                entity.Property(e => e.WorkshopCode)
                     .IsRequired()
                     .HasMaxLength(50);
             });
@@ -743,19 +784,18 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.Description).HasMaxLength(4000);
 
-                entity.Property(e => e.DeviceId).HasMaxLength(50);
+                entity.Property(e => e.DeviceCode).HasMaxLength(50);
 
                 entity.Property(e => e.LastModificationTime).HasColumnType("datetime");
 
-                entity.Property(e => e.LastModifierId).HasColumnType("datetime");
 
-                entity.Property(e => e.LineId).HasMaxLength(50);
+                entity.Property(e => e.LineCode).HasMaxLength(50);
 
                 entity.Property(e => e.LogDate).HasColumnType("datetime");
 
-                entity.Property(e => e.StageId).HasMaxLength(50);
+                entity.Property(e => e.StageCode).HasMaxLength(50);
 
-                entity.Property(e => e.WorkshopId).HasMaxLength(50);
+                entity.Property(e => e.WorkshopCode).HasMaxLength(50);
             });
 
             modelBuilder.Entity<LineEquipmentMapping>(entity =>
@@ -778,99 +818,7 @@ namespace VMSCore.API.EntityModels.Models
                 entity.Property(e => e.ModuleId).HasMaxLength(50);
             });
 
-            modelBuilder.Entity<ManagementDevice>(entity =>
-            {
-                entity.Property(e => e.Id).HasMaxLength(50);
-
-                entity.Property(e => e.Code).HasMaxLength(50);
-
-                entity.Property(e => e.CompanyId).HasMaxLength(50);
-
-                entity.Property(e => e.CreationDate).HasColumnType("datetime");
-
-                entity.Property(e => e.CreatorId).HasMaxLength(50);
-
-                entity.Property(e => e.Description).HasMaxLength(4000);
-
-                entity.Property(e => e.LastModificationTime).HasColumnType("datetime");
-
-                entity.Property(e => e.LastModifierId).HasMaxLength(50);
-
-                entity.Property(e => e.LogDate).HasColumnType("datetime");
-
-                entity.Property(e => e.Name).HasMaxLength(4000);
-            });
-
-            modelBuilder.Entity<ManagementDeviceParam>(entity =>
-            {
-                entity.Property(e => e.Id).HasMaxLength(50);
-
-                entity.Property(e => e.CreationTime).HasColumnType("datetime");
-
-                entity.Property(e => e.CreatorId).HasMaxLength(50);
-
-                entity.Property(e => e.DataType).HasMaxLength(4000);
-
-                entity.Property(e => e.DriveManagerId).HasMaxLength(50);
-
-                entity.Property(e => e.LastModificationTime).HasColumnType("datetime");
-
-                entity.Property(e => e.LastModifierId).HasMaxLength(50);
-
-                entity.Property(e => e.LogDate).HasColumnType("datetime");
-
-                entity.Property(e => e.ProtocolId).HasMaxLength(50);
-
-                entity.Property(e => e.ValueData).HasMaxLength(4000);
-            });
-
-            modelBuilder.Entity<ManagementDeviceProtocol>(entity =>
-            {
-                entity.Property(e => e.Id).HasMaxLength(50);
-
-                entity.Property(e => e.CreationTime).HasColumnType("datetime");
-
-                entity.Property(e => e.CreatorId).HasMaxLength(50);
-
-                entity.Property(e => e.IdDriveManager).HasMaxLength(50);
-
-                entity.Property(e => e.IdProtocol).HasMaxLength(50);
-
-                entity.Property(e => e.LastModificationtime).HasColumnType("datetime");
-
-                entity.Property(e => e.LastModifierId).HasMaxLength(50);
-
-                entity.Property(e => e.LogDate).HasColumnType("datetime");
-            });
-
-            modelBuilder.Entity<Material>(entity =>
-            {
-                entity.Property(e => e.Id).HasMaxLength(50);
-
-                entity.Property(e => e.Code).HasMaxLength(200);
-
-                entity.Property(e => e.CreationTime).HasColumnType("datetime");
-
-                entity.Property(e => e.CreatorId).HasMaxLength(50);
-
-                entity.Property(e => e.LastModificationTime).HasColumnType("datetime");
-
-                entity.Property(e => e.LastModifierId).HasMaxLength(50);
-
-                entity.Property(e => e.LineId).HasMaxLength(50);
-
-                entity.Property(e => e.LogDate).HasColumnType("datetime");
-
-                entity.Property(e => e.Name).HasMaxLength(200);
-
-                entity.Property(e => e.Skupackaging)
-                    .HasMaxLength(200)
-                    .HasColumnName("SKUPackaging");
-
-                entity.Property(e => e.Unit).HasMaxLength(200);
-
-                entity.Property(e => e.UnitType).HasMaxLength(200);
-            });
+           
 
             modelBuilder.Entity<NotificationConfig>(entity =>
             {
@@ -973,16 +921,16 @@ namespace VMSCore.API.EntityModels.Models
 
             modelBuilder.Entity<ObjectEntity>(entity =>
             {
-                entity.HasKey(e => e.ObjectId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Object");
 
-                entity.Property(e => e.ObjectId).HasMaxLength(50);
+                entity.Property(e => e.Code).HasMaxLength(50);
 
-                entity.Property(e => e.ObjectName)
+                entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(100);
 
-                entity.Property(e => e.ObjectNameEn).HasMaxLength(100);
+                entity.Property(e => e.NameEn).HasMaxLength(100);
             });
 
             modelBuilder.Entity<Permission>(entity =>
@@ -1000,26 +948,7 @@ namespace VMSCore.API.EntityModels.Models
                 entity.Property(e => e.Name).HasMaxLength(200);
             });
 
-            modelBuilder.Entity<Plant>(entity =>
-            {
-                entity.Property(e => e.Id)
-                    .HasMaxLength(50)
-                    .HasDefaultValueSql("('00000000-0000-0000-0000-000000000000')");
-
-                entity.Property(e => e.CompanyId)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .HasDefaultValueSql("('0000-0000-0000-0000')");
-
-                entity.Property(e => e.Code)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .HasDefaultValueSql("('')");
-
-                entity.Property(e => e.Name).HasMaxLength(100);
-
-                entity.Property(e => e.NameEn).HasMaxLength(100);
-            });
+           
 
             modelBuilder.Entity<PlantUserMapping>(entity =>
             {
@@ -1038,33 +967,29 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.Code).HasMaxLength(100);
 
-                entity.Property(e => e.ConversionUnit).HasMaxLength(50);
 
                 entity.Property(e => e.CreationTime).HasColumnType("datetime");
 
                 entity.Property(e => e.CreatorId).HasMaxLength(50);
 
-                entity.Property(e => e.LastModificationId).HasMaxLength(50);
+                entity.Property(e => e.LastModifierId).HasMaxLength(50);
 
                 entity.Property(e => e.LastModificationTime).HasColumnType("datetime");
 
                 entity.Property(e => e.LogDate).HasColumnType("datetime");
 
-                entity.Property(e => e.ModelId).HasMaxLength(50);
 
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(100);
 
-                entity.Property(e => e.ProductGroupId).HasMaxLength(50);
+                entity.Property(e => e.ProductGroupCode).HasMaxLength(50);
 
-                entity.Property(e => e.ProductTypeId).HasMaxLength(50);
+                entity.Property(e => e.ProductTypeCode).HasMaxLength(50);
 
-                entity.Property(e => e.TypeId).HasMaxLength(50);
 
-                entity.Property(e => e.UnitId).HasMaxLength(50);
+                entity.Property(e => e.UnitCode).HasMaxLength(50);
 
-                entity.Property(e => e.UnitTypeId).HasMaxLength(50);
             });
 
             modelBuilder.Entity<ProductGroup>(entity =>
@@ -1086,6 +1011,35 @@ namespace VMSCore.API.EntityModels.Models
                 entity.Property(e => e.LogDate).HasColumnType("datetime");
 
                 entity.Property(e => e.Name).HasMaxLength(200);
+            });
+            modelBuilder.Entity<UNIT>(entity =>
+            {
+                entity.Property(e => e.Id).HasMaxLength(50);
+
+                entity.Property(e => e.Code).HasMaxLength(50);
+
+                entity.Property(e => e.CreationTime).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatorId).HasMaxLength(50);
+
+                entity.Property(e => e.Description).HasMaxLength(4000);
+
+                entity.Property(e => e.LastModicationTime).HasColumnType("datetime");
+
+                entity.Property(e => e.LastModifierId).HasMaxLength(50);
+
+
+                entity.Property(e => e.Name).HasMaxLength(200);
+            });
+            modelBuilder.Entity<UNITCONVERT>(entity =>
+            {
+                entity.Property(e => e.Id).HasMaxLength(50);
+
+                entity.Property(e => e.Code).HasMaxLength(50);
+
+                entity.Property(e => e.Description).HasMaxLength(4000);
+
+
             });
 
             modelBuilder.Entity<ProductType>(entity =>
@@ -1115,7 +1069,7 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.Code).HasMaxLength(50);
 
-                entity.Property(e => e.CompanyId).HasMaxLength(50);
+                entity.Property(e => e.CompanyCode).HasMaxLength(50);
 
                 entity.Property(e => e.CreationTime).HasColumnType("datetime");
 
@@ -1129,7 +1083,7 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.LastModificationTime).HasColumnType("datetime");
 
-                entity.Property(e => e.LineId).HasMaxLength(50);
+                entity.Property(e => e.LineCode).HasMaxLength(50);
 
                 entity.Property(e => e.LogDate).HasColumnType("datetime");
 
@@ -1141,11 +1095,10 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.OrderString).HasMaxLength(100);
 
-                entity.Property(e => e.ProductionOrderCode).HasMaxLength(50);
 
                 entity.Property(e => e.Reason).HasMaxLength(200);
 
-                entity.Property(e => e.StaffId).HasMaxLength(50);
+                entity.Property(e => e.StaffCode).HasMaxLength(50);
 
                 entity.Property(e => e.StockId).HasMaxLength(100);
 
@@ -1158,25 +1111,20 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.Code).HasMaxLength(50);
 
-                entity.Property(e => e.ComanyId).HasMaxLength(50);
 
                 entity.Property(e => e.CreationTime).HasColumnType("datetime");
 
                 entity.Property(e => e.CreatorId).HasMaxLength(50);
 
-                entity.Property(e => e.DepartmentId).HasMaxLength(50);
 
-                entity.Property(e => e.LastModificationtime).HasColumnType("datetime");
 
                 entity.Property(e => e.LastModifierId).HasMaxLength(50);
 
-                entity.Property(e => e.LineId).HasMaxLength(50);
 
                 entity.Property(e => e.LogDate).HasColumnType("datetime");
 
                 entity.Property(e => e.LotNumber).HasMaxLength(50);
 
-                entity.Property(e => e.ModelId).HasMaxLength(50);
 
                 entity.Property(e => e.Note1).HasMaxLength(4000);
 
@@ -1186,15 +1134,14 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.NumberTemp).HasMaxLength(50);
 
-                entity.Property(e => e.ProductId).HasMaxLength(50);
+                entity.Property(e => e.ProductCode).HasMaxLength(50);
 
                 entity.Property(e => e.ProductName).HasMaxLength(100);
 
-                entity.Property(e => e.ProductionOrderId).HasMaxLength(50);
+                entity.Property(e => e.ProductionOrderCode).HasMaxLength(50);
 
-                entity.Property(e => e.StockId).HasMaxLength(50);
 
-                entity.Property(e => e.Unit).HasMaxLength(50);
+                entity.Property(e => e.UnitCode).HasMaxLength(50);
             });
 
             modelBuilder.Entity<ProductionOrderDetailCode>(entity =>
@@ -1211,7 +1158,7 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.CreatorId).HasMaxLength(50);
 
-                entity.Property(e => e.IdLine).HasMaxLength(50);
+                entity.Property(e => e.LineCode).HasMaxLength(50);
 
                 entity.Property(e => e.LastModificationTime).HasColumnType("datetime");
 
@@ -1228,7 +1175,6 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.Code).HasMaxLength(50);
 
-                entity.Property(e => e.CompanyId).HasMaxLength(50);
 
                 entity.Property(e => e.CreationTime).HasColumnType("datetime");
 
@@ -1269,7 +1215,7 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.Name).HasMaxLength(100);
 
-                entity.Property(e => e.ProtocolId).HasMaxLength(50);
+                entity.Property(e => e.ProtocolCode).HasMaxLength(50);
             });
 
             modelBuilder.Entity<ProvinceModel>(entity =>
@@ -1293,7 +1239,7 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.Code).HasMaxLength(50);
 
-                entity.Property(e => e.CompanyId).HasMaxLength(50);
+                entity.Property(e => e.CompanyCode).HasMaxLength(50);
 
                 entity.Property(e => e.CreationTime).HasColumnType("datetime");
 
@@ -1312,22 +1258,22 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.LastModificationTime).HasColumnType("datetime");
 
-                entity.Property(e => e.PermissionId).HasMaxLength(50);
+                entity.Property(e => e.PermissionCode).HasMaxLength(50);
 
-                entity.Property(e => e.RoleId).HasMaxLength(50);
+                entity.Property(e => e.RoleCode).HasMaxLength(50);
 
                 entity.Property(e => e.UserName).HasMaxLength(200);
             });
 
             modelBuilder.Entity<RoleObjectButtonMapping>(entity =>
             {
-                entity.HasKey(e => new { e.ObjectId, e.ButtonId, e.RoleId });
+                //entity.HasKey(e => new { e.ObjectId, e.ButtonId, e.RoleId });
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.ObjectCode).HasMaxLength(50);
 
-                entity.Property(e => e.ObjectId).HasMaxLength(50);
+                entity.Property(e => e.ButtonCode).HasMaxLength(50);
 
-                entity.Property(e => e.ButtonId).HasMaxLength(50);
-
-                entity.Property(e => e.RoleId).HasMaxLength(50);
+                entity.Property(e => e.RoleCode).HasMaxLength(50);
             });
 
             modelBuilder.Entity<RoleUser>(entity =>
@@ -1338,9 +1284,9 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.LastModificationtime).HasColumnType("datetime");
 
-                entity.Property(e => e.RoleId).HasMaxLength(50);
+                entity.Property(e => e.RoleCode).HasMaxLength(50);
 
-                entity.Property(e => e.UserId).HasMaxLength(50);
+                entity.Property(e => e.UserCode).HasMaxLength(50);
 
                 entity.Property(e => e.UserName).HasMaxLength(200);
             });
@@ -1376,7 +1322,7 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.Code).HasMaxLength(50);
 
-                entity.Property(e => e.CompanyId).HasMaxLength(50);
+                entity.Property(e => e.CompanyCode).HasMaxLength(50);
 
                 entity.Property(e => e.CreationTime).HasColumnType("datetime");
 
@@ -1403,13 +1349,12 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.BirthDay).HasColumnType("datetime");
 
-                entity.Property(e => e.BranchId).HasMaxLength(50);
 
                 entity.Property(e => e.CityId).HasMaxLength(50);
 
                 entity.Property(e => e.Code).HasMaxLength(50);
 
-                entity.Property(e => e.CompanyId).HasMaxLength(50);
+                entity.Property(e => e.CompanyCode).HasMaxLength(50);
 
                 entity.Property(e => e.CountryId).HasMaxLength(50);
 
@@ -1417,7 +1362,6 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.CreatorId).HasMaxLength(50);
 
-                entity.Property(e => e.DepartmentId).HasMaxLength(50);
 
                 entity.Property(e => e.Description).HasMaxLength(4000);
 
@@ -1425,7 +1369,6 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.Email).HasMaxLength(100);
 
-                entity.Property(e => e.Employeetype).HasMaxLength(50);
 
                 entity.Property(e => e.Fax).HasMaxLength(100);
 
@@ -1433,7 +1376,6 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.FullName).HasMaxLength(100);
 
-                entity.Property(e => e.JobTitle).HasMaxLength(50);
 
                 entity.Property(e => e.KeyActiveEmail).HasMaxLength(100);
 
@@ -1455,23 +1397,10 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.Password).HasMaxLength(200);
 
-                entity.Property(e => e.PersonalTaxId).HasMaxLength(200);
 
                 entity.Property(e => e.Phone).HasMaxLength(100);
 
-                entity.Property(e => e.PositionTitle).HasMaxLength(50);
-
-                entity.Property(e => e.Sex).HasColumnName("sex");
-
-                entity.Property(e => e.TeamId).HasMaxLength(50);
-
-                entity.Property(e => e.Tel1)
-                    .HasMaxLength(50)
-                    .HasColumnName("Tel_1");
-
-                entity.Property(e => e.Tel2)
-                    .HasMaxLength(50)
-                    .HasColumnName("Tel_2");
+               
 
                 entity.Property(e => e.Username).HasMaxLength(100);
             });
@@ -1499,9 +1428,9 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.LogDate).HasColumnType("datetime");
 
-                entity.Property(e => e.SkillId).HasMaxLength(50);
+                entity.Property(e => e.SkillCode).HasMaxLength(50);
 
-                entity.Property(e => e.StaffId).HasMaxLength(50);
+                entity.Property(e => e.StaffCode).HasMaxLength(50);
             });
 
             modelBuilder.Entity<Stage>(entity =>
@@ -1510,7 +1439,7 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.Code).HasMaxLength(100);
 
-                entity.Property(e => e.CompanyId)
+                entity.Property(e => e.CompanyCode)
                     .IsRequired()
                     .HasMaxLength(50);
 
@@ -1524,33 +1453,10 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.Name).HasMaxLength(100);
 
-                entity.Property(e => e.StageNameEn).HasMaxLength(100);
+                entity.Property(e => e.NameEn).HasMaxLength(100);
             });
 
-            modelBuilder.Entity<SwitchingUnit>(entity =>
-            {
-                entity.Property(e => e.Id).HasMaxLength(50);
-
-                entity.Property(e => e.Code).HasMaxLength(50);
-
-                entity.Property(e => e.CreationTime).HasColumnType("datetime");
-
-                entity.Property(e => e.CreatorId).HasMaxLength(50);
-
-                entity.Property(e => e.Description).HasMaxLength(4000);
-
-                entity.Property(e => e.LastModificationTime).HasColumnType("datetime");
-
-                entity.Property(e => e.LastModifierId).HasMaxLength(50);
-
-                entity.Property(e => e.LogDate).HasColumnType("datetime");
-
-                entity.Property(e => e.Name).HasMaxLength(200);
-
-                entity.Property(e => e.UnitId).HasMaxLength(50);
-
-                entity.Property(e => e.UnitParentId).HasMaxLength(50);
-            });
+           
 
             modelBuilder.Entity<TypeDevice>(entity =>
             {
@@ -1558,7 +1464,7 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.Code).HasMaxLength(50);
 
-                entity.Property(e => e.CompanyId).HasMaxLength(50);
+                entity.Property(e => e.CompanyCode).HasMaxLength(50);
 
                 entity.Property(e => e.CreationTime).HasColumnType("datetime");
 
@@ -1606,7 +1512,7 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.Code).HasMaxLength(50);
 
-                entity.Property(e => e.CompanyId)
+                entity.Property(e => e.CompanyCode)
                     .IsRequired()
                     .HasMaxLength(50);
 
@@ -1622,12 +1528,12 @@ namespace VMSCore.API.EntityModels.Models
 
                 entity.Property(e => e.Name).HasMaxLength(100);
 
-                entity.Property(e => e.PlantId)
+                entity.Property(e => e.FactoryCode)
                     .IsRequired()
                     .HasMaxLength(50)
                     .HasDefaultValueSql("('')");
 
-                entity.Property(e => e.WorkShopNameEn).HasMaxLength(100);
+                entity.Property(e => e.NameEn).HasMaxLength(100);
             });
 
             modelBuilder.Entity<WorkshopUserMapping>(entity =>

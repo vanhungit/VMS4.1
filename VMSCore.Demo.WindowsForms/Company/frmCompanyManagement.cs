@@ -50,7 +50,7 @@ namespace VMSCore.Demo.WindowsForms.CompanyManagement
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var addNewModel = new Company();
-            addNewModel.Id = Guid.NewGuid().ToString();
+            addNewModel.Id = Guid.NewGuid();
             addNewModel.Code = txtCode.Text;
             addNewModel.Name = txtName.Text;
             addNewModel.CompanyTax = txtCompanyTax.Text;

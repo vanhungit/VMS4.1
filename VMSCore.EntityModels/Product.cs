@@ -14,21 +14,17 @@ namespace VMSCore.EntityModels
     
     public partial class Product
     {
-        public string Id { get; set; }
+        public System.Guid Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
-        public string ProductGroupId { get; set; }
-        public string ProductTypeId { get; set; }
-        public string UnitId { get; set; }
-        public string ConversionUnitId { get; set; }
+        public string ProductGroupCode { get; set; }
+        public string ProductTypeCode { get; set; }
+        public string UnitCode { get; set; }
         public string LastModifierId { get; set; }
         public string CreatorId { get; set; }
         public Nullable<System.DateTime> LogDate { get; set; }
         public Nullable<System.DateTime> CreationTime { get; set; }
         public Nullable<System.DateTime> LastModificationTime { get; set; }
-        public string ModelId { get; set; }
         public bool Active { get; set; }
-        public string TypeId { get; set; }
-        public string UnitTypeId { get; set; }
     }
 }

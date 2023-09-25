@@ -8,9 +8,9 @@ namespace VMSCore.ViewModels.SystemConfiguration
 {
     public class RoleObjectButtonMappingViewModel
     {
-        public string ObjectId { get; set; }
-        public string ButtonId { get; set; }
-        public string RoleId { get; set; }
+        public string ObjectCode { get; set; }
+        public string ButtonCode { get; set; }
+        public string RoleCode { get; set; }
         public string ObjectName { get; set; }
         public string ButtonName { get; set; }
         public bool InUse { get; set; }

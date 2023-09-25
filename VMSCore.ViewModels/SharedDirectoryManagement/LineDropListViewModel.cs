@@ -1,8 +1,10 @@
-﻿namespace VMSCore.ViewModels.SharedDirectoryManagement
+﻿using System;
+
+namespace VMSCore.ViewModels.SharedDirectoryManagement
 {
     public class LineDropListViewModel
     {
-        public string LineId { get; set; }
+        public Guid LineId { get; set; }
         public string LineName { get; set; }
         public string LineCode { get; set; }
         public string dropdownListText

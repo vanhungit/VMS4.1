@@ -137,8 +137,8 @@ namespace VMSCore.Demo.WindowsForms
 
         private void btnProductOther_Click(object sender, EventArgs e)
         {
-            var frm = new frmProductOther();
-            frm.Show();
+            //var frm = new frmProductOther();
+            //frm.Show();
         }
 
         private void btnChangePassword_Click(object sender, EventArgs e)
@@ -168,7 +168,8 @@ namespace VMSCore.Demo.WindowsForms
         private void button7_Click(object sender, EventArgs e)
         {
             RepositoryLibrary repositoryLibrary = new RepositoryLibrary();
-            MessageBox.Show(repositoryLibrary.Hash("1q2w3E*"));
+            string Chuoi = repositoryLibrary.EncryptString("123A@", "vms4.1");
+            MessageBox.Show(repositoryLibrary.EncryptString("123A@", "vms4.1"));
         }
     }
 }

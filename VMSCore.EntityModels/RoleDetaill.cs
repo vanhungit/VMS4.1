@@ -14,11 +14,13 @@ namespace VMSCore.EntityModels
     
     public partial class RoleDetaill
     {
-        public string Id { get; set; }
-        public string RoleId { get; set; }
-        public string PermissionId { get; set; }
+        public System.Guid Id { get; set; }
+        public string Code { get; set; }
+        public string RoleCode { get; set; }
+        public string PermissionCode { get; set; }
         public string UserName { get; set; }
         public Nullable<System.DateTime> CreationTime { get; set; }
         public Nullable<System.DateTime> LastModificationTime { get; set; }
+        public Nullable<bool> Active { get; set; }
     }
 }

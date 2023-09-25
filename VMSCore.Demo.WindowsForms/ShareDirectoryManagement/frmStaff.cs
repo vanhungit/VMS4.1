@@ -35,14 +35,13 @@ namespace VMSCore.Demo.WindowsForms.ShareDirectoryManagement
         {
             var data = new Staff()
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = Guid.NewGuid(),
                 Code = "S001",
                 Name = "John Doe",
                 Email = "johndoe@example.com",
                 Username = "johndoe",
                 Phone = "1234567890",
                 Address = "123 Main St",
-                CompanyId = "25633629-5675-4574-8492-5072a2a7e7e4",
                 Password = RepositoryLibrary.GetMd5Sum("testing"),
                 KeyPassword = "key123",
                 KeyActiveEmail = "keyemail123",
@@ -65,16 +64,11 @@ namespace VMSCore.Demo.WindowsForms.ShareDirectoryManagement
                 Fax = "1234567890",
                 BirthDay = new DateTime(1990, 5, 10),
                 Married = false,
-                PositionTitle = "Manager",
-                JobTitle = "Software Engineer",
-                BranchId = "B001",
-                DepartmentId = "D001",
-                TeamId = "T001",
-                PersonalTaxId = "TAX001",
+                Gender = "B001",
                 CityId = "CTY001",
                 DistrictId = "DST001",
                 ManagerId = "M001",
-                Employeetype = "Full-Time"
+                CompanyCode = "Full-Time"
             };
             _staffRepository.Add(data);
         }
@@ -83,14 +77,13 @@ namespace VMSCore.Demo.WindowsForms.ShareDirectoryManagement
         {
             var data = new Staff()
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = Guid.NewGuid(),
                 Code = "S002",
                 Name = "Jane Smith",
                 Email = "janesmith@example.com",
                 Username = "janesmith",
                 Phone = "0987654321",
                 Address = "456 Elm St",
-                CompanyId = "25633629-5675-4574-8492-5072a2a7e7e4",
                 Password = RepositoryLibrary.GetMd5Sum("testing"),
                 KeyPassword = "key456",
                 KeyActiveEmail = "keyemail456",
@@ -112,17 +105,12 @@ namespace VMSCore.Demo.WindowsForms.ShareDirectoryManagement
                 Mobile = "8765432109",
                 Fax = "0987654321",
                 BirthDay = new DateTime(1988, 8, 15),
-                Married = true,
-                PositionTitle = "Supervisor",
-                JobTitle = "Sales Representative",
-                BranchId = "B002",
-                DepartmentId = "D001",
-                TeamId = "T002",
-                PersonalTaxId = "TAX002",
+                Married = true,                
+                Gender = "B002",              
                 CityId = "CTY002",
                 DistrictId = "DST002",
                 ManagerId = "M001",
-                Employeetype = "Full-Time"
+                CompanyCode = "Full-Time"
             };
             _staffRepository.Add(data);
         }
@@ -131,14 +119,13 @@ namespace VMSCore.Demo.WindowsForms.ShareDirectoryManagement
         {
             var data = new Staff()
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = Guid.NewGuid(),
                 Code = "S003",
                 Name = "Emily Johnson",
                 Email = "emilyjohnson@example.com",
                 Username = "emilyjohnson",
                 Phone = "9876543210",
                 Address = "789 Oak St",
-                CompanyId = "25633629-5675-4574-8492-5072a2a7e7e4",
                 Password = RepositoryLibrary.GetMd5Sum("testing"),
                 KeyPassword = "key789",
                 KeyActiveEmail = "keyemail789",
@@ -160,17 +147,12 @@ namespace VMSCore.Demo.WindowsForms.ShareDirectoryManagement
                 Mobile = "8765432109",
                 Fax = "0987654321",
                 BirthDay = new DateTime(1995, 3, 20),
-                Married = false,
-                PositionTitle = "Engineer",
-                JobTitle = "Software Developer",
-                BranchId = "B002",
-                DepartmentId = "D002",
-                TeamId = "T003",
-                PersonalTaxId = "TAX003",
+                Married = false,             
+                Gender = "B002",              
                 CityId = "CTY002",
                 DistrictId = "DST002",
                 ManagerId = "M002",
-                Employeetype = "Full-Time"
+                CompanyCode = "Full-Time"
             };
             _staffRepository.Add(data);
         }

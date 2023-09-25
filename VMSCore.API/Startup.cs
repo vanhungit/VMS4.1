@@ -70,6 +70,8 @@ namespace VMSCore.API
             //services.AddHangfire(x => x.UseSqlServerStorage("DefaultConnection"));
             //services.AddHangfireServer();
             services.AddTransient<IDummyEmailService, DummyEmailService>();
+
+
         }
         //public void Configure(IApplicationBuilder app, IBackgroundJobClient backgroundJobs, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
         //{
@@ -89,18 +91,18 @@ namespace VMSCore.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())//tắt khi publish
+            //if (env.IsDevelopment())//tắt khi publish
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "VMSCore.API v1"));
             }
 
-            app.UseHttpsRedirection();//tắt nếu môi trường cần xác thực https
+            //app.UseHttpsRedirection();//tắt nếu môi trường cần xác thực https
 
             app.UseRouting();
 
-            app.UseAuthentication();
+            //app.UseAuthentication();//tắt xác thực
             app.UseAuthorization();
 
 

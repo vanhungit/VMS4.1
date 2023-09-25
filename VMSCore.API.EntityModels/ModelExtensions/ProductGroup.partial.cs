@@ -7,7 +7,7 @@ using VMSCore.API.EntityModels.Interfaces;
 
 namespace VMSCore.API.EntityModels.Models
 {
-    public partial class ProductGroup : ICodedEntity, IEntity
+    public partial class ProductGroup : ICodedEntity, IEntityGuid
     {
     }
 }

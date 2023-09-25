@@ -1,4 +1,6 @@
-﻿namespace VMSCore.ViewModels.SharedDirectoryManagement
+﻿using System;
+
+namespace VMSCore.ViewModels.SharedDirectoryManagement
 {
     public class PlantViewModel
     {
@@ -15,6 +17,6 @@
             get { return string.Concat(CompanyName, " - ", CompanyTax); }
         }
         public string PlantCode { get; set; }
-        public string PlantId { get; set; }
+        public Guid PlantId { get; set; }
     }
 }

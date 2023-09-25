@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using VMSCore.EntityModels;
 using VMSCore.Infrastructure.Base.Repositories;
@@ -11,28 +12,70 @@ namespace VMSCore.Infrastructure.Features.SystemConfiguration.Repositories.Imple
         public bool IsExistingRoleObjectButtonMapping(RoleObjectButtonMapping newEntity)
         {
             var entity = _context.RoleObjectButtonMapping.FirstOrDefault(x =>
-              x.ObjectId == newEntity.ObjectId && x.ButtonId == newEntity.ButtonId && x.RoleId == newEntity.RoleId);
+              x.ObjectCode == newEntity.ObjectCode && x.ButtonCode == newEntity.ButtonCode && x.RoleCode == newEntity.RoleCode);
             return (entity != null);
+        }
+        public string DeleteRoleObjectButtonMappingByID(string Role)
+        {
+            string obj = "";
+            try
+            {
+                var entry = _context.RoleObjectButtonMapping.Where(i => i.RoleCode == Role && i.Active == true).FirstOrDefault();
+                if (entry != null)
+                {
+                    _context.RoleObjectButtonMapping.Remove(entry);
+                    _context.SaveChanges();
+                    obj = entry.Code;
+                    return obj;
+                }
+                else
+                {
+                    return obj;
+                }
+            }
+            catch (Exception ex)
+            {
+                return obj;
+            }
         }
         public List<RoleObjectButtonMappingViewModel> GetRoleObjectButtonMappingByRole(string roleId)
         {
             var result = (from c in _context.ObjectButtonMapping
-                          join o in _context.ObjectEntity on c.ObjectId equals o.ObjectId
-                          join b in _context.Button on c.ButtonId equals b.Id
-                          join ro in _context.RoleObjectButtonMapping on new { c.ButtonId, c.ObjectId, RoleId = roleId} equals new { ro.ButtonId, ro.ObjectId,ro.RoleId } into rot
+                          join o in _context.ObjectEntity on c.ObjectCode equals o.Code
+                          join b in _context.Button on c.ButtonCode equals b.Code
+                          join ro in _context.RoleObjectButtonMapping on new { c.ButtonCode, c.ObjectCode, RoleCode = roleId } equals new { ro.ButtonCode, ro.ObjectCode, ro.RoleCode } into rot
                           from rob in rot.DefaultIfEmpty()
-                          orderby o.ObjectName descending,b.Name
+                          //orderby o.ObjectName descending, b.Name
                           select new RoleObjectButtonMappingViewModel()
                           {
-                              ButtonId = b.Id,
+                              ButtonCode = b.Code,
                               ButtonName = b.Name,
-                              ObjectId = o.ObjectId,
-                              ObjectName = o.ObjectName,
-                              RoleId = rob.RoleId,
-                              InUse = rob != null && rob.RoleId.Equals(roleId) ? true : false
-                          }).ToList() ;
+                              ObjectCode = o.Code,
+                              ObjectName = o.Name,
+                              RoleCode = rob.RoleCode,
+                              InUse = rob != null && rob.RoleCode.Equals(roleId) ? true : false
+                          }).ToList();
             return result.Any() ? result : new List<RoleObjectButtonMappingViewModel>();
         }
-
+        public List<RoleObjectButtonMappingViewModel> GetRoleObjectButtonMappingByRoleActive(string roleId)
+        {
+            var result = (from c in _context.ObjectButtonMapping
+                          join o in _context.ObjectEntity on c.ObjectCode equals o.Code
+                          join b in _context.Button on c.ButtonCode equals b.Code
+                          join ro in _context.RoleObjectButtonMapping on new { c.ButtonCode, c.ObjectCode, RoleCode = roleId } equals new { ro.ButtonCode, ro.ObjectCode, ro.RoleCode } into rot
+                          from rob in rot.DefaultIfEmpty()
+                          group new { o.Name, rob } by new { rob.ObjectCode, rob.RoleCode, o.Name } into grouped
+                          //orderby o.Name descending, b.Name
+                          select new RoleObjectButtonMappingViewModel()
+                          {
+                              //ButtonCode = b.Code,
+                              //ButtonName = b.Name,
+                              ObjectCode = grouped.Key.ObjectCode,
+                              ObjectName = grouped.Key.Name,
+                              RoleCode = grouped.Key.RoleCode,
+                              InUse = grouped.Key.ObjectCode != null && grouped.Key.RoleCode.Equals(roleId) ? true : false
+                          }).ToList();
+            return result.Any() ? result : new List<RoleObjectButtonMappingViewModel>();
+        }
     }
 }

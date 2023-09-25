@@ -6,7 +6,7 @@ namespace VMSCore.Infrastructure.Features.SystemConfiguration.Repositories.Inter
 {
     public interface IObjectButtonMappingRepository
     {
-        List<ObjectButtonMappingViewModel> GetButton(string objectId);
+        //List<ObjectButtonMappingViewModel> GetButton(string objectId);
         List<ObjectButtonMapping> GetButtonByObjectEnity(string objectId);
     }
 }

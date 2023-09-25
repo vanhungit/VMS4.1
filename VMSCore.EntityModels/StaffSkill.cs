@@ -14,9 +14,10 @@ namespace VMSCore.EntityModels
     
     public partial class StaffSkill
     {
-        public string Id { get; set; }
-        public string StaffId { get; set; }
-        public string SkillId { get; set; }
+        public System.Guid Id { get; set; }
+        public string Code { get; set; }
+        public string StaffCode { get; set; }
+        public string SkillCode { get; set; }
         public string CreatorId { get; set; }
         public string LastModifierId { get; set; }
         public Nullable<bool> Active { get; set; }

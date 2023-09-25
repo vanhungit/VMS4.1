@@ -7,14 +7,13 @@ namespace VMSCore.API.EntityModels.Models
 {
     public partial class Staff
     {
-        public string Id { get; set; }
+        public System.Guid Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Username { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
-        public string CompanyId { get; set; }
         public string Password { get; set; }
         public string KeyPassword { get; set; }
         public string KeyActiveEmail { get; set; }
@@ -22,30 +21,25 @@ namespace VMSCore.API.EntityModels.Models
         public string CreatorId { get; set; }
         public string LastModifierId { get; set; }
         public bool Active { get; set; }
-        public DateTime? LogDate { get; set; }
-        public DateTime? CreationTime { get; set; }
-        public DateTime? LastModificationTime { get; set; }
+        public Nullable<System.DateTime> LogDate { get; set; }
+        public Nullable<System.DateTime> CreationTime { get; set; }
+        public Nullable<System.DateTime> LastModificationTime { get; set; }
         public string FristName { get; set; }
         public string LastName { get; set; }
         public string FullName { get; set; }
         public string Alias { get; set; }
-        public bool? Sex { get; set; }
+        public Nullable<bool> sex { get; set; }
         public string CountryId { get; set; }
-        public string Tel1 { get; set; }
-        public string Tel2 { get; set; }
+        public string Tel_1 { get; set; }
+        public string Tel_2 { get; set; }
         public string Mobile { get; set; }
         public string Fax { get; set; }
-        public DateTime? BirthDay { get; set; }
-        public bool? Married { get; set; }
-        public string PositionTitle { get; set; }
-        public string JobTitle { get; set; }
-        public string BranchId { get; set; }
-        public string DepartmentId { get; set; }
-        public string TeamId { get; set; }
-        public string PersonalTaxId { get; set; }
+        public Nullable<System.DateTime> BirthDay { get; set; }
+        public Nullable<bool> Married { get; set; }
+        public string Gender { get; set; }
         public string CityId { get; set; }
         public string DistrictId { get; set; }
         public string ManagerId { get; set; }
-        public string Employeetype { get; set; }
+        public string CompanyCode { get; set; }
     }
 }

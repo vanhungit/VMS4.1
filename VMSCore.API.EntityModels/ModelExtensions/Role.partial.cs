@@ -7,7 +7,7 @@ using VMSCore.API.EntityModels.Interfaces;
 
 namespace VMSCore.API.EntityModels.Models
 {
-    public partial class Role : ICodedEntity, IEntity
+    public partial class Role : ICodedEntity, IEntityGuid
     {
     }
 }

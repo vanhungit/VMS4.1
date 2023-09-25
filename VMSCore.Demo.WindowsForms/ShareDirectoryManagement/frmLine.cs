@@ -9,7 +9,7 @@ namespace VMSCore.Demo.WindowsForms.ShareDirectoryManagement
 {
     public partial class frmLine : Form
     {
-        private readonly PlantRepository _plantRepository = new PlantRepository();
+        private readonly FactoryRepository _plantRepository = new FactoryRepository();
         private readonly CompanyRepository _companyRepository = new CompanyRepository();
         private readonly WorkshopRepository _workshopRepository = new WorkshopRepository();
         private readonly LineRepository _lineRepository = new LineRepository();
@@ -48,14 +48,14 @@ namespace VMSCore.Demo.WindowsForms.ShareDirectoryManagement
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var data = new Line();
-            data.Id = Guid.NewGuid().ToString();
+            data.Id = Guid.NewGuid();
             data.Code = txtLineCode.Text;
             data.Name = txtLineName.Text;
             data.Description = TxtDescription.Text;
             data.Active = cbActvie.Checked;
-            data.CompanyId = dlCompanyId.SelectedValue.ToString();
-            data.PlantId = dlPlantId.SelectedValue.ToString();
-            data.WorkshopId = dlWorkShopId.SelectedValue.ToString();
+            data.CompanyCode = dlCompanyId.SelectedValue.ToString();
+            data.FactoryCode = dlPlantId.SelectedValue.ToString();
+            data.WorkshopCode = dlWorkShopId.SelectedValue.ToString();
             _lineRepository.Add(data);
             clearfield();
             displayGridView();
@@ -68,9 +68,9 @@ namespace VMSCore.Demo.WindowsForms.ShareDirectoryManagement
             data.Name = txtLineName.Text;
             data.Description = TxtDescription.Text;
             data.Active = cbActvie.Checked;
-            data.CompanyId = dlCompanyId.SelectedValue.ToString();
-            data.PlantId = dlPlantId.SelectedValue.ToString();
-            data.WorkshopId = dlWorkShopId.SelectedValue.ToString();
+            data.CompanyCode = dlCompanyId.SelectedValue.ToString();
+            data.FactoryCode = dlPlantId.SelectedValue.ToString();
+            data.WorkshopCode = dlWorkShopId.SelectedValue.ToString();
             _lineRepository.Update(data);
             displayGridView();
         }

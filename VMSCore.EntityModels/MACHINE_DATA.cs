@@ -16,14 +16,19 @@ namespace VMSCore.EntityModels
     {
         public System.Guid Id { get; set; }
         public string Code { get; set; }
-        public Nullable<System.Guid> TypeDevice { get; set; }
-        public Nullable<System.Guid> GroupDevice { get; set; }
-        public Nullable<System.Guid> KeyCompany { get; set; }
+        public string TypeDevice { get; set; }
+        public string GroupDevice { get; set; }
+        public string KeyCompany { get; set; }
+        public string DeviceCode { get; set; }
         public string IDName { get; set; }
         public string ProductOrder { get; set; }
         public string ProductID { get; set; }
         public string LineProcess { get; set; }
         public string Data { get; set; }
+        public Nullable<decimal> UnderData { get; set; }
+        public Nullable<decimal> OverData { get; set; }
+        public Nullable<decimal> ReferData { get; set; }
+        public string StatusWT { get; set; }
         public Nullable<decimal> Quantity { get; set; }
         public string QuantityHex { get; set; }
         public string BinaryHex { get; set; }

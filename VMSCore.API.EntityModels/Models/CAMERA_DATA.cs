@@ -17,9 +17,10 @@ namespace VMSCore.API.EntityModels.Models
     {
         public System.Guid Id { get; set; }
         public string Code { get; set; }
-        public Nullable<int> TypeDevice { get; set; }
+        public string TypeDevice { get; set; }
         public Nullable<int> RefType { get; set; }
-        public Nullable<System.Guid> KeyCompany { get; set; }
+        public string KeyCompany { get; set; }
+        public string DeviceCode { get; set; }
         public string IDName { get; set; }
         public string ProductOrder { get; set; }
         public string ProductID { get; set; }

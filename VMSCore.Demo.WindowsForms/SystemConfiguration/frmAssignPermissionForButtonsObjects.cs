@@ -17,7 +17,7 @@ namespace VMSCore.Demo.WindowsForms.SystemConfiguration
             InitializeComponent();
             var roles = _roleRepository.GetAll();
             dataGridView1.DataSource = roles;
-            dataGridView2.DataSource = _roleObjectButtonMappingRepository.GetRoleObjectButtonMappingByRole(string.Empty);
+            //dataGridView2.DataSource = _roleObjectButtonMappingRepository.GetRoleObjectButtonMappingByRole(string.Empty);
             dlRole.DataSource = roles;
             dlRole.ValueMember = "Id";
             dlRole.DisplayMember = "Name";
@@ -31,14 +31,14 @@ namespace VMSCore.Demo.WindowsForms.SystemConfiguration
             DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
             var roleId = Convert.ToString(selectedRow.Cells["Id"].Value);
 
-            dataGridView2.DataSource = _roleObjectButtonMappingRepository.GetRoleObjectButtonMappingByRole(roleId); ;
+            //dataGridView2.DataSource = _roleObjectButtonMappingRepository.GetRoleObjectButtonMappingByRole(roleId); ;
             dlRole.SelectedValue = roleId;
         }
         private void dlRole_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(dlRole.SelectedValue.ToString()))
             {
-                dataGridView2.DataSource = _roleObjectButtonMappingRepository.GetRoleObjectButtonMappingByRole(dlRole.SelectedValue.ToString());
+                //dataGridView2.DataSource = _roleObjectButtonMappingRepository.GetRoleObjectButtonMappingByRole(dlRole.SelectedValue.ToString());
             }
         }
 
@@ -52,16 +52,16 @@ namespace VMSCore.Demo.WindowsForms.SystemConfiguration
                 var objectId = Convert.ToString(dgvr.Cells["ObjectId"].Value);
                 var objectMap = new RoleObjectButtonMapping()
                 {
-                    ButtonId= buttonId,
-                    ObjectId = objectId,
-                    RoleId= dlRole.SelectedValue.ToString()
+                    ButtonCode= buttonId,
+                    ObjectCode = objectId,
+                    RoleCode= dlRole.SelectedValue.ToString()
                 };
                 if (ischecked)
                 {
                     assign.Add(objectMap);
                 }
             }
-            _roleObjectButtonMappingRepository.DeleteByCondition(x => x.RoleId == dlRole.SelectedValue.ToString());
+            _roleObjectButtonMappingRepository.DeleteByCondition(x => x.RoleCode == dlRole.SelectedValue.ToString());
             _roleObjectButtonMappingRepository.AddRange(assign);
 
         }

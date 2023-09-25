@@ -16,7 +16,7 @@ namespace VMSCore.Demo.WindowsForms.ShareDirectoryManagement
             LoadCompanyDropDownlist();
         }
 
-        private readonly PlantRepository _plantRepository = new PlantRepository();
+        private readonly FactoryRepository _plantRepository = new FactoryRepository();
         private readonly CompanyRepository _companyRepository = new CompanyRepository();
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -28,12 +28,12 @@ namespace VMSCore.Demo.WindowsForms.ShareDirectoryManagement
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var plant = new Plant();
+            var plant = new Factory();
             var companyId = dlCompanyName.SelectedValue != null ? dlCompanyName.SelectedValue.ToString() : null;
             if ( !string.IsNullOrWhiteSpace(companyId))
             {
-                plant.CompanyId = companyId;
-                plant.Id = Guid.NewGuid().ToString();
+                plant.Code = companyId;
+                plant.Id = Guid.NewGuid();
                 plant.Code = txtPlantCode.Text;
                 plant.Name = txtPlantName.Text;
                 plant.NameEn = txtPlantNameEn.Text;
@@ -51,7 +51,7 @@ namespace VMSCore.Demo.WindowsForms.ShareDirectoryManagement
             if (!string.IsNullOrWhiteSpace(txtPlantId.Text))
             {
                 var plant = _plantRepository.GetByIdStr(txtPlantId.Text);
-                plant.CompanyId = dlCompanyName.SelectedValue.ToString();
+                //plant.CompanyId = dlCompanyName.SelectedValue.ToString();
                 plant.Code = txtPlantCode.Text;
                 plant.Name = txtPlantName.Text;
                 plant.NameEn = txtPlantNameEn.Text;

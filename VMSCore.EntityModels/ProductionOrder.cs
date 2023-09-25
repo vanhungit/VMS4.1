@@ -16,11 +16,12 @@ namespace VMSCore.EntityModels
     {
         public System.Guid Id { get; set; }
         public string Code { get; set; }
-        public string CompanyId { get; set; }
-        public string FromDate { get; set; }
-        public string ToDate { get; set; }
-        public string LineId { get; set; }
-        public string NumberTemp { get; set; }
+        public string CompanyCode { get; set; }
+        public Nullable<System.DateTime> FromDate { get; set; }
+        public Nullable<System.DateTime> ToDate { get; set; }
+        public string LineCode { get; set; }
+        public Nullable<decimal> NumberTemp { get; set; }
+        public Nullable<long> Sorted { get; set; }
         public string LastModifierId { get; set; }
         public string CreatorId { get; set; }
         public Nullable<bool> Active { get; set; }
@@ -28,16 +29,15 @@ namespace VMSCore.EntityModels
         public Nullable<System.DateTime> CreationTime { get; set; }
         public Nullable<System.DateTime> LastModificationTime { get; set; }
         public Nullable<int> Status { get; set; }
-        public Nullable<int> ParentId { get; set; }
-        public Nullable<int> LevelDate { get; set; }
+        public string ParentId { get; set; }
+        public Nullable<int> LevelPP { get; set; }
         public string OrderString { get; set; }
-        public string StaffId { get; set; }
+        public string StaffCode { get; set; }
         public string StockId { get; set; }
         public string Reason { get; set; }
         public string Lot { get; set; }
         public Nullable<System.DateTime> ManufactureDate { get; set; }
         public Nullable<System.DateTime> ExpireDate { get; set; }
         public string LinkWeb { get; set; }
-        public string ProductionOrderCode { get; set; }
     }
 }

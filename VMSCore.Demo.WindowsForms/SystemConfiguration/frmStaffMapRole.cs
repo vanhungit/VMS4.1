@@ -41,17 +41,17 @@ namespace VMSCore.Demo.WindowsForms.SystemConfiguration
                 var roleId = Convert.ToString(dgvr.Cells["RoleId"].Value);
                 var roleUser = new RoleUser()
                 {
-                    Id= Guid.NewGuid().ToString(),
+                    Id= Guid.NewGuid(),
                     CreationTime=DateTime.UtcNow,
-                    RoleId=roleId,
-                    UserId=txtStaffId.Text
+                    RoleCode=roleId,
+                    UserCode=txtStaffId.Text
                 };
                 if (inUse)
                 {
                     assign.Add(roleUser);
                 }
             }
-            _roleUserRepository.DeleteByCondition(x => x.UserId.Equals(txtStaffId.Text));
+            _roleUserRepository.DeleteByCondition(x => x.UserCode.Equals(txtStaffId.Text));
             _roleUserRepository.AddRange(assign);
         }
 

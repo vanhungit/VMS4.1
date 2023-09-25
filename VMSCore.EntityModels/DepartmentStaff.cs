@@ -14,9 +14,10 @@ namespace VMSCore.EntityModels
     
     public partial class DepartmentStaff
     {
-        public string Id { get; set; }
-        public string PositionId { get; set; }
-        public string StaffId { get; set; }
+        public System.Guid Id { get; set; }
+        public string Code { get; set; }
+        public string DepartmentCode { get; set; }
+        public string StaffCode { get; set; }
         public Nullable<bool> IsPrimary { get; set; }
         public string LastModifierId { get; set; }
         public string CreatorId { get; set; }

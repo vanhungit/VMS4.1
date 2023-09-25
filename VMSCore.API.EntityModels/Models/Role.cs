@@ -7,13 +7,14 @@ namespace VMSCore.API.EntityModels.Models
 {
     public partial class Role
     {
-        public string Id { get; set; }
+        public System.Guid Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
-        public string CompanyId { get; set; }
-        public bool? CanDelete { get; set; }
+        public string CompanyCode { get; set; }
+        public Nullable<bool> CanDelete { get; set; }
         public string Description { get; set; }
-        public DateTime? CreationTime { get; set; }
-        public DateTime? LastModificationTime { get; set; }
+        public Nullable<System.DateTime> CreationTime { get; set; }
+        public Nullable<System.DateTime> LastModificationTime { get; set; }
+        public Nullable<bool> Active { get; set; }
     }
 }
